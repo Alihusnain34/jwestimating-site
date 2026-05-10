@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JW Construction Estimating LLC | Precision. Speed. Confidence.</title>
+  <meta name="description" content="Professional construction estimating, quantity takeoffs, and bid preparation for aviation, commercial, residential, and federal projects."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* ══════════════════════════════════════
+       ROOT & RESET
+    ══════════════════════════════════════ */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      /* Logo-exact brand colors */
+      --gold:   #F5A800;
+      --gold2:  #FAB81C;
+      --gold3:  #FCCF5A;
+      --gold4:  #FDE9A8;
+      --blue:   #1B5AA8;
+      --blue2:  #2470C8;
+      --blue3:  #4A90D8;
+      --blue4:  #A0C4EE;
+      /* Backgrounds */
+      --ink:    #03050E;
+      --navy:   #060A1A;
+      --navy2:  #0A1028;
+      --navy3:  #0F1638;
+      --navy4:  #162048;
+      /* Text */
+      --white:  #FFFFFF;
+      --muted:  #636880;
+      --muted2: #8E93AF;
+      /* Borders & glows */
+      --border-g: rgba(245,168,0,0.18);
+      --border-b: rgba(27,90,168,0.22);
+      --border-w: rgba(255,255,255,0.08);
+      --glow-g:   rgba(245,168,0,0.12);
+      --glow-b:   rgba(27,90,168,0.12);
+      /* Radius & motion */
+      --r:8px;  --r2:14px;  --r3:22px;
+      --ease:cubic-bezier(0.4,0,0.2,1);
+      --t:0.32s;
+    }
+    html{scroll-behavior:smooth;}
+    body{
+      font-family:'DM Sans',sans-serif;
+      background:var(--ink);color:var(--white);
+      overflow-x:hidden;line-height:1.6;
+      cursor:none;
+    }
+    img{display:block;max-width:100%;}
+    a{color:inherit;text-decoration:none;}
+
+    /* ══════════════════════════════════════
+       CURSOR
+    ══════════════════════════════════════ */
+    #c-dot{position:fixed;width:8px;height:8px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .2s,height .2s;}
+    #c-ring{position:fixed;width:38px;height:38px;border:1.5px solid rgba(245,168,0,.45);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s;}
+    body:has(a:hover) #c-ring,body:has(button:hover) #c-ring{width:52px;height:52px;border-color:var(--gold);}
+    @media(pointer:coarse){#c-dot,#c-ring{display:none;}body{cursor:auto;}}
+
+    /* ══════════════════════════════════════
+       PRELOADER
+    ══════════════════════════════════════ */
+    #preloader{position:fixed;inset:0;z-index:99000;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;transition:opacity .7s,visibility .7s;}
+    #preloader.done{opacity:0;visibility:hidden;}
+    .pl-logo-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;}
+    .pl-logo-svg{width:56px;height:64px;}
+    .pl-name{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;letter-spacing:.1em;}
+    .pl-name span{color:var(--gold);}
+    .pl-bar-track{width:180px;height:1.5px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;}
+    .pl-bar{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));width:0;transition:width .6s ease;}
+
+    /* ══════════════════════════════════════
+       MOBILE OVERLAY NAV
+    ══════════════════════════════════════ */
+    #mob-nav{position:fixed;inset:0;z-index:9900;background:rgba(3,5,14,.97);backdrop-filter:blur(30px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;visibility:hidden;transition:var(--t) var(--ease);}
+    #mob-nav.open{opacity:1;visibility:visible;}
+    .mob-close{position:absolute;top:24px;right:6%;font-size:1.8rem;color:var(--muted2);cursor:pointer;transition:color .2s;}
+    .mob-close:hover{color:var(--gold);}
+    #mob-nav a{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;letter-spacing:.04em;transition:color .2s;}
+    #mob-nav a:hover{color:var(--gold);}
+    .mob-portal-btn{margin-top:12px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink)!important;font-family:'DM Sans',sans-serif!important;font-size:1rem!important;font-weight:700;padding:14px 36px;border-radius:var(--r);}
+
+    /* ══════════════════════════════════════
+       NAV
+    ══════════════════════════════════════ */
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:76px;transition:background var(--t),border-color var(--t),height var(--t);}
+    nav.scrolled{background:rgba(3,5,14,.93);backdrop-filter:blur(22px);border-bottom:1px solid var(--border-g);height:62px;}
+    /* Logo */
+    .nav-logo{display:flex;align-items:center;gap:11px;}
+    .nav-logo-svg{width:36px;height:42px;flex-shrink:0;}
+    .nav-logo-txt{line-height:1.1;}
+    .nav-logo-top{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;letter-spacing:.06em;}
+    .nav-logo-top .jw{color:var(--gold);}
+    .nav-logo-btm{font-size:.58rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--blue3);margin-top:2px;}
+    /* Links */
+    .nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+    .nav-links a{font-size:.76rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);position:relative;padding-bottom:3px;transition:color .2s;}
+    .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width .3s ease;}
+    .nav-links a:hover{color:var(--white);}
+    .nav-links a:hover::after{width:100%;}
+    /* Right side */
+    .nav-right{display:flex;align-items:center;gap:10px;}
+    .nav-phone{font-size:.78rem;font-weight:600;color:var(--muted2);letter-spacing:.03em;transition:color .2s;}
+    .nav-phone:hover{color:var(--gold);}
+    .btn-portal{background:transparent;border:1.5px solid var(--border-b);color:var(--blue3);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:8px 18px;border-radius:var(--r);transition:background var(--t),border-color var(--t),color var(--t);cursor:pointer;}
+    .btn-portal:hover{background:var(--blue);border-color:var(--blue);color:var(--white);}
+    .btn-quote{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:9px 20px;border-radius:var(--r);border:none;cursor:pointer;box-shadow:0 4px 18px rgba(245,168,0,.3);transition:transform .2s,box-shadow .2s;}
+    .btn-quote:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(245,168,0,.5);}
+    .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+    .ham span{width:22px;height:1.5px;background:var(--white);border-radius:2px;transition:var(--t);}
+
+    /* ══════════════════════════════════════
+       HERO
+    ══════════════════════════════════════ */
+    .hero{min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:0 5% 7%;overflow:hidden;}
+    .hero-bg{position:absolute;inset:0;z-index:0;background:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1920&q=85') center/cover no-repeat;}
+    .hero-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(165deg,rgba(3,5,14,.2) 0%,rgba(3,5,14,.55) 40%,rgba(3,5,14,.93) 80%,var(--ink) 100%);}
+    .hero-grain{position:absolute;inset:0;z-index:2;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none;}
+    .hero-content{position:relative;z-index:3;max-width:860px;}
+    .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:26px;}
+    .ey-line{width:28px;height:1px;background:var(--gold);}
+    .ey-txt{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);}
+    .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6.5vw,5.8rem);font-weight:700;line-height:1.06;letter-spacing:-.01em;margin-bottom:26px;}
+    .hero h1 em{color:var(--gold2);font-style:italic;}
+    .hero-sub{font-size:1.02rem;color:rgba(255,255,255,.58);max-width:540px;line-height:1.8;margin-bottom:42px;}
+    .hero-btns{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:70px;}
+    .btn-gold{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);font-weight:800;font-size:.8rem;padding:15px 32px;border-radius:var(--r);letter-spacing:.07em;text-transform:uppercase;box-shadow:0 8px 28px rgba(245,168,0,.38);transition:transform .25s,box-shadow .25s;border:none;cursor:pointer;}
+    .btn-gold:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(245,168,0,.55);}
+    .btn-outline{display:inline-flex;align-items:center;gap:9px;color:var(--white);font-weight:600;font-size:.8rem;padding:15px 32px;border-radius:var(--r);border:1.5px solid rgba(255,255,255,.18);letter-spacing:.07em;text-transform:uppercase;transition:border-color .25s,background .25s;cursor:pointer;background:transparent;}
+    .btn-outline:hover{border-color:var(--gold);background:rgba(245,168,0,.07);}
+    .hero-kpis{display:flex;border-top:1px solid rgba(255,255,255,.08);padding-top:36px;gap:0;}
+    .hero-kpi{flex:1;padding-right:36px;border-right:1px solid rgba(255,255,255,.07);}
+    .hero-kpi:last-child{border-right:none;}
+    .kpi-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;color:var(--gold2);line-height:1;letter-spacing:-.03em;}
+    .kpi-lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted2);margin-top:6px;font-weight:600;}
+    .hero-scroll{position:absolute;right:5%;bottom:7%;z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;animation:sb 2.2s ease-in-out infinite;}
+    .hero-scroll span{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);writing-mode:vertical-rl;}
+    .scroll-track{width:1px;height:48px;background:linear-gradient(180deg,var(--gold),transparent);}
+    @keyframes sb{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+    /* ══════════════════════════════════════
+       MARQUEE
+    ══════════════════════════════════════ */
+    .marquee-wrap{background:linear-gradient(90deg,var(--gold),var(--gold2));padding:13px 0;overflow:hidden;}
+    .marquee-inner{display:flex;animation:mq 25s linear infinite;white-space:nowrap;}
+    .mq-item{display:flex;align-items:center;gap:10px;padding:0 32px;font-size:.7rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);flex-shrink:0;}
+    .mq-sep{width:4px;height:4px;border-radius:50%;background:rgba(3,5,14,.35);}
+    @keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* ══════════════════════════════════════
+       SHARED SECTION STYLES
+    ══════════════════════════════════════ */
+    section{padding:108px 5%;}
+    .s-tag{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+    .s-tag-line{width:22px;height:1px;background:var(--gold);}
+    .s-tag-txt{font-size:.68rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);}
+    .s-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.8vw,3.4rem);font-weight:700;line-height:1.1;letter-spacing:-.01em;margin-bottom:18px;}
+    .s-sub{font-size:.96rem;color:var(--muted2);max-width:560px;line-height:1.82;}
+    .s-hdr{margin-bottom:64px;}
+    .s-hdr.center{text-align:center;}
+    .s-hdr.center .s-sub{margin:0 auto;}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s var(--ease),transform .65s var(--ease);}
+    .reveal.in{opacity:1;transform:none;}
+    .d1{transition-delay:.08s!important;}.d2{transition-delay:.16s!important;}.d3{transition-delay:.24s!important;}.d4{transition-delay:.32s!important;}.d5{transition-delay:.40s!important;}
+
+    /* ══════════════════════════════════════
+       PILLARS
+    ══════════════════════════════════════ */
+    .pillars-sec{background:var(--navy);}
+    .pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border-g);border-radius:var(--r3);overflow:hidden;}
+    .pillar{padding:52px 40px;border-right:1px solid var(--border-g);position:relative;overflow:hidden;transition:background var(--t);}
+    .pillar:last-child{border-right:none;}
+    .pillar:hover{background:rgba(245,168,0,.04);}
+    .pillar::after{content:'';position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,var(--gold),var(--gold2));transform:scaleX(0);transform-origin:left;transition:transform .45s ease;}
+    .pillar:hover::after{transform:scaleX(1);}
+    .pillar-bg-num{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:700;color:rgba(245,168,0,.07);line-height:1;margin-bottom:4px;}
+    .pillar-icon{font-size:1.9rem;margin-bottom:18px;}
+    .pillar h3{font-size:1.2rem;font-weight:700;margin-bottom:12px;}
+    .pillar p{font-size:.86rem;color:var(--muted2);line-height:1.78;}
+
+    /* ══════════════════════════════════════
+       SERVICES
+    ══════════════════════════════════════ */
+    .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border-g);border-radius:var(--r3);overflow:hidden;}
+    .svc-card{background:var(--navy2);padding:42px 34px;position:relative;overflow:hidden;transition:background var(--t);}
+    .svc-card:hover{background:var(--navy3);}
+    .svc-glow{position:absolute;top:-50px;right:-50px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(245,168,0,.11) 0%,transparent 70%);transition:width .35s,height .35s;pointer-events:none;}
+    .svc-card:hover .svc-glow{width:200px;height:200px;}
+    .svc-n{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:700;color:rgba(245,168,0,.09);line-height:1;margin-bottom:6px;}
+    .svc-ico{width:46px;height:46px;border:1px solid var(--border-g);border-radius:11px;background:rgba(245,168,0,.07);display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:20px;transition:border-color .25s,background .25s;}
+    .svc-card:hover .svc-ico{border-color:var(--gold);background:rgba(245,168,0,.14);}
+    .svc-card h3{font-size:1rem;font-weight:700;margin-bottom:10px;}
+    .svc-card p{font-size:.83rem;color:var(--muted2);line-height:1.75;}
+    .svc-more{display:inline-flex;align-items:center;gap:5px;margin-top:18px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);opacity:0;transform:translateX(-6px);transition:opacity .25s,transform .25s;}
+    .svc-card:hover .svc-more{opacity:1;transform:none;}
+
+    /* ══════════════════════════════════════
+       PROJECTS
+    ══════════════════════════════════════ */
+    .projects-sec{background:var(--navy);}
+    .proj-layout{display:flex;flex-direction:column;gap:2px;}
+    .proj-row{display:grid;gap:2px;}
+    .proj-row.r-full{grid-template-columns:1fr;}
+    .proj-row.r-half{grid-template-columns:1fr 1fr;}
+    .proj-card{position:relative;overflow:hidden;min-height:420px;cursor:pointer;}
+    /* Radius only on corners */
+    .r-full .proj-card:only-child:first-of-type{border-radius:var(--r3) var(--r3) 0 0;}
+    .last-row .proj-card{border-radius:0 0 var(--r3) var(--r3)!important;}
+    .last-row.r-half .proj-card:first-child{border-radius:0 0 0 var(--r3)!important;}
+    .last-row.r-half .proj-card:last-child{border-radius:0 0 var(--r3) 0!important;}
+    .pc-photo{position:absolute;inset:0;background:center/cover no-repeat;transition:transform .7s ease;}
+    .proj-card:hover .pc-photo{transform:scale(1.055);}
+    .pc-ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,5,14,.92) 0%,rgba(3,5,14,.25) 60%,transparent 100%);transition:var(--t);}
+    .proj-card:hover .pc-ov{background:linear-gradient(0deg,rgba(3,5,14,.96) 0%,rgba(3,5,14,.5) 65%,rgba(3,5,14,.1) 100%);}
+    .pc-badge{position:absolute;top:18px;right:18px;background:rgba(245,168,0,.85);backdrop-filter:blur(8px);border:1px solid var(--gold2);border-radius:var(--r);padding:6px 14px;font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);z-index:2;}
+    .pc-body{position:absolute;bottom:0;left:0;right:0;padding:28px 30px 32px;z-index:2;}
+    .pc-cat{display:inline-block;font-size:.63rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);background:rgba(245,168,0,.12);border:1px solid var(--border-g);padding:3px 11px;border-radius:100px;margin-bottom:10px;}
+    .pc-title{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:700;line-height:1.15;margin-bottom:4px;}
+    .pc-addr{font-size:.76rem;color:rgba(255,255,255,.45);margin-bottom:14px;}
+    .pc-stats{display:flex;flex-wrap:wrap;gap:18px;border-top:1px solid rgba(255,255,255,.09);padding-top:14px;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s;}
+    .proj-card:hover .pc-stats{opacity:1;transform:none;}
+    .pc-stat strong{display:block;font-size:.88rem;font-weight:800;color:var(--gold3);}
+    .pc-stat span{font-size:.7rem;color:rgba(255,255,255,.45);margin-top:1px;}
+    .pc-gallery-btn{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--white);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:7px 16px;border-radius:var(--r);transition:background .2s,border-color .2s;cursor:pointer;}
+    .pc-gallery-btn:hover{background:rgba(245,168,0,.15);border-color:var(--gold);}
+
+    /* ══════════════════════════════════════
+       STATS
+    ══════════════════════════════════════ */
+    .stats-sec{background:var(--navy2);border-top:1px solid var(--border-g);border-bottom:1px solid var(--border-g);padding:0;}
+    .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+    .stat-cell{padding:64px 40px;text-align:center;border-right:1px solid var(--border-g);position:relative;}
+    .stat-cell:last-child{border-right:none;}
+    .stat-cell-icon{font-size:1.5rem;margin-bottom:14px;}
+    .stat-num{font-family:'Cormorant Garamond',serif;font-size:3.8rem;font-weight:700;line-height:1;letter-spacing:-.04em;margin-bottom:8px;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .stat-lbl{font-size:.74rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);font-weight:600;}
+
+    /* ══════════════════════════════════════
+       PROCESS
+    ══════════════════════════════════════ */
+    .proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:60px;}
+    .proc-grid::before{content:'';position:absolute;top:27px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold));opacity:.25;}
+    .pstep{text-align:center;padding:0 20px;}
+    .pstep-circle{width:54px;height:54px;border-radius:50%;background:var(--navy3);border:1px solid var(--border-g);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:700;color:var(--gold2);position:relative;z-index:1;transition:var(--t);}
+    .pstep:hover .pstep-circle{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);border-color:transparent;box-shadow:0 0 28px rgba(245,168,0,.42);}
+    .pstep h4{font-size:.94rem;font-weight:700;margin-bottom:9px;}
+    .pstep p{font-size:.81rem;color:var(--muted2);line-height:1.7;}
+
+    /* ══════════════════════════════════════
+       TESTIMONIALS
+    ══════════════════════════════════════ */
+    .testi-sec{background:var(--navy2);}
+    .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+    .testi-card{background:var(--navy3);border:1px solid var(--border-g);border-radius:var(--r3);padding:40px 32px;position:relative;overflow:hidden;transition:transform var(--t),box-shadow var(--t),border-color var(--t);}
+    .testi-card:hover{transform:translateY(-5px);box-shadow:0 20px 56px rgba(0,0,0,.5);border-color:rgba(245,168,0,.35);}
+    .tc-bg{position:absolute;top:-10px;right:18px;font-family:serif;font-size:7rem;font-weight:700;color:rgba(245,168,0,.05);pointer-events:none;line-height:1;}
+    .tc-stars{display:flex;gap:3px;margin-bottom:18px;}
+    .tc-star{width:15px;height:15px;border-radius:3px;background:linear-gradient(135deg,var(--gold),var(--gold2));display:flex;align-items:center;justify-content:center;font-size:8px;}
+    .tc-quote{font-size:.88rem;color:rgba(255,255,255,.7);line-height:1.82;margin-bottom:26px;font-style:italic;}
+    .tc-author{display:flex;align-items:center;gap:12px;}
+    .tc-av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.82rem;color:var(--ink);flex-shrink:0;border:2px solid rgba(245,168,0,.3);}
+    .tc-name{font-size:.87rem;font-weight:700;}
+    .tc-role{font-size:.72rem;color:var(--muted);margin-top:2px;}
+
+    /* ══════════════════════════════════════
+       CREDENTIALS STRIP
+    ══════════════════════════════════════ */
+    .creds-sec{background:var(--ink);border-top:1px solid var(--border-g);padding:56px 5%;}
+    .creds-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;}
+    .cred-card{flex:1;min-width:200px;display:flex;align-items:center;gap:14px;padding:22px 24px;border:1px solid var(--border-g);border-radius:var(--r2);background:var(--navy2);transition:border-color var(--t),background var(--t);}
+    .cred-card:hover{border-color:rgba(245,168,0,.38);background:var(--navy3);}
+    .cred-ico{font-size:1.5rem;}
+    .cred-txt strong{display:block;font-size:.86rem;font-weight:700;}
+    .cred-txt span{font-size:.72rem;color:var(--muted);margin-top:2px;display:block;}
+
+    /* ══════════════════════════════════════
+       CTA
+    ══════════════════════════════════════ */
+    .cta-sec{position:relative;overflow:hidden;text-align:center;padding:130px 5%;}
+    .cta-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=70') center/cover no-repeat;opacity:.07;}
+    .cta-orb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:350px;border-radius:50%;background:radial-gradient(ellipse,rgba(245,168,0,.12) 0%,transparent 70%);pointer-events:none;}
+    .cta-inner{position:relative;z-index:1;}
+    .cta-sec .s-title{font-size:clamp(2.4rem,5vw,4.2rem);}
+    .cta-sec .s-sub{margin:0 auto 48px;}
+    .cta-links{display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;}
+    .cta-phone{display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--gold3);transition:color .2s;letter-spacing:-.01em;}
+    .cta-phone:hover{color:var(--white);}
+    .cta-div{width:1px;height:44px;background:var(--border-g);}
+    .cta-email{display:flex;align-items:center;gap:8px;font-size:.86rem;font-weight:600;color:var(--muted2);transition:color .2s;letter-spacing:.03em;}
+    .cta-email:hover{color:var(--gold2);}
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    footer{background:var(--ink);border-top:1px solid var(--border-g);padding:76px 5% 36px;}
+    .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:52px;margin-bottom:56px;}
+    .foot-brand p{font-size:.84rem;color:var(--muted);line-height:1.78;margin:16px 0 24px;max-width:300px;}
+    .foot-socials{display:flex;gap:9px;}
+    .f-soc{width:36px;height:36px;border-radius:var(--r);border:1px solid var(--border-g);background:var(--navy2);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;transition:border-color .2s,color .2s,background .2s;}
+    .f-soc:hover{border-color:var(--gold);color:var(--gold2);background:rgba(245,168,0,.08);}
+    .foot-col h5{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.18em;color:var(--gold2);margin-bottom:18px;}
+    .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+    .foot-col ul a{font-size:.83rem;color:var(--muted);transition:color .2s;}
+    .foot-col ul a:hover{color:var(--white);}
+    .f-contact-row{display:flex;gap:10px;margin-bottom:13px;}
+    .f-contact-row svg{flex-shrink:0;opacity:.5;margin-top:3px;}
+    .f-contact-row a,.f-contact-row p{font-size:.82rem;color:var(--muted);line-height:1.55;}
+    .f-contact-row a:hover{color:var(--gold2);}
+    .foot-bottom{border-top:1px solid var(--border-g);padding-top:26px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+    .foot-bottom p{font-size:.74rem;color:var(--muted);}
+    .lic-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(245,168,0,.07);border:1px solid var(--border-g);padding:5px 13px;border-radius:100px;font-size:.68rem;font-weight:600;letter-spacing:.08em;color:var(--muted);}
+
+    /* ══════════════════════════════════════
+       CLIENT PORTAL MODAL
+    ══════════════════════════════════════ */
+    .portal-overlay{position:fixed;inset:0;z-index:9800;background:rgba(3,5,14,.92);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:var(--t) var(--ease);}
+    .portal-overlay.open{opacity:1;visibility:visible;}
+    .portal-modal{background:var(--navy2);border:1px solid var(--border-g);border-radius:var(--r3);width:100%;max-width:540px;max-height:90vh;overflow-y:auto;position:relative;}
+    .portal-modal::-webkit-scrollbar{width:4px;}
+    .portal-modal::-webkit-scrollbar-thumb{background:var(--border-g);border-radius:2px;}
+    .portal-header{padding:32px 36px 0;display:flex;align-items:center;justify-content:space-between;}
+    .portal-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;}
+    .portal-close{width:36px;height:36px;border-radius:50%;border:1px solid var(--border-g);background:transparent;color:var(--muted2);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--t);}
+    .portal-close:hover{border-color:var(--gold);color:var(--gold);}
+    .portal-tabs{display:flex;border-bottom:1px solid var(--border-g);margin:24px 36px 0;gap:0;}
+    .p-tab{flex:1;padding:12px 0;text-align:center;font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .2s,border-color .2s;}
+    .p-tab.active{color:var(--gold2);border-bottom-color:var(--gold);}
+    .portal-body{padding:28px 36px 36px;}
+    /* Login / Register panels */
+    .p-panel{display:none;}
+    .p-panel.active{display:block;}
+    .p-field{margin-bottom:16px;}
+    .p-field label{display:block;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);margin-bottom:7px;}
+    .p-field input,.p-field select,.p-field textarea{width:100%;background:var(--navy3);border:1px solid var(--border-g);border-radius:var(--r);padding:12px 14px;font-size:.88rem;color:var(--white);outline:none;transition:border-color .2s;font-family:'DM Sans',sans-serif;}
+    .p-field input:focus,.p-field select:focus,.p-field textarea:focus{border-color:var(--gold);}
+    .p-field input::placeholder,.p-field textarea::placeholder{color:var(--muted);}
+    .p-field select option{background:var(--navy3);}
+    .p-field textarea{resize:vertical;min-height:90px;}
+    .p-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    .p-forgot{text-align:right;font-size:.74rem;color:var(--muted2);margin-top:-8px;margin-bottom:16px;cursor:pointer;transition:color .2s;}
+    .p-forgot:hover{color:var(--gold2);}
+    .p-submit{width:100%;padding:14px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:var(--r);color:var(--ink);font-weight:800;font-size:.84rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:opacity .2s,transform .2s;margin-top:8px;}
+    .p-submit:hover{opacity:.88;transform:translateY(-1px);}
+    .p-alt{text-align:center;font-size:.78rem;color:var(--muted);margin-top:16px;}
+    .p-alt span{color:var(--gold2);cursor:pointer;font-weight:600;}
+    .p-alt span:hover{text-decoration:underline;}
+    /* Dashboard */
+    .dash-welcome{background:linear-gradient(135deg,rgba(245,168,0,.1),rgba(27,90,168,.1));border:1px solid var(--border-g);border-radius:var(--r2);padding:20px 22px;margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;}
+    .dw-text h4{font-size:1rem;font-weight:700;}
+    .dw-text p{font-size:.78rem;color:var(--muted2);margin-top:3px;}
+    .dash-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px;}
+    .d-tab{padding:8px 16px;border-radius:var(--r);border:1px solid var(--border-g);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:var(--t);background:transparent;color:var(--muted2);}
+    .d-tab.active,.d-tab:hover{background:var(--gold);color:var(--ink);border-color:var(--gold);}
+    .d-panel{display:none;}
+    .d-panel.active{display:block;}
+    /* Project cards inside dash */
+    .dash-proj{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border:1px solid var(--border-g);border-radius:var(--r2);margin-bottom:10px;background:var(--navy3);}
+    .dp-name{font-size:.85rem;font-weight:700;}
+    .dp-addr{font-size:.72rem;color:var(--muted);margin-top:2px;}
+    .dp-status{padding:4px 11px;border-radius:100px;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+    .dp-status.active{background:rgba(27,90,168,.2);color:var(--blue3);border:1px solid var(--border-b);}
+    .dp-status.complete{background:rgba(245,168,0,.15);color:var(--gold2);border:1px solid var(--border-g);}
+    .dp-status.review{background:rgba(255,255,255,.07);color:var(--muted2);border:1px solid var(--border-w);}
+    /* Invoice items */
+    .inv-item{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border:1px solid var(--border-g);border-radius:var(--r2);margin-bottom:10px;background:var(--navy3);}
+    .inv-info strong{display:block;font-size:.84rem;font-weight:700;}
+    .inv-info span{font-size:.72rem;color:var(--muted);margin-top:2px;display:block;}
+    .inv-right{display:flex;align-items:center;gap:10px;}
+    .inv-amt{font-size:.95rem;font-weight:800;color:var(--gold2);}
+    .inv-pay{padding:6px 14px;border-radius:var(--r);background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;transition:opacity .2s;}
+    .inv-pay:hover{opacity:.8;}
+    .inv-paid{padding:6px 14px;border-radius:var(--r);background:rgba(27,90,168,.15);color:var(--blue3);font-size:.68rem;font-weight:700;border:1px solid var(--border-b);}
+
+    /* ══════════════════════════════════════
+       GALLERY LIGHTBOX
+    ══════════════════════════════════════ */
+    .gallery-overlay{position:fixed;inset:0;z-index:9900;background:rgba(3,5,14,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:var(--t);}
+    .gallery-overlay.open{opacity:1;visibility:visible;}
+    .gallery-close{position:absolute;top:22px;right:22px;width:44px;height:44px;border-radius:50%;border:1px solid var(--border-g);background:var(--navy3);color:var(--white);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;transition:border-color .2s,color .2s;}
+    .gallery-close:hover{border-color:var(--gold);color:var(--gold);}
+    .gallery-main{width:min(900px,90vw);margin-bottom:16px;position:relative;}
+    .gallery-main img{width:100%;max-height:65vh;object-fit:cover;border-radius:var(--r2);}
+    .gallery-nav{position:absolute;top:50%;transform:translateY(-50%);display:flex;justify-content:space-between;width:100%;padding:0 10px;pointer-events:none;}
+    .g-arrow{pointer-events:all;width:46px;height:46px;border-radius:50%;background:rgba(3,5,14,.7);border:1px solid var(--border-g);color:var(--white);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s;}
+    .g-arrow:hover{border-color:var(--gold);color:var(--gold);}
+    .gallery-meta{text-align:center;margin-bottom:14px;}
+    .gallery-meta h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;}
+    .gallery-meta p{font-size:.78rem;color:var(--muted2);margin-top:4px;}
+    .gallery-thumbs{display:flex;gap:8px;overflow-x:auto;max-width:min(900px,90vw);padding-bottom:4px;}
+    .gallery-thumbs::-webkit-scrollbar{height:3px;}
+    .gallery-thumbs::-webkit-scrollbar-thumb{background:var(--border-g);border-radius:2px;}
+    .g-thumb{width:70px;height:52px;object-fit:cover;border-radius:6px;cursor:pointer;border:2px solid transparent;flex-shrink:0;transition:border-color .2s,opacity .2s;opacity:.55;}
+    .g-thumb.active,.g-thumb:hover{border-color:var(--gold);opacity:1;}
+    .gallery-ctr{font-size:.72rem;color:var(--muted);text-align:center;margin-top:8px;letter-spacing:.1em;}
+
+    /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+    @media(max-width:1100px){
+      .svc-grid,.pillars-grid{grid-template-columns:repeat(2,1fr);}
+      .pillars-grid .pillar{border-right:none;border-bottom:1px solid var(--border-g);}
+      .stats-grid{grid-template-columns:repeat(2,1fr);}
+      .stat-cell{border-bottom:1px solid var(--border-g);}
+      .foot-grid{grid-template-columns:1fr 1fr;}
+      .proc-grid{grid-template-columns:repeat(2,1fr);gap:40px;}
+      .proc-grid::before{display:none;}
+    }
+    @media(max-width:768px){
+      .nav-links,.nav-phone{display:none;}
+      .ham{display:flex;}
+      .proj-row.r-half{grid-template-columns:1fr;}
+      .testi-grid{grid-template-columns:1fr;}
+      .svc-grid{grid-template-columns:1fr;}
+      .pillars-grid{grid-template-columns:1fr;}
+      section{padding:72px 4%;}
+      nav{padding:0 4%;}
+      footer{padding:60px 4% 32px;}
+      .foot-grid{grid-template-columns:1fr;}
+      .stats-grid{grid-template-columns:1fr 1fr;}
+      .hero-kpis{flex-direction:column;gap:20px;}
+      .hero-kpi{border-right:none;border-bottom:1px solid rgba(255,255,255,.07);padding:0 0 20px;width:100%;}
+      .hero-kpi:last-child{border-bottom:none;padding-bottom:0;}
+      .proc-grid{grid-template-columns:1fr;gap:32px;}
+      .p-row{grid-template-columns:1fr;}
+      .portal-modal{border-radius:var(--r2);}
+      .portal-header,.portal-tabs,.portal-body{padding-left:22px;padding-right:22px;}
+      .portal-tabs{margin-left:22px;margin-right:22px;}
+    }
+    @media(max-width:480px){.stats-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+<!-- ════════════ CURSOR ════════════ -->
+<div id="c-dot"></div>
+<div id="c-ring"></div>
+
+<!-- ════════════ PRELOADER ════════════ -->
+<div id="preloader">
+  <div class="pl-logo-wrap">
+    <!-- Inline SVG matching company logo geometry -->
+    <svg class="pl-logo-svg" viewBox="0 0 56 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="28,2 16,14 16,48 7,48 7,57 16,57 24,48 24,14" fill="#F5A800"/>
+      <polygon points="28,2 40,14 40,44 46,37 50,44 50,57 40,57 32,48 32,14" fill="#1B5AA8"/>
+      <polygon points="24,14 28,2 32,14 28,18" fill="#ffffff" opacity=".25"/>
+    </svg>
+    <div class="pl-name">JW <span>Construction Estimating</span></div>
+  </div>
+  <div class="pl-bar-track"><div class="pl-bar" id="plBar"></div></div>
+</div>
+
+<!-- ════════════ MOBILE NAV ════════════ -->
+<div id="mob-nav">
+  <span class="mob-close" id="mobClose">✕</span>
+  <a href="#home"         onclick="closeMob()">Home</a>
+  <a href="#services"     onclick="closeMob()">Services</a>
+  <a href="#projects"     onclick="closeMob()">Projects</a>
+  <a href="#process"      onclick="closeMob()">Process</a>
+  <a href="#testimonials" onclick="closeMob()">Reviews</a>
+  <a href="#contact"      onclick="closeMob()" style="color:var(--gold)">Get a Quote</a>
+  <button class="mob-portal-btn" onclick="closeMob();openPortal()">Client Portal</button>
+</div>
+
+<!-- ════════════ NAV ════════════ -->
+<nav id="mainNav">
+  <a href="#home" class="nav-logo">
+    <svg class="nav-logo-svg" viewBox="0 0 56 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="28,2 16,14 16,48 7,48 7,57 16,57 24,48 24,14" fill="#F5A800"/>
+      <polygon points="28,2 40,14 40,44 46,37 50,44 50,57 40,57 32,48 32,14" fill="#1B5AA8"/>
+      <polygon points="24,14 28,2 32,14 28,18" fill="#ffffff" opacity=".2"/>
+    </svg>
+    <div class="nav-logo-txt">
+      <div class="nav-logo-top"><span class="jw">JW</span> Construction Estimating</div>
+      <div class="nav-logo-btm">LLC · Est. Raytown, Missouri</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:9133892137" class="nav-phone">913-389-2137</a>
+    <button class="btn-portal" onclick="openPortal()">Client Portal</button>
+    <button class="btn-quote" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Request Quote</button>
+    <div class="ham" id="hamBtn"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- ════════════ HERO ════════════ -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-ov"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-content reveal">
+    <div class="hero-eyebrow"><div class="ey-line"></div><span class="ey-txt">Licensed · Bonded · #LCO14573174 · Raytown, MO</span></div>
+    <h1>Estimates That <em>Win.</em><br>Delivered With Precision.</h1>
+    <p class="hero-sub">From major airport terminals to VA medical centers and Hamptons estates — JW Construction Estimating delivers exact-to-the-dollar takeoffs and bid packages that get awarded.</p>
+    <div class="hero-btns">
+      <button class="btn-gold" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Start Your Estimate
+      </button>
+      <button class="btn-outline" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        View Signature Projects
+      </button>
+    </div>
+    <div class="hero-kpis">
+      <div class="hero-kpi"><div class="kpi-num" data-target="500" data-sfx="+">0</div><div class="kpi-lbl">Projects Estimated</div></div>
+      <div class="hero-kpi"><div class="kpi-num" data-target="98" data-sfx="%">0</div><div class="kpi-lbl">Bid Accuracy Rate</div></div>
+      <div class="hero-kpi"><div class="kpi-num" data-target="48" data-sfx="hr">0</div><div class="kpi-lbl">Avg. Turnaround</div></div>
+      <div class="hero-kpi"><div class="kpi-num" data-target="6" data-sfx="">0</div><div class="kpi-lbl">Construction Sectors</div></div>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-track"></div></div>
+</section>
+
+<!-- ════════════ MARQUEE ════════════ -->
+<div class="marquee-wrap">
+  <div class="marquee-inner" id="mqi">
+    <div class="mq-item"><div class="mq-sep"></div>Aviation</div>
+    <div class="mq-item"><div class="mq-sep"></div>Federal / VA</div>
+    <div class="mq-item"><div class="mq-sep"></div>Luxury Residential</div>
+    <div class="mq-item"><div class="mq-sep"></div>Commercial</div>
+    <div class="mq-item"><div class="mq-sep"></div>Industrial</div>
+    <div class="mq-item"><div class="mq-sep"></div>Heavy Civil</div>
+    <div class="mq-item"><div class="mq-sep"></div>Institutional</div>
+    <div class="mq-item"><div class="mq-sep"></div>Renovation</div>
+    <div class="mq-item"><div class="mq-sep"></div>Aviation</div>
+    <div class="mq-item"><div class="mq-sep"></div>Federal / VA</div>
+    <div class="mq-item"><div class="mq-sep"></div>Luxury Residential</div>
+    <div class="mq-item"><div class="mq-sep"></div>Commercial</div>
+    <div class="mq-item"><div class="mq-sep"></div>Industrial</div>
+    <div class="mq-item"><div class="mq-sep"></div>Heavy Civil</div>
+    <div class="mq-item"><div class="mq-sep"></div>Institutional</div>
+    <div class="mq-item"><div class="mq-sep"></div>Renovation</div>
+  </div>
+</div>
+
+<!-- ════════════ PILLARS ════════════ -->
+<section class="pillars-sec">
+  <div class="s-hdr center reveal">
+    <div class="s-tag" style="justify-content:center;"><div class="s-tag-line"></div><span class="s-tag-txt">Why JW Estimating</span><div class="s-tag-line"></div></div>
+    <h2 class="s-title">Three Commitments.<br>Every Single Estimate.</h2>
+    <p class="s-sub">Whether it's an $18M airport package or a custom estate, the standard never changes.</p>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar reveal"><div class="pillar-bg-num">01</div><div class="pillar-icon">⚡</div><h3>Rapid Turnaround</h3><p>Most estimates delivered within 24–48 hours. We understand bid deadlines — rush turnaround available for time-critical submittals.</p></div>
+    <div class="pillar reveal d2"><div class="pillar-bg-num">02</div><div class="pillar-icon">🎯</div><h3>Unparalleled Precision</h3><p>RSMeans pricing, local market data, and proprietary QC checklists. Every line item verified — no cost surprises in the field.</p></div>
+    <div class="pillar reveal d3"><div class="pillar-bg-num">03</div><div class="pillar-icon">💼</div><h3>Budget-Conscious Rates</h3><p>Professional accuracy at every project scale. Our fees scale with your project size — making expert estimating accessible for all contractors.</p></div>
+  </div>
+</section>
+
+<!-- ════════════ SERVICES ════════════ -->
+<section id="services">
+  <div class="s-hdr reveal">
+    <div class="s-tag"><div class="s-tag-line"></div><span class="s-tag-txt">What We Deliver</span></div>
+    <h2 class="s-title">Full-Spectrum Estimating<br>Services</h2>
+    <p class="s-sub">From early concept budgets to final bid packages — every phase of your project, covered with precision.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card reveal"><div class="svc-glow"></div><div class="svc-n">01</div><div class="svc-ico">📐</div><h3>Quantity Takeoffs</h3><p>Complete material quantification from architectural, structural, and MEP drawings. Every unit measured, every assembly counted.</p><div class="svc-more">Learn More →</div></div>
+    <div class="svc-card reveal d1"><div class="svc-glow"></div><div class="svc-n">02</div><div class="svc-ico">💰</div><h3>Cost Estimation</h3><p>Real-time market-priced estimates covering labor, materials, equipment, and overhead. Know your numbers before you commit.</p><div class="svc-more">Learn More →</div></div>
+    <div class="svc-card reveal d2"><div class="svc-glow"></div><div class="svc-n">03</div><div class="svc-ico">🏗️</div><h3>Bid Preparation</h3><p>Submission-ready bid packages with scope coverage and competitive analysis. Put your best number forward every time.</p><div class="svc-more">Learn More →</div></div>
+    <div class="svc-card reveal d1"><div class="svc-glow"></div><div class="svc-n">04</div><div class="svc-ico">📋</div><h3>Budget Development</h3><p>Concept-phase feasibility budgets before full design documents. Give owners realistic numbers that drive smart early decisions.</p><div class="svc-more">Learn More →</div></div>
+    <div class="svc-card reveal d2"><div class="svc-glow"></div><div class="svc-n">05</div><div class="svc-ico">🔍</div><h3>Plan Review &amp; Analysis</h3><p>Critical document review identifying scope gaps, discrepancies, and constructability issues before they become costly change orders.</p><div class="svc-more">Learn More →</div></div>
+    <div class="svc-card reveal d3"><div class="svc-glow"></div><div class="svc-n">06</div><div class="svc-ico">📊</div><h3>Value Engineering</h3><p>Cost-reduction alternatives that preserve design intent and code compliance. Build smarter without sacrificing quality or performance.</p><div class="svc-more">Learn More →</div></div>
+  </div>
+</section>
+
+<!-- ════════════ PROJECTS ════════════ -->
+<section id="projects" class="projects-sec">
+  <div class="s-hdr reveal">
+    <div class="s-tag"><div class="s-tag-line"></div><span class="s-tag-txt">Signature Projects</span></div>
+    <h2 class="s-title">Landmark Work.<br>Award-Winning Results.</h2>
+    <p class="s-sub">From aviation terminals to federal medical centers and private estates — our estimates have been trusted on the region's most complex, high-profile builds.</p>
+  </div>
+
+  <div class="proj-layout reveal">
+    <!-- KCI — Full Width -->
+    <div class="proj-row r-full" style="margin-bottom:2px;">
+      <div class="proj-card" style="min-height:500px;border-radius:22px 22px 0 0;">
+        <div class="pc-photo" style="background-image:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=85');"></div>
+        <div class="pc-ov"></div>
+        <div class="pc-badge">✦ Aviation · $18M Package</div>
+        <div class="pc-body">
+          <div class="pc-cat">Aviation · Interior Finishes · Exhibit B</div>
+          <div class="pc-title">Kansas City International Airport — New Terminal Interior Package</div>
+          <div class="pc-addr">📍 One Airport Drive, Kansas City, MO 64153</div>
+          <div class="pc-stats">
+            <div class="pc-stat"><strong>$18,000,000</strong><span>Awarded Contract</span></div>
+            <div class="pc-stat"><strong>Exhibit B</strong><span>Non-Public Spaces</span></div>
+            <div class="pc-stat"><strong>Drywall · Framing</strong><span>Ceilings · Painting</span></div>
+            <div class="pc-stat"><strong>1.1M sq ft</strong><span>New Terminal</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Omaha Eppley + Hamptons — Side by Side -->
+    <div class="proj-row r-half" style="margin-bottom:2px;">
+      <div class="proj-card">
+        <div class="pc-photo" style="background-image:url('https://images.unsplash.com/photo-1569154941061-e231b4aa8928?auto=format&fit=crop&w=900&q=85');"></div>
+        <div class="pc-ov"></div>
+        <div class="pc-badge">✦ Aviation · $27M</div>
+        <div class="pc-body">
+          <div class="pc-cat">Aviation · Drywall &amp; Framing Package</div>
+          <div class="pc-title">Eppley Airfield — Full Terminal Interior Construction</div>
+          <div class="pc-addr">📍 4501 Abbott Dr, Omaha, NE 68110</div>
+          <div class="pc-stats">
+            <div class="pc-stat"><strong>$27,000,000</strong><span>Awarded Contract</span></div>
+            <div class="pc-stat"><strong>Full Terminal</strong><span>Complete Drywall &amp; Framing</span></div>
+            <div class="pc-stat"><strong>Omaha, NE</strong><span>OMA Airport</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="pc-photo" style="background-image:url('https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0325-scaled.jpg?auto=format&fit=crop&w=900&q=85');"></div>
+        <div class="pc-ov"></div>
+        <div class="pc-badge">✦ Luxury Residential · $7.9M</div>
+        <div class="pc-body">
+          <div class="pc-cat">Luxury Residential · Full GC</div>
+          <div class="pc-title">Bull Path Estate — Custom Luxury Residence</div>
+          <div class="pc-addr">📍 Bull Path, East Hampton, NY 11937</div>
+          <div class="pc-stats">
+            <div class="pc-stat"><strong>$7,900,000</strong><span>Full GC Contract</span></div>
+            <div class="pc-stat"><strong>Ground-Up</strong><span>Custom Residence</span></div>
+            <div class="pc-stat"><strong>The Hamptons, NY</strong><span>East Hampton</span></div>
+          </div>
+          <button class="pc-gallery-btn" onclick="openGallery(event)">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            View Photo Gallery (20 Photos)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- VAMC — Full Width Bottom -->
+    <div class="proj-row r-full last-row">
+      <div class="proj-card" style="min-height:420px;border-radius:0 0 22px 22px;">
+        <div class="pc-photo" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1600&q=80');"></div>
+        <div class="pc-ov"></div>
+        <div class="pc-badge">✦ Federal / VA · $4.2M</div>
+        <div class="pc-body">
+          <div class="pc-cat">Federal · VA Medical Center · All Trades (Ex. MEP)</div>
+          <div class="pc-title">VA Nebraska–Western Iowa Health Care System — EHRM Infrastructure Upgrades</div>
+          <div class="pc-addr">📍 4101 Woolworth Ave, Omaha, NE 68105</div>
+          <div class="pc-stats">
+            <div class="pc-stat"><strong>$4,200,000</strong><span>Prime Contract</span></div>
+            <div class="pc-stat"><strong>All Trades</strong><span>Excluding MEP</span></div>
+            <div class="pc-stat"><strong>EHRM Modernization</strong><span>Interior Renovation</span></div>
+            <div class="pc-stat"><strong>VA Omaha</strong><span>Federal Project</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ STATS ════════════ -->
+<section class="stats-sec">
+  <div class="stats-grid">
+    <div class="stat-cell reveal"><div class="stat-cell-icon">🏆</div><div class="stat-num" data-target="500" data-sfx="+">0+</div><div class="stat-lbl">Projects Completed</div></div>
+    <div class="stat-cell reveal d1"><div class="stat-cell-icon">🎯</div><div class="stat-num" data-target="98" data-sfx="%">0%</div><div class="stat-lbl">Estimate Accuracy</div></div>
+    <div class="stat-cell reveal d2"><div class="stat-cell-icon">⚡</div><div class="stat-num" data-target="48" data-sfx="hr">0hr</div><div class="stat-lbl">Average Turnaround</div></div>
+    <div class="stat-cell reveal d3"><div class="stat-cell-icon">🌐</div><div class="stat-num" data-target="6" data-sfx="">0</div><div class="stat-lbl">Sectors Covered</div></div>
+  </div>
+</section>
+
+<!-- ════════════ PROCESS ════════════ -->
+<section id="process">
+  <div class="s-hdr center reveal">
+    <div class="s-tag" style="justify-content:center;"><div class="s-tag-line"></div><span class="s-tag-txt">How It Works</span><div class="s-tag-line"></div></div>
+    <h2 class="s-title">Plans to Numbers in<br>4 Precise Steps</h2>
+    <p class="s-sub">Our tested process eliminates delays. Send us your plans — we return bid-ready estimates on schedule, every time.</p>
+  </div>
+  <div class="proc-grid">
+    <div class="pstep reveal"><div class="pstep-circle">01</div><h4>Submit Your Plans</h4><p>Upload in any format — PDF, DWG, Revit, or scanned paper sets. Our portal handles projects of all types and scales.</p></div>
+    <div class="pstep reveal d1"><div class="pstep-circle">02</div><h4>Scope Confirmation</h4><p>We review your documents, clarify scope and exclusions, and confirm pricing and timeline before a single line item is measured.</p></div>
+    <div class="pstep reveal d2"><div class="pstep-circle">03</div><h4>Estimate &amp; Takeoff</h4><p>Full quantity survey and cost analysis using RSMeans data, local market indices, and deep trade expertise across all sectors.</p></div>
+    <div class="pstep reveal d3"><div class="pstep-circle">04</div><h4>Delivery &amp; Support</h4><p>Detailed Excel and PDF deliverable with full backup. We stay available throughout your entire bid and award process.</p></div>
+  </div>
+</section>
+
+<!-- ════════════ TESTIMONIALS ════════════ -->
+<section id="testimonials" class="testi-sec">
+  <div class="s-hdr center reveal">
+    <div class="s-tag" style="justify-content:center;"><div class="s-tag-line"></div><span class="s-tag-txt">Client Testimonials</span><div class="s-tag-line"></div></div>
+    <h2 class="s-title">Trusted by Those Who Build</h2>
+    <p class="s-sub">Bids won, budgets held, and projects delivered — here's what our clients say.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal"><div class="tc-bg">"</div><div class="tc-stars"><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span></div><p class="tc-quote">"JW Estimating helped us win three major commercial bids in a single quarter. Their accuracy and turnaround time are unmatched — we won't submit a bid without them."</p><div class="tc-author"><div class="tc-av">MR</div><div><div class="tc-name">Mark R.</div><div class="tc-role">Senior PM · General Contractor, Kansas City</div></div></div></div>
+    <div class="testi-card reveal d2"><div class="tc-bg">"</div><div class="tc-stars"><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span></div><p class="tc-quote">"The detail in their takeoffs is extraordinary. They caught plan discrepancies that would have cost us six figures in change orders mid-construction. Worth every penny."</p><div class="tc-author"><div class="tc-av">SL</div><div><div class="tc-name">Sarah L.</div><div class="tc-role">Principal Architect · AEC Design Firm, Omaha</div></div></div></div>
+    <div class="testi-card reveal d3"><div class="tc-bg">"</div><div class="tc-stars"><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span><span class="tc-star">★</span></div><p class="tc-quote">"As a developer working on federal projects, I need precision and reliability. JW delivers professional-grade estimates every time — on the most complex scopes imaginable."</p><div class="tc-author"><div class="tc-av">TK</div><div><div class="tc-name">Thomas K.</div><div class="tc-role">Principal · Federal Development Group</div></div></div></div>
+  </div>
+</section>
+
+<!-- ════════════ CREDENTIALS ════════════ -->
+<section class="creds-sec">
+  <div class="creds-row">
+    <div class="cred-card reveal"><div class="cred-ico">🛡️</div><div class="cred-txt"><strong>Licensed &amp; Bonded</strong><span>License #LCO14573174 · Missouri</span></div></div>
+    <div class="cred-card reveal d1"><div class="cred-ico">📐</div><div class="cred-txt"><strong>RSMeans Certified Data</strong><span>Current market cost indices</span></div></div>
+    <div class="cred-card reveal d2"><div class="cred-ico">✈️</div><div class="cred-txt"><strong>Aviation Expert</strong><span>KCI · Eppley Airfield &amp; beyond</span></div></div>
+    <div class="cred-card reveal d3"><div class="cred-ico">🏛️</div><div class="cred-txt"><strong>Federal Contractor</strong><span>VA Medical Center · EHRM Projects</span></div></div>
+    <div class="cred-card reveal d4"><div class="cred-ico">🏆</div><div class="cred-txt"><strong>500+ Projects</strong><span>6 sectors · National reach</span></div></div>
+  </div>
+</section>
+
+<!-- ════════════ CTA ════════════ -->
+<section class="cta-sec" id="contact">
+  <div class="cta-bg"></div>
+  <div class="cta-orb"></div>
+  <div class="cta-inner reveal">
+    <div class="s-tag" style="justify-content:center;margin-bottom:18px;"><div class="s-tag-line"></div><span class="s-tag-txt">Ready to Win Your Next Bid?</span><div class="s-tag-line"></div></div>
+    <h2 class="s-title">Let's Build Something<br><em style="color:var(--gold2)">Remarkable.</em></h2>
+    <p class="s-sub">Send us your plans today. Precise, bid-ready estimates returned in as little as 48 hours.<br>No guesswork. No surprises. Numbers you can build with.</p>
+    <div class="cta-links">
+      <button class="btn-gold" onclick="openPortal()" style="font-size:.84rem;padding:16px 36px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Submit via Client Portal
+      </button>
+      <div class="cta-div"></div>
+      <a href="mailto:jack@jwestimating.com" class="cta-email">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        jack@jwestimating.com
+      </a>
+      <div class="cta-div"></div>
+      <a href="tel:9133892137" class="cta-phone">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        913-389-2137
+      </a>
+    </div>
+    <p style="margin-top:26px;font-size:.75rem;color:var(--muted);letter-spacing:.05em;">6220 Blue Ridge Cutoff, Suite 2 · Raytown, MO 64133</p>
+  </div>
+</section>
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <a href="#home" class="nav-logo">
+        <svg class="nav-logo-svg" viewBox="0 0 56 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="28,2 16,14 16,48 7,48 7,57 16,57 24,48 24,14" fill="#F5A800"/>
+          <polygon points="28,2 40,14 40,44 46,37 50,44 50,57 40,57 32,48 32,14" fill="#1B5AA8"/>
+        </svg>
+        <div class="nav-logo-txt">
+          <div class="nav-logo-top"><span class="jw">JW</span> Construction Estimating</div>
+          <div class="nav-logo-btm">LLC · Raytown, Missouri</div>
+        </div>
+      </a>
+      <p>JW Construction Estimating LLC delivers precision quantity takeoffs and cost analysis for aviation, residential, commercial, federal, industrial, and civil construction projects. Fast. Accurate. Trusted.</p>
+      <div class="foot-socials">
+        <a href="#" class="f-soc" title="LinkedIn"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Quantity Takeoffs</a></li>
+        <li><a href="#services">Cost Estimation</a></li>
+        <li><a href="#services">Bid Preparation</a></li>
+        <li><a href="#services">Budget Development</a></li>
+        <li><a href="#services">Plan Review</a></li>
+        <li><a href="#services">Value Engineering</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Sectors</h5>
+      <ul>
+        <li><a href="#projects">Aviation</a></li>
+        <li><a href="#projects">Federal / VA</a></li>
+        <li><a href="#projects">Luxury Residential</a></li>
+        <li><a href="#projects">Commercial</a></li>
+        <li><a href="#projects">Industrial</a></li>
+        <li><a href="#projects">Heavy Civil</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Contact</h5>
+      <div class="f-contact-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:9133892137">913-389-2137</a></div>
+      <div class="f-contact-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:jack@jwestimating.com">jack@jwestimating.com</a></div>
+      <div class="f-contact-row"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><p>6220 Blue Ridge Cutoff, Suite 2<br>Raytown, MO 64133</p></div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>© 2025 JW Construction Estimating LLC · All rights reserved.</p>
+    <div class="lic-tag"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>License #LCO14573174</div>
+    <p style="font-size:.7rem;opacity:.45;">Precision Construction Estimating · Raytown, Missouri</p>
+  </div>
+</footer>
+
+<!-- ════════════ CLIENT PORTAL MODAL ════════════ -->
+<div class="portal-overlay" id="portalOverlay" onclick="handlePortalBgClick(event)">
+  <div class="portal-modal" id="portalModal">
+    <div class="portal-header">
+      <div class="portal-title" id="portalTitle">Client Portal</div>
+      <button class="portal-close" onclick="closePortal()">✕</button>
+    </div>
+    <div class="portal-tabs" id="portalTabs">
+      <div class="p-tab active" onclick="switchPortalTab('login',this)">Sign In</div>
+      <div class="p-tab" onclick="switchPortalTab('register',this)">Create Account</div>
+    </div>
+    <div class="portal-body" id="portalBody">
+
+      <!-- LOGIN -->
+      <div class="p-panel active" id="panel-login">
+        <div class="p-field"><label>Email Address</label><input type="email" id="loginEmail" placeholder="you@company.com"/></div>
+        <div class="p-field"><label>Password</label><input type="password" id="loginPass" placeholder="••••••••"/></div>
+        <div class="p-forgot" onclick="">Forgot password?</div>
+        <button class="p-submit" onclick="doLogin()">Sign In to Portal</button>
+        <p class="p-alt">Don't have an account? <span onclick="switchPortalTab('register',null)">Create one free</span></p>
+      </div>
+
+      <!-- REGISTER -->
+      <div class="p-panel" id="panel-register">
+        <div class="p-row">
+          <div class="p-field"><label>First Name</label><input type="text" placeholder="Jack"/></div>
+          <div class="p-field"><label>Last Name</label><input type="text" placeholder="Williams"/></div>
+        </div>
+        <div class="p-field"><label>Company Name</label><input type="text" placeholder="ABC Construction LLC"/></div>
+        <div class="p-field"><label>Email Address</label><input type="email" placeholder="you@company.com"/></div>
+        <div class="p-field"><label>Phone Number</label><input type="tel" placeholder="(555) 000-0000"/></div>
+        <div class="p-field"><label>Company Type</label>
+          <select><option>General Contractor</option><option>Subcontractor</option><option>Architect / Engineer</option><option>Developer</option><option>Property Owner</option><option>Other</option></select>
+        </div>
+        <div class="p-row">
+          <div class="p-field"><label>Password</label><input type="password" placeholder="••••••••"/></div>
+          <div class="p-field"><label>Confirm Password</label><input type="password" placeholder="••••••••"/></div>
+        </div>
+        <button class="p-submit" onclick="doRegister()">Create My Account</button>
+        <p class="p-alt">Already have an account? <span onclick="switchPortalTab('login',null)">Sign in</span></p>
+      </div>
+
+      <!-- DASHBOARD (shown after login) -->
+      <div class="p-panel" id="panel-dashboard">
+        <div class="dash-welcome">
+          <div class="dw-text"><h4>Welcome back 👋</h4><p id="dashUserName">Loading your projects…</p></div>
+          <button class="btn-gold" style="padding:8px 16px;font-size:.72rem;" onclick="doLogout()">Sign Out</button>
+        </div>
+        <div class="dash-tabs">
+          <button class="d-tab active" onclick="switchDashTab('projects',this)">My Projects</button>
+          <button class="d-tab" onclick="switchDashTab('submit',this)">Submit Request</button>
+          <button class="d-tab" onclick="switchDashTab('payments',this)">Payments</button>
+          <button class="d-tab" onclick="switchDashTab('docs',this)">Documents</button>
+        </div>
+
+        <!-- Projects tab -->
+        <div class="d-panel active" id="d-projects">
+          <div class="dash-proj"><div><div class="dp-name">KCI Airport — Exhibit B Interior Package</div><div class="dp-addr">One Airport Drive, Kansas City, MO 64153</div></div><div class="dp-status complete">Complete</div></div>
+          <div class="dash-proj"><div><div class="dp-name">Eppley Airfield — Terminal Drywall Package</div><div class="dp-addr">4501 Abbott Dr, Omaha, NE 68110</div></div><div class="dp-status complete">Complete</div></div>
+          <div class="dash-proj"><div><div class="dp-name">VAMC Omaha — EHRM Infrastructure</div><div class="dp-addr">4101 Woolworth Ave, Omaha, NE 68105</div></div><div class="dp-status active">Active</div></div>
+          <div class="dash-proj"><div><div class="dp-name">Bull Path Estate — Custom Residence GC</div><div class="dp-addr">Bull Path, East Hampton, NY 11937</div></div><div class="dp-status review">In Review</div></div>
+          <button class="btn-gold" style="width:100%;margin-top:14px;padding:12px;" onclick="switchDashTab('submit',null)">+ Submit New Estimate Request</button>
+        </div>
+
+        <!-- Submit request tab -->
+        <div class="d-panel" id="d-submit">
+          <div class="p-field"><label>Project Name</label><input type="text" placeholder="e.g. Office Renovation — Phase 1"/></div>
+          <div class="p-row">
+            <div class="p-field"><label>Project Type</label><select><option>Commercial</option><option>Residential</option><option>Aviation</option><option>Federal / VA</option><option>Industrial</option><option>Heavy Civil</option><option>Renovation</option></select></div>
+            <div class="p-field"><label>Est. Square Footage</label><input type="text" placeholder="e.g. 24,000 sq ft"/></div>
+          </div>
+          <div class="p-field"><label>Project Address</label><input type="text" placeholder="123 Main St, Kansas City, MO 64101"/></div>
+          <div class="p-field"><label>Scope Description</label><textarea placeholder="Describe the work scope, trades required, special considerations…"></textarea></div>
+          <div class="p-row">
+            <div class="p-field"><label>Bid / Due Date</label><input type="date"/></div>
+            <div class="p-field"><label>Budget Range</label><select><option>Under $500K</option><option>$500K – $2M</option><option>$2M – $10M</option><option>$10M – $50M</option><option>$50M+</option></select></div>
+          </div>
+          <div class="p-field"><label>Upload Plans (PDF / DWG / Revit)</label><input type="file" accept=".pdf,.dwg,.rvt" style="cursor:pointer;padding:9px 12px;"/></div>
+          <button class="p-submit" onclick="submitRequest()">Submit Estimate Request</button>
+        </div>
+
+        <!-- Payments tab -->
+        <div class="d-panel" id="d-payments">
+          <div class="inv-item"><div class="inv-info"><strong>INV-2025-0041 · KCI Airport Package</strong><span>Issued May 1, 2025 · Due May 15, 2025</span></div><div class="inv-right"><div class="inv-amt">$4,200</div><button class="inv-pay" onclick="fakePayment(this)">Pay Now</button></div></div>
+          <div class="inv-item"><div class="inv-info"><strong>INV-2025-0038 · VAMC Omaha Estimate</strong><span>Issued Apr 18, 2025 · Due May 3, 2025</span></div><div class="inv-right"><div class="inv-amt">$2,800</div><button class="inv-pay" onclick="fakePayment(this)">Pay Now</button></div></div>
+          <div class="inv-item"><div class="inv-info"><strong>INV-2025-0031 · Bull Path Estate GC</strong><span>Issued Mar 10, 2025</span></div><div class="inv-right"><div class="inv-amt">$6,500</div><span class="inv-paid">Paid ✓</span></div></div>
+          <div class="inv-item"><div class="inv-info"><strong>INV-2025-0022 · Eppley Airfield Package</strong><span>Issued Feb 5, 2025</span></div><div class="inv-right"><div class="inv-amt">$3,900</div><span class="inv-paid">Paid ✓</span></div></div>
+          <p style="font-size:.74rem;color:var(--muted);margin-top:16px;text-align:center;">💳 Payments processed securely via Stripe. Card details never stored on our servers.</p>
+        </div>
+
+        <!-- Documents tab -->
+        <div class="d-panel" id="d-docs">
+          <div class="dash-proj"><div><div class="dp-name">KCI-ExhibitB-FinalEstimate.xlsx</div><div class="dp-addr">Delivered Apr 28, 2025 · 2.4 MB</div></div><button class="btn-outline" style="padding:6px 14px;font-size:.7rem;border-color:var(--border-g);">⬇ Download</button></div>
+          <div class="dash-proj"><div><div class="dp-name">Eppley-DrywallTakeoff-v3.xlsx</div><div class="dp-addr">Delivered Mar 22, 2025 · 1.8 MB</div></div><button class="btn-outline" style="padding:6px 14px;font-size:.7rem;border-color:var(--border-g);">⬇ Download</button></div>
+          <div class="dash-proj"><div><div class="dp-name">VAMC-EHRM-BudgetEstimate.pdf</div><div class="dp-addr">Delivered May 4, 2025 · 890 KB</div></div><button class="btn-outline" style="padding:6px 14px;font-size:.7rem;border-color:var(--border-g);">⬇ Download</button></div>
+          <div class="dash-proj"><div><div class="dp-name">BullPath-GCEstimate-Final.pdf</div><div class="dp-addr">Delivered Feb 14, 2025 · 1.2 MB</div></div><button class="btn-outline" style="padding:6px 14px;font-size:.7rem;border-color:var(--border-g);">⬇ Download</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ GALLERY LIGHTBOX ════════════ -->
+<div class="gallery-overlay" id="galleryOverlay">
+  <button class="gallery-close" onclick="closeGallery()">✕</button>
+  <div class="gallery-meta">
+    <h3>Bull Path Estate — East Hampton, NY</h3>
+    <p>Custom Luxury Residence · Full GC · $7,900,000 · East Hampton, NY 11937</p>
+  </div>
+  <div class="gallery-main">
+    <img id="galleryMainImg" src="" alt="Bull Path Estate" loading="lazy"/>
+    <div class="gallery-nav">
+      <button class="g-arrow" onclick="galleryPrev()">‹</button>
+      <button class="g-arrow" onclick="galleryNext()">›</button>
+    </div>
+  </div>
+  <div class="gallery-thumbs" id="galleryThumbs"></div>
+  <div class="gallery-ctr" id="galleryCtr"></div>
+</div>
+
+<!-- ════════════ SCRIPTS ════════════ -->
+<script>
+/* ── Cursor ── */
+const dot = document.getElementById('c-dot');
+const ring = document.getElementById('c-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+(function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
+
+/* ── Preloader ── */
+const plBar=document.getElementById('plBar'),loader=document.getElementById('preloader');
+let p=0;const ti=setInterval(()=>{p+=Math.random()*18+6;if(p>=100){p=100;clearInterval(ti);setTimeout(()=>loader.classList.add('done'),400);}plBar.style.width=Math.min(p,100)+'%';},70);
+
+/* ── Nav scroll ── */
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
+
+/* ── Mobile nav ── */
+const mobNav=document.getElementById('mob-nav');
+document.getElementById('hamBtn').addEventListener('click',()=>mobNav.classList.add('open'));
+document.getElementById('mobClose').addEventListener('click',()=>mobNav.classList.remove('open'));
+function closeMob(){mobNav.classList.remove('open');}
+
+/* ── Scroll reveal ── */
+const revEls=document.querySelectorAll('.reveal');
+const ro=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.1});
+revEls.forEach(el=>ro.observe(el));
+
+/* ── Counter animation ── */
+const ctrs=document.querySelectorAll('[data-target]');
+const co=new IntersectionObserver(en=>{en.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,t=+el.dataset.target,sfx=el.dataset.sfx||'';let c=0;const s=t/(1800/16);const ti2=setInterval(()=>{c=Math.min(c+s,t);el.textContent=Math.floor(c)+sfx;if(c>=t)clearInterval(ti2);},16);co.unobserve(el);});},{threshold:.5});
+ctrs.forEach(c=>co.observe(c));
+
+/* ── Smooth scroll ── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
+
+/* ── Portal ── */
+function openPortal(){document.getElementById('portalOverlay').classList.add('open');document.body.style.overflow='hidden';const s=localStorage.getItem('jw_user');if(s){showDashboard(JSON.parse(s));}}
+function closePortal(){document.getElementById('portalOverlay').classList.remove('open');document.body.style.overflow='';}
+function handlePortalBgClick(e){if(e.target===document.getElementById('portalOverlay'))closePortal();}
+function switchPortalTab(name,el){document.querySelectorAll('.p-tab').forEach(t=>t.classList.remove('active'));if(el)el.classList.add('active');else{document.querySelectorAll('.p-tab').forEach(t=>{if(t.textContent.toLowerCase().includes(name.includes('login')?'sign':'create'))t.classList.add('active');});}document.querySelectorAll('.p-panel').forEach(p=>p.classList.remove('active'));document.getElementById('panel-'+name)?.classList.add('active');}
+function doLogin(){const em=document.getElementById('loginEmail').value.trim()||'demo@example.com';const u={name:em.split('@')[0].replace(/[._]/g,' '),email:em};localStorage.setItem('jw_user',JSON.stringify(u));showDashboard(u);}
+function doRegister(){const u={name:'New Client',email:'client@example.com'};localStorage.setItem('jw_user',JSON.stringify(u));showDashboard(u);}
+function doLogout(){localStorage.removeItem('jw_user');document.querySelectorAll('.p-tab').forEach((t,i)=>{t.classList.toggle('active',i===0);});document.querySelectorAll('.p-panel').forEach(p=>p.classList.remove('active'));document.getElementById('panel-login').classList.add('active');document.getElementById('portalTabs').style.display='';}
+function showDashboard(u){document.getElementById('portalTabs').style.display='none';document.querySelectorAll('.p-panel').forEach(p=>p.classList.remove('active'));document.getElementById('panel-dashboard').classList.add('active');document.getElementById('dashUserName').textContent='Logged in as '+u.email;}
+function switchDashTab(name,el){document.querySelectorAll('.d-tab').forEach(t=>t.classList.remove('active'));if(el)el.classList.add('active');else{document.querySelectorAll('.d-tab').forEach(t=>{if(t.textContent.toLowerCase().includes(name))t.classList.add('active');});}document.querySelectorAll('.d-panel').forEach(p=>p.classList.remove('active'));document.getElementById('d-'+name)?.classList.add('active');}
+function submitRequest(){alert('✓ Estimate request submitted!\n\nWe\'ll review your plans and confirm scope + pricing within 24 hours.\n\nQuestions? Call 913-389-2137 or email jack@jwestimating.com');}
+function fakePayment(btn){btn.textContent='Processing…';setTimeout(()=>{btn.outerHTML='<span class="inv-paid">Paid ✓</span>';},1800);}
+
+/* ── Gallery ── */
+const hamptonImgs=[
+  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0325-scaled.jpg',
+  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0045-scaled.jpg',
+  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0052-scaled.jpg',
+  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0066-scaled.jpg',
+  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0094-scaled.jpg',
+  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0110-scaled.jpg',
+  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0126-scaled.jpg',
+  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0149-scaled.jpg',
+  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0163-scaled.jpg',
+  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0177-scaled.jpg',
+  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0206-scaled.jpg',
+  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0221-scaled.jpg',
+  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0249-scaled.jpg',
+  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0275-scaled.jpg',
+  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0288-scaled.jpg',
+  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0316-scaled.jpg',
+  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0341-scaled.jpg',
+  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0344-scaled.jpg',
+  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_704-scaled.jpg',
+  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_736-scaled.jpg'
+];
+let galIdx=0;
+function openGallery(e){e.stopPropagation();galIdx=0;buildGallery();document.getElementById('galleryOverlay').classList.add('open');document.body.style.overflow='hidden';}
+function closeGallery(){document.getElementById('galleryOverlay').classList.remove('open');document.body.style.overflow='';}
+function buildGallery(){
+  const thumbs=document.getElementById('galleryThumbs');
+  thumbs.innerHTML=hamptonImgs.map((s,i)=>`<img class="g-thumb${i===0?' active':''}" src="${s}?w=140&q=60" onclick="setGalleryImg(${i})" alt="Photo ${i+1}" loading="lazy"/>`).join('');
+  setGalleryImg(0);
+}
+function setGalleryImg(i){
+  galIdx=i;
+  document.getElementById('galleryMainImg').src=hamptonImgs[i]+'?w=900&q=85';
+  document.querySelectorAll('.g-thumb').forEach((t,j)=>t.classList.toggle('active',j===i));
+  document.getElementById('galleryCtr').textContent=`${i+1} / ${hamptonImgs.length}`;
+  const th=document.getElementById('galleryThumbs');
+  const thumbEl=th.children[i];
+  if(thumbEl)thumbEl.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+}
+function galleryNext(){setGalleryImg((galIdx+1)%hamptonImgs.length);}
+function galleryPrev(){setGalleryImg((galIdx-1+hamptonImgs.length)%hamptonImgs.length);}
+document.addEventListener('keydown',e=>{if(!document.getElementById('galleryOverlay').classList.contains('open'))return;if(e.key==='ArrowRight')galleryNext();if(e.key==='ArrowLeft')galleryPrev();if(e.key==='Escape')closeGallery();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('portalOverlay').classList.contains('open'))closePortal();});
+</script>
+</body>
+</html>
