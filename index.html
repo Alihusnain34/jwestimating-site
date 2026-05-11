@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JW Construction Estimating LLC | Precision. Speed. Confidence.</title>
   <meta name="description" content="Professional construction estimating, quantity takeoffs, and bid preparation for aviation, commercial, residential, and federal projects."/>
+  <!-- Open Graph -->
+  <meta property="og:title" content="JW Construction Estimating LLC | Precision. Speed. Confidence."/>
+  <meta property="og:description" content="Expert construction estimating for aviation, federal, luxury residential, and commercial projects. 3,500+ estimates delivered. 98% accuracy rate."/>
+  <meta property="og:image" content="https://images.unsplash.com/photo-1590856029826-c7a73142bbf1?auto=format&fit=crop&w=1200&q=80"/>
+  <meta property="og:url" content="https://jwestimating.com"/>
+  <meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="JW Construction Estimating LLC"/>
+  <meta name="twitter:description" content="Expert construction estimating — aviation, federal, luxury residential. 3,500+ estimates. 48hr turnaround."/>
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1590856029826-c7a73142bbf1?auto=format&fit=crop&w=1200&q=80"/>
+  <!-- Schema -->
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"JW Construction Estimating LLC","description":"Professional construction estimating and quantity takeoffs for aviation, commercial, residential, and federal projects.","telephone":"+19133892137","email":"jack@jwestimating.com","address":{"@type":"PostalAddress","streetAddress":"6220 Blue Ridge Cutoff, Suite 2","addressLocality":"Raytown","addressRegion":"MO","postalCode":"64133","addressCountry":"US"},"url":"https://jwestimating.com","sameAs":["https://www.linkedin.com/company/110795291/","https://www.instagram.com/jwestimatingllc/"]}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
@@ -74,7 +86,7 @@
 
     /* HERO */
     .hero{min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:0 5% 7%;overflow:hidden;}
-    .hero-bg{position:absolute;inset:0;z-index:0;background:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1920&q=85') center/cover no-repeat;}
+    .hero-bg{position:absolute;inset:0;z-index:0;background:url('https://images.unsplash.com/photo-1590856029826-c7a73142bbf1?auto=format&fit=crop&w=1920&q=85') center 30%/cover no-repeat;}
     .hero-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(175deg,rgba(3,5,14,.45) 0%,rgba(6,10,26,.65) 35%,rgba(3,5,14,.92) 75%,var(--ink) 100%);}
     .hero-grain{position:absolute;inset:0;z-index:2;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none;}
     .hero-content{position:relative;z-index:3;max-width:860px;}
@@ -260,6 +272,29 @@
     .cta-email{display:flex;align-items:center;gap:8px;font-size:.86rem;font-weight:600;color:var(--muted2);transition:color .2s;}
     .cta-email:hover{color:var(--gold2);}
 
+    /* CONTACT FORM */
+    .cf-sec{background:var(--navy2);border-top:1px solid var(--border-g);padding:100px 5%;}
+    .cf-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:80px;align-items:start;max-width:1200px;margin:0 auto;}
+    .cf-left h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:700;line-height:1.15;margin-bottom:18px;}
+    .cf-left p{color:var(--muted2);font-size:.95rem;line-height:1.8;margin-bottom:36px;}
+    .cf-info-row{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+    .cf-info-ico{width:42px;height:42px;border-radius:var(--r);background:rgba(245,168,0,.08);border:1px solid var(--border-g);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .cf-info-ico svg{color:var(--gold2);}
+    .cf-info-txt a,.cf-info-txt span{font-size:.88rem;color:var(--muted2);display:block;line-height:1.6;}
+    .cf-info-txt a:hover{color:var(--gold2);}
+    .cf-info-lbl{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;}
+    .cf-form{background:var(--navy3);border:1px solid var(--border-g);border-radius:var(--r3);padding:40px;}
+    .cf-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;}
+    .cf-field{display:flex;flex-direction:column;gap:7px;margin-bottom:18px;}
+    .cf-field label{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);}
+    .cf-field input,.cf-field select,.cf-field textarea{background:rgba(255,255,255,.04);border:1px solid var(--border-w);border-radius:var(--r);padding:13px 16px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.9rem;transition:border-color .25s,background .25s;outline:none;width:100%;}
+    .cf-field input:focus,.cf-field select:focus,.cf-field textarea:focus{border-color:var(--gold);background:rgba(245,168,0,.04);}
+    .cf-field select option{background:var(--navy3);color:var(--white);}
+    .cf-field textarea{resize:vertical;min-height:110px;}
+    .cf-submit{width:100%;padding:16px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);font-weight:800;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;border:none;border-radius:var(--r);cursor:pointer;box-shadow:0 8px 28px rgba(245,168,0,.35);transition:transform .25s,box-shadow .25s;display:flex;align-items:center;justify-content:center;gap:10px;}
+    .cf-submit:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(245,168,0,.55);}
+    .cf-note{text-align:center;font-size:.72rem;color:var(--muted);margin-top:14px;}
+
     /* FOOTER */
     footer{background:var(--ink);border-top:1px solid var(--border-g);padding:76px 5% 36px;}
     .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:52px;margin-bottom:56px;}
@@ -365,6 +400,9 @@
       .portal-header,.portal-body{padding-left:22px;padding-right:22px;}
       .portal-tabs{margin-left:22px;margin-right:22px;}
       .ceo-stats-row{grid-template-columns:repeat(3,1fr);}
+      .cf-grid{grid-template-columns:1fr;}
+      .cf-row{grid-template-columns:1fr;}
+      .cf-form{padding:28px 22px;}
     }
     @media(max-width:480px){.stats-grid{grid-template-columns:1fr;}}
   </style>
@@ -423,7 +461,7 @@
   <div class="nav-right">
     <a href="tel:9133892137" class="nav-phone">913-389-2137</a>
     <button class="btn-portal" onclick="openPortal()">Client Portal</button>
-    <button class="btn-quote" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Request Quote</button>
+    <button class="btn-quote" onclick="document.getElementById('get-quote').scrollIntoView({behavior:'smooth'})">Request Quote</button>
     <div class="ham" id="hamBtn"><span></span><span></span><span></span></div>
   </div>
 </nav>
@@ -438,7 +476,7 @@
     <h1>Estimates That <em>Win.</em><br>Delivered With Precision.</h1>
     <p class="hero-sub">From major airport terminals to VA medical centers and Hamptons estates — JW Construction Estimating delivers exact-to-the-dollar takeoffs and bid packages that get awarded.</p>
     <div class="hero-btns">
-      <button class="btn-gold" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+      <button class="btn-gold" onclick="document.getElementById('get-quote').scrollIntoView({behavior:'smooth'})">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         Start Your Estimate
       </button>
@@ -448,7 +486,7 @@
       </button>
     </div>
     <div class="hero-kpis">
-      <div class="hero-kpi"><div class="kpi-num" data-target="500" data-sfx="+">0</div><div class="kpi-lbl">Projects Estimated</div></div>
+      <div class="hero-kpi"><div class="kpi-num" data-target="3500" data-sfx="+">0</div><div class="kpi-lbl">Projects Estimated</div></div>
       <div class="hero-kpi"><div class="kpi-num" data-target="98" data-sfx="%">0</div><div class="kpi-lbl">Bid Accuracy Rate</div></div>
       <div class="hero-kpi"><div class="kpi-num" data-target="48" data-sfx="hr">0</div><div class="kpi-lbl">Avg. Turnaround</div></div>
       <div class="hero-kpi"><div class="kpi-num" data-target="6" data-sfx="">0</div><div class="kpi-lbl">Construction Sectors</div></div>
@@ -557,7 +595,7 @@
     <!-- KCI -->
     <div class="proj-row r-full" style="margin-bottom:2px;">
       <div class="proj-card" style="min-height:500px;border-radius:22px 22px 0 0;">
-        <div class="pc-photo" style="background-image:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=85');"></div>
+        <div class="pc-photo" style="background-image:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=85');" loading="lazy"></div>
         <div class="pc-ov"></div>
         <div class="pc-badge">✦ Aviation · $18M Package</div>
         <div class="pc-body">
@@ -631,7 +669,7 @@
 <!-- STATS -->
 <section class="stats-sec">
   <div class="stats-grid">
-    <div class="stat-cell reveal"><div class="stat-cell-icon">🏆</div><div class="stat-num" data-target="500" data-sfx="+">0+</div><div class="stat-lbl">Projects Completed</div></div>
+    <div class="stat-cell reveal"><div class="stat-cell-icon">🏆</div><div class="stat-num" data-target="3500" data-sfx="+">0+</div><div class="stat-lbl">Projects Completed</div></div>
     <div class="stat-cell reveal d1"><div class="stat-cell-icon">🎯</div><div class="stat-num" data-target="98" data-sfx="%">0%</div><div class="stat-lbl">Estimate Accuracy</div></div>
     <div class="stat-cell reveal d2"><div class="stat-cell-icon">⚡</div><div class="stat-num" data-target="48" data-sfx="hr">0hr</div><div class="stat-lbl">Average Turnaround</div></div>
     <div class="stat-cell reveal d3"><div class="stat-cell-icon">🌐</div><div class="stat-num" data-target="6" data-sfx="">0</div><div class="stat-lbl">Sectors Covered</div></div>
@@ -707,6 +745,64 @@
       </a>
     </div>
     <p style="margin-top:26px;font-size:.75rem;color:var(--muted);letter-spacing:.05em;">6220 Blue Ridge Cutoff, Suite 2 · Raytown, MO 64133</p>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="cf-sec" id="get-quote">
+  <div class="cf-grid">
+    <div class="cf-left reveal">
+      <div class="s-tag" style="margin-bottom:18px;"><div class="s-tag-line"></div><span class="s-tag-txt">Get Your Estimate</span></div>
+      <h2>Let's Talk<br><em style="color:var(--gold2)">Numbers.</em></h2>
+      <p>Send us your project details and we'll get back to you within 24 hours with a scope confirmation and pricing. No commitment required.</p>
+      <div class="cf-info-row">
+        <div class="cf-info-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div><div class="cf-info-lbl">Phone</div><div class="cf-info-txt"><a href="tel:9133892137">913-389-2137</a></div></div>
+      </div>
+      <div class="cf-info-row">
+        <div class="cf-info-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div><div class="cf-info-lbl">Email</div><div class="cf-info-txt"><a href="mailto:jack@jwestimating.com">jack@jwestimating.com</a><a href="mailto:ali@jwestimating.com">ali@jwestimating.com</a></div></div>
+      </div>
+      <div class="cf-info-row">
+        <div class="cf-info-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="cf-info-lbl">Office</div><div class="cf-info-txt"><span>6220 Blue Ridge Cutoff, Suite 2</span><span>Raytown, MO 64133</span></div></div>
+      </div>
+    </div>
+    <div class="cf-form reveal d2">
+      <form action="https://formspree.io/f/xpwzlnqb" method="POST">
+        <div class="cf-row">
+          <div class="cf-field"><label>First Name *</label><input type="text" name="first_name" placeholder="John" required/></div>
+          <div class="cf-field"><label>Last Name *</label><input type="text" name="last_name" placeholder="Smith" required/></div>
+        </div>
+        <div class="cf-row">
+          <div class="cf-field"><label>Email *</label><input type="email" name="email" placeholder="john@company.com" required/></div>
+          <div class="cf-field"><label>Phone</label><input type="tel" name="phone" placeholder="(555) 000-0000"/></div>
+        </div>
+        <div class="cf-field"><label>Project Type *</label>
+          <select name="project_type" required>
+            <option value="" disabled selected>Select project type...</option>
+            <option>Aviation / Airport</option>
+            <option>Federal / VA / Government</option>
+            <option>Luxury Residential</option>
+            <option>Commercial / Office</option>
+            <option>Industrial</option>
+            <option>Heavy Civil</option>
+            <option>Institutional</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="cf-row">
+          <div class="cf-field"><label>Estimated Budget</label><input type="text" name="budget" placeholder="e.g. $500K – $2M"/></div>
+          <div class="cf-field"><label>Bid Due Date</label><input type="date" name="bid_date"/></div>
+        </div>
+        <div class="cf-field"><label>Project Details *</label><textarea name="message" placeholder="Brief description of scope, location, and any key requirements..." required></textarea></div>
+        <button type="submit" class="cf-submit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Send Project Inquiry
+        </button>
+        <p class="cf-note">⚡ Typical response within 24 hours · No commitment required</p>
+      </form>
+    </div>
   </div>
 </section>
 
