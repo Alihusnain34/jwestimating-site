@@ -9,62 +9,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
-    /* ══════════════════════════════════════
-       ROOT & RESET
-    ══════════════════════════════════════ */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     :root{
-      /* Logo-exact brand colors */
-      --gold:   #F5A800;
-      --gold2:  #FAB81C;
-      --gold3:  #FCCF5A;
-      --gold4:  #FDE9A8;
-      --blue:   #1B5AA8;
-      --blue2:  #2470C8;
-      --blue3:  #4A90D8;
-      --blue4:  #A0C4EE;
-      /* Backgrounds */
-      --ink:    #03050E;
-      --navy:   #060A1A;
-      --navy2:  #0A1028;
-      --navy3:  #0F1638;
-      --navy4:  #162048;
-      /* Text */
-      --white:  #FFFFFF;
-      --muted:  #636880;
-      --muted2: #8E93AF;
-      /* Borders & glows */
-      --border-g: rgba(245,168,0,0.18);
-      --border-b: rgba(27,90,168,0.22);
-      --border-w: rgba(255,255,255,0.08);
-      --glow-g:   rgba(245,168,0,0.12);
-      --glow-b:   rgba(27,90,168,0.12);
-      /* Radius & motion */
-      --r:8px;  --r2:14px;  --r3:22px;
-      --ease:cubic-bezier(0.4,0,0.2,1);
-      --t:0.32s;
+      --gold:#F5A800;--gold2:#FAB81C;--gold3:#FCCF5A;--gold4:#FDE9A8;
+      --blue:#1B5AA8;--blue2:#2470C8;--blue3:#4A90D8;
+      --ink:#03050E;--navy:#060A1A;--navy2:#0A1028;--navy3:#0F1638;--navy4:#162048;
+      --white:#FFFFFF;--muted:#636880;--muted2:#8E93AF;
+      --border-g:rgba(245,168,0,0.18);--border-b:rgba(27,90,168,0.22);--border-w:rgba(255,255,255,0.08);
+      --r:8px;--r2:14px;--r3:22px;--ease:cubic-bezier(0.4,0,0.2,1);--t:0.32s;
     }
     html{scroll-behavior:smooth;}
-    body{
-      font-family:'DM Sans',sans-serif;
-      background:var(--ink);color:var(--white);
-      overflow-x:hidden;line-height:1.6;
-      cursor:none;
-    }
+    body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--white);overflow-x:hidden;line-height:1.6;cursor:none;}
     img{display:block;max-width:100%;}
     a{color:inherit;text-decoration:none;}
 
-    /* ══════════════════════════════════════
-       CURSOR
-    ══════════════════════════════════════ */
-    #c-dot{position:fixed;width:8px;height:8px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .2s,height .2s;}
+    /* CURSOR */
+    #c-dot{position:fixed;width:8px;height:8px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:99999;transform:translate(-50%,-50%);}
     #c-ring{position:fixed;width:38px;height:38px;border:1.5px solid rgba(245,168,0,.45);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s;}
     body:has(a:hover) #c-ring,body:has(button:hover) #c-ring{width:52px;height:52px;border-color:var(--gold);}
     @media(pointer:coarse){#c-dot,#c-ring{display:none;}body{cursor:auto;}}
 
-    /* ══════════════════════════════════════
-       PRELOADER
-    ══════════════════════════════════════ */
+    /* PRELOADER */
     #preloader{position:fixed;inset:0;z-index:99000;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;transition:opacity .7s,visibility .7s;}
     #preloader.done{opacity:0;visibility:hidden;}
     .pl-logo-wrap{display:flex;flex-direction:column;align-items:center;gap:10px;}
@@ -74,36 +39,29 @@
     .pl-bar-track{width:180px;height:1.5px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;}
     .pl-bar{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));width:0;transition:width .6s ease;}
 
-    /* ══════════════════════════════════════
-       MOBILE OVERLAY NAV
-    ══════════════════════════════════════ */
+    /* MOBILE NAV */
     #mob-nav{position:fixed;inset:0;z-index:9900;background:rgba(3,5,14,.97);backdrop-filter:blur(30px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;visibility:hidden;transition:var(--t) var(--ease);}
     #mob-nav.open{opacity:1;visibility:visible;}
     .mob-close{position:absolute;top:24px;right:6%;font-size:1.8rem;color:var(--muted2);cursor:pointer;transition:color .2s;}
     .mob-close:hover{color:var(--gold);}
     #mob-nav a{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;letter-spacing:.04em;transition:color .2s;}
     #mob-nav a:hover{color:var(--gold);}
-    .mob-portal-btn{margin-top:12px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink)!important;font-family:'DM Sans',sans-serif!important;font-size:1rem!important;font-weight:700;padding:14px 36px;border-radius:var(--r);}
+    .mob-portal-btn{margin-top:12px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink)!important;font-family:'DM Sans',sans-serif!important;font-size:1rem!important;font-weight:700;padding:14px 36px;border-radius:var(--r);border:none;cursor:pointer;}
 
-    /* ══════════════════════════════════════
-       NAV
-    ══════════════════════════════════════ */
-    nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:76px;transition:background var(--t),border-color var(--t),height var(--t);}
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:76px;transition:background var(--t),height var(--t);}
     nav.scrolled{background:rgba(3,5,14,.93);backdrop-filter:blur(22px);border-bottom:1px solid var(--border-g);height:62px;}
-    /* Logo */
     .nav-logo{display:flex;align-items:center;gap:11px;}
     .nav-logo-svg{width:36px;height:42px;flex-shrink:0;}
     .nav-logo-txt{line-height:1.1;}
     .nav-logo-top{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;letter-spacing:.06em;}
     .nav-logo-top .jw{color:var(--gold);}
     .nav-logo-btm{font-size:.58rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--blue3);margin-top:2px;}
-    /* Links */
     .nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
     .nav-links a{font-size:.76rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);position:relative;padding-bottom:3px;transition:color .2s;}
     .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width .3s ease;}
     .nav-links a:hover{color:var(--white);}
     .nav-links a:hover::after{width:100%;}
-    /* Right side */
     .nav-right{display:flex;align-items:center;gap:10px;}
     .nav-phone{font-size:.78rem;font-weight:600;color:var(--muted2);letter-spacing:.03em;transition:color .2s;}
     .nav-phone:hover{color:var(--gold);}
@@ -112,14 +70,12 @@
     .btn-quote{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:9px 20px;border-radius:var(--r);border:none;cursor:pointer;box-shadow:0 4px 18px rgba(245,168,0,.3);transition:transform .2s,box-shadow .2s;}
     .btn-quote:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(245,168,0,.5);}
     .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
-    .ham span{width:22px;height:1.5px;background:var(--white);border-radius:2px;transition:var(--t);}
+    .ham span{width:22px;height:1.5px;background:var(--white);border-radius:2px;}
 
-    /* ══════════════════════════════════════
-       HERO
-    ══════════════════════════════════════ */
+    /* HERO */
     .hero{min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:0 5% 7%;overflow:hidden;}
-    .hero-bg{position:absolute;inset:0;z-index:0;background:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1920&q=85') center/cover no-repeat;}
-    .hero-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(165deg,rgba(3,5,14,.2) 0%,rgba(3,5,14,.55) 40%,rgba(3,5,14,.93) 80%,var(--ink) 100%);}
+    .hero-bg{position:absolute;inset:0;z-index:0;background:url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1920&q=85') center/cover no-repeat;}
+    .hero-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(175deg,rgba(3,5,14,.45) 0%,rgba(6,10,26,.65) 35%,rgba(3,5,14,.92) 75%,var(--ink) 100%);}
     .hero-grain{position:absolute;inset:0;z-index:2;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none;}
     .hero-content{position:relative;z-index:3;max-width:860px;}
     .hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:26px;}
@@ -143,18 +99,14 @@
     .scroll-track{width:1px;height:48px;background:linear-gradient(180deg,var(--gold),transparent);}
     @keyframes sb{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 
-    /* ══════════════════════════════════════
-       MARQUEE
-    ══════════════════════════════════════ */
+    /* MARQUEE */
     .marquee-wrap{background:linear-gradient(90deg,var(--gold),var(--gold2));padding:13px 0;overflow:hidden;}
     .marquee-inner{display:flex;animation:mq 25s linear infinite;white-space:nowrap;}
     .mq-item{display:flex;align-items:center;gap:10px;padding:0 32px;font-size:.7rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);flex-shrink:0;}
     .mq-sep{width:4px;height:4px;border-radius:50%;background:rgba(3,5,14,.35);}
     @keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-    /* ══════════════════════════════════════
-       SHARED SECTION STYLES
-    ══════════════════════════════════════ */
+    /* SHARED */
     section{padding:108px 5%;}
     .s-tag{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
     .s-tag-line{width:22px;height:1px;background:var(--gold);}
@@ -166,11 +118,9 @@
     .s-hdr.center .s-sub{margin:0 auto;}
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s var(--ease),transform .65s var(--ease);}
     .reveal.in{opacity:1;transform:none;}
-    .d1{transition-delay:.08s!important;}.d2{transition-delay:.16s!important;}.d3{transition-delay:.24s!important;}.d4{transition-delay:.32s!important;}.d5{transition-delay:.40s!important;}
+    .d1{transition-delay:.08s!important;}.d2{transition-delay:.16s!important;}.d3{transition-delay:.24s!important;}.d4{transition-delay:.32s!important;}
 
-    /* ══════════════════════════════════════
-       PILLARS
-    ══════════════════════════════════════ */
+    /* PILLARS */
     .pillars-sec{background:var(--navy);}
     .pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border-g);border-radius:var(--r3);overflow:hidden;}
     .pillar{padding:52px 40px;border-right:1px solid var(--border-g);position:relative;overflow:hidden;transition:background var(--t);}
@@ -183,13 +133,20 @@
     .pillar h3{font-size:1.2rem;font-weight:700;margin-bottom:12px;}
     .pillar p{font-size:.86rem;color:var(--muted2);line-height:1.78;}
 
-    /* ══════════════════════════════════════
-       SERVICES
-    ══════════════════════════════════════ */
+    /* SERVICES */
     .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border-g);border-radius:var(--r3);overflow:hidden;}
     .svc-card{background:var(--navy2);padding:42px 34px;position:relative;overflow:hidden;transition:background var(--t);}
     .svc-card:hover{background:var(--navy3);}
-    .svc-glow{position:absolute;top:-50px;right:-50px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(245,168,0,.11) 0%,transparent 70%);transition:width .35s,height .35s;pointer-events:none;}
+    .svc-card::before{content:'';position:absolute;inset:0;background-size:cover;background-position:center;opacity:.07;z-index:0;transition:opacity .35s;pointer-events:none;}
+    .svc-card:hover::before{opacity:.14;}
+    .svc-card:nth-child(1)::before{background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=60');}
+    .svc-card:nth-child(2)::before{background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=60');}
+    .svc-card:nth-child(3)::before{background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=600&q=60');}
+    .svc-card:nth-child(4)::before{background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=60');}
+    .svc-card:nth-child(5)::before{background-image:url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=600&q=60');}
+    .svc-card:nth-child(6)::before{background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=60');}
+    .svc-card>*{position:relative;z-index:1;}
+    .svc-glow{position:absolute;top:-50px;right:-50px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(245,168,0,.11) 0%,transparent 70%);transition:width .35s,height .35s;pointer-events:none;z-index:0;}
     .svc-card:hover .svc-glow{width:200px;height:200px;}
     .svc-n{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:700;color:rgba(245,168,0,.09);line-height:1;margin-bottom:6px;}
     .svc-ico{width:46px;height:46px;border:1px solid var(--border-g);border-radius:11px;background:rgba(245,168,0,.07);display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:20px;transition:border-color .25s,background .25s;}
@@ -199,16 +156,36 @@
     .svc-more{display:inline-flex;align-items:center;gap:5px;margin-top:18px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);opacity:0;transform:translateX(-6px);transition:opacity .25s,transform .25s;}
     .svc-card:hover .svc-more{opacity:1;transform:none;}
 
-    /* ══════════════════════════════════════
-       PROJECTS
-    ══════════════════════════════════════ */
+    /* CEO SECTION */
+    .ceo-sec{background:var(--navy2);border-top:1px solid var(--border-g);}
+    .ceo-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+    .ceo-img-wrap{position:relative;}
+    .ceo-accent-line{position:absolute;top:24px;left:-14px;width:4px;height:90px;background:linear-gradient(180deg,var(--gold),var(--gold2));border-radius:2px;z-index:1;}
+    .ceo-img-frame{border-radius:var(--r3);overflow:hidden;position:relative;}
+    .ceo-img-frame img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top center;display:block;}
+    .ceo-img-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,5,14,.75) 0%,transparent 55%);}
+    .ceo-img-tag{position:absolute;bottom:22px;left:20px;right:20px;background:rgba(3,5,14,.88);backdrop-filter:blur(14px);border:1px solid var(--border-g);border-radius:var(--r2);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+    .ceo-tag-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;}
+    .ceo-tag-title{font-size:.68rem;color:var(--muted2);margin-top:3px;letter-spacing:.04em;}
+    .ceo-tag-badge{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:6px 13px;border-radius:100px;white-space:nowrap;flex-shrink:0;}
+    .ceo-bio{font-size:.94rem;color:var(--muted2);line-height:1.85;margin-bottom:24px;}
+    .ceo-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:34px;}
+    .ceo-stat{background:var(--navy3);border:1px solid var(--border-g);border-radius:var(--r2);padding:18px 14px;text-align:center;transition:border-color var(--t);}
+    .ceo-stat:hover{border-color:rgba(245,168,0,.38);}
+    .ceo-stat-num{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:var(--gold2);line-height:1;}
+    .ceo-stat-lbl{font-size:.64rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:5px;font-weight:600;}
+    .ceo-collab-lbl{font-size:.66rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:13px;}
+    .ceo-logos{display:flex;flex-wrap:wrap;gap:8px;}
+    .ceo-pill{padding:7px 15px;border:1px solid var(--border-g);border-radius:100px;background:var(--navy3);font-size:.74rem;font-weight:600;color:var(--muted2);letter-spacing:.03em;transition:border-color .2s,color .2s;}
+    .ceo-pill:hover{border-color:var(--gold);color:var(--gold2);}
+
+    /* PROJECTS */
     .projects-sec{background:var(--navy);}
     .proj-layout{display:flex;flex-direction:column;gap:2px;}
     .proj-row{display:grid;gap:2px;}
     .proj-row.r-full{grid-template-columns:1fr;}
     .proj-row.r-half{grid-template-columns:1fr 1fr;}
     .proj-card{position:relative;overflow:hidden;min-height:420px;cursor:pointer;}
-    /* Radius only on corners */
     .r-full .proj-card:only-child:first-of-type{border-radius:var(--r3) var(--r3) 0 0;}
     .last-row .proj-card{border-radius:0 0 var(--r3) var(--r3)!important;}
     .last-row.r-half .proj-card:first-child{border-radius:0 0 0 var(--r3)!important;}
@@ -217,7 +194,7 @@
     .proj-card:hover .pc-photo{transform:scale(1.055);}
     .pc-ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,5,14,.92) 0%,rgba(3,5,14,.25) 60%,transparent 100%);transition:var(--t);}
     .proj-card:hover .pc-ov{background:linear-gradient(0deg,rgba(3,5,14,.96) 0%,rgba(3,5,14,.5) 65%,rgba(3,5,14,.1) 100%);}
-    .pc-badge{position:absolute;top:18px;right:18px;background:rgba(245,168,0,.85);backdrop-filter:blur(8px);border:1px solid var(--gold2);border-radius:var(--r);padding:6px 14px;font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);z-index:2;}
+    .pc-badge{position:absolute;top:18px;right:18px;background:rgba(245,168,0,.88);backdrop-filter:blur(8px);border:1px solid var(--gold2);border-radius:var(--r);padding:6px 14px;font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);z-index:2;}
     .pc-body{position:absolute;bottom:0;left:0;right:0;padding:28px 30px 32px;z-index:2;}
     .pc-cat{display:inline-block;font-size:.63rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);background:rgba(245,168,0,.12);border:1px solid var(--border-g);padding:3px 11px;border-radius:100px;margin-bottom:10px;}
     .pc-title{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:700;line-height:1.15;margin-bottom:4px;}
@@ -226,23 +203,17 @@
     .proj-card:hover .pc-stats{opacity:1;transform:none;}
     .pc-stat strong{display:block;font-size:.88rem;font-weight:800;color:var(--gold3);}
     .pc-stat span{font-size:.7rem;color:rgba(255,255,255,.45);margin-top:1px;}
-    .pc-gallery-btn{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--white);background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:7px 16px;border-radius:var(--r);transition:background .2s,border-color .2s;cursor:pointer;}
-    .pc-gallery-btn:hover{background:rgba(245,168,0,.15);border-color:var(--gold);}
 
-    /* ══════════════════════════════════════
-       STATS
-    ══════════════════════════════════════ */
+    /* STATS */
     .stats-sec{background:var(--navy2);border-top:1px solid var(--border-g);border-bottom:1px solid var(--border-g);padding:0;}
     .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);}
-    .stat-cell{padding:64px 40px;text-align:center;border-right:1px solid var(--border-g);position:relative;}
+    .stat-cell{padding:64px 40px;text-align:center;border-right:1px solid var(--border-g);}
     .stat-cell:last-child{border-right:none;}
     .stat-cell-icon{font-size:1.5rem;margin-bottom:14px;}
     .stat-num{font-family:'Cormorant Garamond',serif;font-size:3.8rem;font-weight:700;line-height:1;letter-spacing:-.04em;margin-bottom:8px;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
     .stat-lbl{font-size:.74rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);font-weight:600;}
 
-    /* ══════════════════════════════════════
-       PROCESS
-    ══════════════════════════════════════ */
+    /* PROCESS */
     .proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:60px;}
     .proc-grid::before{content:'';position:absolute;top:27px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold));opacity:.25;}
     .pstep{text-align:center;padding:0 20px;}
@@ -251,9 +222,7 @@
     .pstep h4{font-size:.94rem;font-weight:700;margin-bottom:9px;}
     .pstep p{font-size:.81rem;color:var(--muted2);line-height:1.7;}
 
-    /* ══════════════════════════════════════
-       TESTIMONIALS
-    ══════════════════════════════════════ */
+    /* TESTIMONIALS */
     .testi-sec{background:var(--navy2);}
     .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
     .testi-card{background:var(--navy3);border:1px solid var(--border-g);border-radius:var(--r3);padding:40px 32px;position:relative;overflow:hidden;transition:transform var(--t),box-shadow var(--t),border-color var(--t);}
@@ -267,9 +236,7 @@
     .tc-name{font-size:.87rem;font-weight:700;}
     .tc-role{font-size:.72rem;color:var(--muted);margin-top:2px;}
 
-    /* ══════════════════════════════════════
-       CREDENTIALS STRIP
-    ══════════════════════════════════════ */
+    /* CREDENTIALS */
     .creds-sec{background:var(--ink);border-top:1px solid var(--border-g);padding:56px 5%;}
     .creds-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;}
     .cred-card{flex:1;min-width:200px;display:flex;align-items:center;gap:14px;padding:22px 24px;border:1px solid var(--border-g);border-radius:var(--r2);background:var(--navy2);transition:border-color var(--t),background var(--t);}
@@ -278,9 +245,7 @@
     .cred-txt strong{display:block;font-size:.86rem;font-weight:700;}
     .cred-txt span{font-size:.72rem;color:var(--muted);margin-top:2px;display:block;}
 
-    /* ══════════════════════════════════════
-       CTA
-    ══════════════════════════════════════ */
+    /* CTA */
     .cta-sec{position:relative;overflow:hidden;text-align:center;padding:130px 5%;}
     .cta-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=70') center/cover no-repeat;opacity:.07;}
     .cta-orb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:350px;border-radius:50%;background:radial-gradient(ellipse,rgba(245,168,0,.12) 0%,transparent 70%);pointer-events:none;}
@@ -291,12 +256,10 @@
     .cta-phone{display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--gold3);transition:color .2s;letter-spacing:-.01em;}
     .cta-phone:hover{color:var(--white);}
     .cta-div{width:1px;height:44px;background:var(--border-g);}
-    .cta-email{display:flex;align-items:center;gap:8px;font-size:.86rem;font-weight:600;color:var(--muted2);transition:color .2s;letter-spacing:.03em;}
+    .cta-email{display:flex;align-items:center;gap:8px;font-size:.86rem;font-weight:600;color:var(--muted2);transition:color .2s;}
     .cta-email:hover{color:var(--gold2);}
 
-    /* ══════════════════════════════════════
-       FOOTER
-    ══════════════════════════════════════ */
+    /* FOOTER */
     footer{background:var(--ink);border-top:1px solid var(--border-g);padding:76px 5% 36px;}
     .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:52px;margin-bottom:56px;}
     .foot-brand p{font-size:.84rem;color:var(--muted);line-height:1.78;margin:16px 0 24px;max-width:300px;}
@@ -315,9 +278,7 @@
     .foot-bottom p{font-size:.74rem;color:var(--muted);}
     .lic-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(245,168,0,.07);border:1px solid var(--border-g);padding:5px 13px;border-radius:100px;font-size:.68rem;font-weight:600;letter-spacing:.08em;color:var(--muted);}
 
-    /* ══════════════════════════════════════
-       CLIENT PORTAL MODAL
-    ══════════════════════════════════════ */
+    /* PORTAL MODAL */
     .portal-overlay{position:fixed;inset:0;z-index:9800;background:rgba(3,5,14,.92);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:var(--t) var(--ease);}
     .portal-overlay.open{opacity:1;visibility:visible;}
     .portal-modal{background:var(--navy2);border:1px solid var(--border-g);border-radius:var(--r3);width:100%;max-width:540px;max-height:90vh;overflow-y:auto;position:relative;}
@@ -331,7 +292,6 @@
     .p-tab{flex:1;padding:12px 0;text-align:center;font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .2s,border-color .2s;}
     .p-tab.active{color:var(--gold2);border-bottom-color:var(--gold);}
     .portal-body{padding:28px 36px 36px;}
-    /* Login / Register panels */
     .p-panel{display:none;}
     .p-panel.active{display:block;}
     .p-field{margin-bottom:16px;}
@@ -342,14 +302,12 @@
     .p-field select option{background:var(--navy3);}
     .p-field textarea{resize:vertical;min-height:90px;}
     .p-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-    .p-forgot{text-align:right;font-size:.74rem;color:var(--muted2);margin-top:-8px;margin-bottom:16px;cursor:pointer;transition:color .2s;}
+    .p-forgot{text-align:right;font-size:.74rem;color:var(--muted2);margin-top:-8px;margin-bottom:16px;cursor:pointer;}
     .p-forgot:hover{color:var(--gold2);}
     .p-submit{width:100%;padding:14px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;border-radius:var(--r);color:var(--ink);font-weight:800;font-size:.84rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:opacity .2s,transform .2s;margin-top:8px;}
     .p-submit:hover{opacity:.88;transform:translateY(-1px);}
     .p-alt{text-align:center;font-size:.78rem;color:var(--muted);margin-top:16px;}
     .p-alt span{color:var(--gold2);cursor:pointer;font-weight:600;}
-    .p-alt span:hover{text-decoration:underline;}
-    /* Dashboard */
     .dash-welcome{background:linear-gradient(135deg,rgba(245,168,0,.1),rgba(27,90,168,.1));border:1px solid var(--border-g);border-radius:var(--r2);padding:20px 22px;margin-bottom:22px;display:flex;align-items:center;justify-content:space-between;}
     .dw-text h4{font-size:1rem;font-weight:700;}
     .dw-text p{font-size:.78rem;color:var(--muted2);margin-top:3px;}
@@ -358,7 +316,6 @@
     .d-tab.active,.d-tab:hover{background:var(--gold);color:var(--ink);border-color:var(--gold);}
     .d-panel{display:none;}
     .d-panel.active{display:block;}
-    /* Project cards inside dash */
     .dash-proj{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border:1px solid var(--border-g);border-radius:var(--r2);margin-bottom:10px;background:var(--navy3);}
     .dp-name{font-size:.85rem;font-weight:700;}
     .dp-addr{font-size:.72rem;color:var(--muted);margin-top:2px;}
@@ -366,7 +323,6 @@
     .dp-status.active{background:rgba(27,90,168,.2);color:var(--blue3);border:1px solid var(--border-b);}
     .dp-status.complete{background:rgba(245,168,0,.15);color:var(--gold2);border:1px solid var(--border-g);}
     .dp-status.review{background:rgba(255,255,255,.07);color:var(--muted2);border:1px solid var(--border-w);}
-    /* Invoice items */
     .inv-item{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border:1px solid var(--border-g);border-radius:var(--r2);margin-bottom:10px;background:var(--navy3);}
     .inv-info strong{display:block;font-size:.84rem;font-weight:700;}
     .inv-info span{font-size:.72rem;color:var(--muted);margin-top:2px;display:block;}
@@ -376,31 +332,7 @@
     .inv-pay:hover{opacity:.8;}
     .inv-paid{padding:6px 14px;border-radius:var(--r);background:rgba(27,90,168,.15);color:var(--blue3);font-size:.68rem;font-weight:700;border:1px solid var(--border-b);}
 
-    /* ══════════════════════════════════════
-       GALLERY LIGHTBOX
-    ══════════════════════════════════════ */
-    .gallery-overlay{position:fixed;inset:0;z-index:9900;background:rgba(3,5,14,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:var(--t);}
-    .gallery-overlay.open{opacity:1;visibility:visible;}
-    .gallery-close{position:absolute;top:22px;right:22px;width:44px;height:44px;border-radius:50%;border:1px solid var(--border-g);background:var(--navy3);color:var(--white);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;transition:border-color .2s,color .2s;}
-    .gallery-close:hover{border-color:var(--gold);color:var(--gold);}
-    .gallery-main{width:min(900px,90vw);margin-bottom:16px;position:relative;}
-    .gallery-main img{width:100%;max-height:65vh;object-fit:cover;border-radius:var(--r2);}
-    .gallery-nav{position:absolute;top:50%;transform:translateY(-50%);display:flex;justify-content:space-between;width:100%;padding:0 10px;pointer-events:none;}
-    .g-arrow{pointer-events:all;width:46px;height:46px;border-radius:50%;background:rgba(3,5,14,.7);border:1px solid var(--border-g);color:var(--white);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s;}
-    .g-arrow:hover{border-color:var(--gold);color:var(--gold);}
-    .gallery-meta{text-align:center;margin-bottom:14px;}
-    .gallery-meta h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;}
-    .gallery-meta p{font-size:.78rem;color:var(--muted2);margin-top:4px;}
-    .gallery-thumbs{display:flex;gap:8px;overflow-x:auto;max-width:min(900px,90vw);padding-bottom:4px;}
-    .gallery-thumbs::-webkit-scrollbar{height:3px;}
-    .gallery-thumbs::-webkit-scrollbar-thumb{background:var(--border-g);border-radius:2px;}
-    .g-thumb{width:70px;height:52px;object-fit:cover;border-radius:6px;cursor:pointer;border:2px solid transparent;flex-shrink:0;transition:border-color .2s,opacity .2s;opacity:.55;}
-    .g-thumb.active,.g-thumb:hover{border-color:var(--gold);opacity:1;}
-    .gallery-ctr{font-size:.72rem;color:var(--muted);text-align:center;margin-top:8px;letter-spacing:.1em;}
-
-    /* ══════════════════════════════════════
-       RESPONSIVE
-    ══════════════════════════════════════ */
+    /* RESPONSIVE */
     @media(max-width:1100px){
       .svc-grid,.pillars-grid{grid-template-columns:repeat(2,1fr);}
       .pillars-grid .pillar{border-right:none;border-bottom:1px solid var(--border-g);}
@@ -409,6 +341,8 @@
       .foot-grid{grid-template-columns:1fr 1fr;}
       .proc-grid{grid-template-columns:repeat(2,1fr);gap:40px;}
       .proc-grid::before{display:none;}
+      .ceo-grid{grid-template-columns:1fr;gap:40px;}
+      .ceo-accent-line{display:none;}
     }
     @media(max-width:768px){
       .nav-links,.nav-phone{display:none;}
@@ -423,50 +357,49 @@
       .foot-grid{grid-template-columns:1fr;}
       .stats-grid{grid-template-columns:1fr 1fr;}
       .hero-kpis{flex-direction:column;gap:20px;}
-      .hero-kpi{border-right:none;border-bottom:1px solid rgba(255,255,255,.07);padding:0 0 20px;width:100%;}
+      .hero-kpi{border-right:none;border-bottom:1px solid rgba(255,255,255,.07);padding:0 0 20px;}
       .hero-kpi:last-child{border-bottom:none;padding-bottom:0;}
       .proc-grid{grid-template-columns:1fr;gap:32px;}
       .p-row{grid-template-columns:1fr;}
-      .portal-modal{border-radius:var(--r2);}
-      .portal-header,.portal-tabs,.portal-body{padding-left:22px;padding-right:22px;}
+      .portal-header,.portal-body{padding-left:22px;padding-right:22px;}
       .portal-tabs{margin-left:22px;margin-right:22px;}
+      .ceo-stats-row{grid-template-columns:repeat(3,1fr);}
     }
     @media(max-width:480px){.stats-grid{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
 
-<!-- ════════════ CURSOR ════════════ -->
 <div id="c-dot"></div>
 <div id="c-ring"></div>
 
-<!-- ════════════ PRELOADER ════════════ -->
+<!-- PRELOADER -->
 <div id="preloader">
   <div class="pl-logo-wrap">
-    <!-- Inline SVG matching company logo geometry -->
     <svg class="pl-logo-svg" viewBox="0 0 56 64" fill="none" xmlns="http://www.w3.org/2000/svg">
       <polygon points="28,2 16,14 16,48 7,48 7,57 16,57 24,48 24,14" fill="#F5A800"/>
       <polygon points="28,2 40,14 40,44 46,37 50,44 50,57 40,57 32,48 32,14" fill="#1B5AA8"/>
-      <polygon points="24,14 28,2 32,14 28,18" fill="#ffffff" opacity=".25"/>
+      <polygon points="24,14 28,2 32,14 28,18" fill="#ffffff" opacity=".2"/>
     </svg>
     <div class="pl-name">JW <span>Construction Estimating</span></div>
   </div>
   <div class="pl-bar-track"><div class="pl-bar" id="plBar"></div></div>
 </div>
 
-<!-- ════════════ MOBILE NAV ════════════ -->
+<!-- MOBILE NAV -->
 <div id="mob-nav">
   <span class="mob-close" id="mobClose">✕</span>
-  <a href="#home"         onclick="closeMob()">Home</a>
-  <a href="#services"     onclick="closeMob()">Services</a>
-  <a href="#projects"     onclick="closeMob()">Projects</a>
-  <a href="#process"      onclick="closeMob()">Process</a>
+  <a href="#home" onclick="closeMob()">Home</a>
+  <a href="#services" onclick="closeMob()">Services</a>
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#projects" onclick="closeMob()">Projects</a>
+  <a href="#process" onclick="closeMob()">Process</a>
   <a href="#testimonials" onclick="closeMob()">Reviews</a>
-  <a href="#contact"      onclick="closeMob()" style="color:var(--gold)">Get a Quote</a>
+  <a href="#contact" onclick="closeMob()" style="color:var(--gold)">Get a Quote</a>
   <button class="mob-portal-btn" onclick="closeMob();openPortal()">Client Portal</button>
 </div>
 
-<!-- ════════════ NAV ════════════ -->
+<!-- NAV -->
 <nav id="mainNav">
   <a href="#home" class="nav-logo">
     <svg class="nav-logo-svg" viewBox="0 0 56 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -481,6 +414,7 @@
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#testimonials">Reviews</a></li>
@@ -493,7 +427,7 @@
   </div>
 </nav>
 
-<!-- ════════════ HERO ════════════ -->
+<!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg"></div>
   <div class="hero-ov"></div>
@@ -522,9 +456,9 @@
   <div class="hero-scroll"><span>Scroll</span><div class="scroll-track"></div></div>
 </section>
 
-<!-- ════════════ MARQUEE ════════════ -->
+<!-- MARQUEE -->
 <div class="marquee-wrap">
-  <div class="marquee-inner" id="mqi">
+  <div class="marquee-inner">
     <div class="mq-item"><div class="mq-sep"></div>Aviation</div>
     <div class="mq-item"><div class="mq-sep"></div>Federal / VA</div>
     <div class="mq-item"><div class="mq-sep"></div>Luxury Residential</div>
@@ -544,7 +478,7 @@
   </div>
 </div>
 
-<!-- ════════════ PILLARS ════════════ -->
+<!-- PILLARS -->
 <section class="pillars-sec">
   <div class="s-hdr center reveal">
     <div class="s-tag" style="justify-content:center;"><div class="s-tag-line"></div><span class="s-tag-txt">Why JW Estimating</span><div class="s-tag-line"></div></div>
@@ -554,11 +488,11 @@
   <div class="pillars-grid">
     <div class="pillar reveal"><div class="pillar-bg-num">01</div><div class="pillar-icon">⚡</div><h3>Rapid Turnaround</h3><p>Most estimates delivered within 24–48 hours. We understand bid deadlines — rush turnaround available for time-critical submittals.</p></div>
     <div class="pillar reveal d2"><div class="pillar-bg-num">02</div><div class="pillar-icon">🎯</div><h3>Unparalleled Precision</h3><p>RSMeans pricing, local market data, and proprietary QC checklists. Every line item verified — no cost surprises in the field.</p></div>
-    <div class="pillar reveal d3"><div class="pillar-bg-num">03</div><div class="pillar-icon">💼</div><h3>Budget-Conscious Rates</h3><p>Professional accuracy at every project scale. Our fees scale with your project size — making expert estimating accessible for all contractors.</p></div>
+    <div class="pillar reveal d3"><div class="pillar-bg-num">03</div><div class="pillar-icon">💼</div><h3>Budget-Conscious Rates</h3><p>Professional accuracy at every project scale. Our fees scale with your project size — making expert estimating accessible to all.</p></div>
   </div>
 </section>
 
-<!-- ════════════ SERVICES ════════════ -->
+<!-- SERVICES -->
 <section id="services">
   <div class="s-hdr reveal">
     <div class="s-tag"><div class="s-tag-line"></div><span class="s-tag-txt">What We Deliver</span></div>
@@ -575,16 +509,51 @@
   </div>
 </section>
 
-<!-- ════════════ PROJECTS ════════════ -->
+<!-- CEO / ABOUT -->
+<section class="ceo-sec" id="about">
+  <div class="ceo-grid">
+    <div class="ceo-img-wrap reveal">
+      <div class="ceo-accent-line"></div>
+      <div class="ceo-img-frame">
+        <img src="ali.jpg" alt="Ali Husnain — CEO, JW Construction Estimating LLC" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80'"/>
+        <div class="ceo-img-overlay"></div>
+        <div class="ceo-img-tag">
+          <div><div class="ceo-tag-name">Ali Husnain</div><div class="ceo-tag-title">CEO &amp; Principal Estimator · Civil Engineer</div></div>
+          <div class="ceo-tag-badge">7 Yrs Exp.</div>
+        </div>
+      </div>
+    </div>
+    <div class="ceo-content reveal d2">
+      <div class="s-tag"><div class="s-tag-line"></div><span class="s-tag-txt">Meet the Principal</span></div>
+      <h2 class="s-title">Built on the Ground.<br>Perfected in the <em style="color:var(--gold2)">Numbers.</em></h2>
+      <p class="ceo-bio">Ali Husnain is a licensed Civil Engineer and founder of JW Construction Estimating LLC, with 7 years of hands-on estimating experience working directly alongside general contractors across Raytown, Missouri and beyond. His career spans aviation terminals, federal VA medical centers, luxury private residences, and large-scale commercial developments.</p>
+      <p class="ceo-bio">His commitment to precision has earned the trust of some of the most respected names in the construction industry — delivering estimates that consistently win bids and hold through execution.</p>
+      <div class="ceo-stats-row">
+        <div class="ceo-stat"><div class="ceo-stat-num">7+</div><div class="ceo-stat-lbl">Years Experience</div></div>
+        <div class="ceo-stat"><div class="ceo-stat-num">$57M+</div><div class="ceo-stat-lbl">Projects Awarded</div></div>
+        <div class="ceo-stat"><div class="ceo-stat-num">500+</div><div class="ceo-stat-lbl">Estimates Delivered</div></div>
+      </div>
+      <div class="ceo-collab-lbl">Collaborated With</div>
+      <div class="ceo-logos">
+        <span class="ceo-pill">Clarkson Construction</span>
+        <span class="ceo-pill">Shawmut Design &amp; Construction</span>
+        <span class="ceo-pill">JE Dunn Construction</span>
+        <span class="ceo-pill">McCownGordon Construction</span>
+        <span class="ceo-pill">Holder Construction</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
 <section id="projects" class="projects-sec">
   <div class="s-hdr reveal">
     <div class="s-tag"><div class="s-tag-line"></div><span class="s-tag-txt">Signature Projects</span></div>
     <h2 class="s-title">Landmark Work.<br>Award-Winning Results.</h2>
-    <p class="s-sub">From aviation terminals to federal medical centers and private estates — our estimates have been trusted on the region's most complex, high-profile builds.</p>
+    <p class="s-sub">From aviation terminals to federal medical centers and private estates — trusted on the region's most complex, high-profile builds.</p>
   </div>
-
   <div class="proj-layout reveal">
-    <!-- KCI — Full Width -->
+    <!-- KCI -->
     <div class="proj-row r-full" style="margin-bottom:2px;">
       <div class="proj-card" style="min-height:500px;border-radius:22px 22px 0 0;">
         <div class="pc-photo" style="background-image:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1600&q=85');"></div>
@@ -603,11 +572,10 @@
         </div>
       </div>
     </div>
-
-    <!-- Omaha Eppley + Hamptons — Side by Side -->
+    <!-- Eppley + Hampton -->
     <div class="proj-row r-half" style="margin-bottom:2px;">
       <div class="proj-card">
-        <div class="pc-photo" style="background-image:url('https://images.unsplash.com/photo-1569154941061-e231b4aa8928?auto=format&fit=crop&w=900&q=85');"></div>
+        <div class="pc-photo" style="background-image:url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=900&q=85');"></div>
         <div class="pc-ov"></div>
         <div class="pc-badge">✦ Aviation · $27M</div>
         <div class="pc-body">
@@ -617,16 +585,16 @@
           <div class="pc-stats">
             <div class="pc-stat"><strong>$27,000,000</strong><span>Awarded Contract</span></div>
             <div class="pc-stat"><strong>Full Terminal</strong><span>Complete Drywall &amp; Framing</span></div>
-            <div class="pc-stat"><strong>Omaha, NE</strong><span>OMA Airport</span></div>
+            <div class="pc-stat"><strong>OMA Airport</strong><span>Omaha, Nebraska</span></div>
           </div>
         </div>
       </div>
       <div class="proj-card">
-        <div class="pc-photo" style="background-image:url('https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0325-scaled.jpg?auto=format&fit=crop&w=900&q=85');"></div>
+        <div class="pc-photo" style="background-image:url('https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0325-scaled.jpg?w=900&q=85');"></div>
         <div class="pc-ov"></div>
         <div class="pc-badge">✦ Luxury Residential · $7.9M</div>
         <div class="pc-body">
-          <div class="pc-cat">Luxury Residential · Full GC</div>
+          <div class="pc-cat">Luxury Residential · Full General Contractor</div>
           <div class="pc-title">Bull Path Estate — Custom Luxury Residence</div>
           <div class="pc-addr">📍 Bull Path, East Hampton, NY 11937</div>
           <div class="pc-stats">
@@ -634,22 +602,17 @@
             <div class="pc-stat"><strong>Ground-Up</strong><span>Custom Residence</span></div>
             <div class="pc-stat"><strong>The Hamptons, NY</strong><span>East Hampton</span></div>
           </div>
-          <button class="pc-gallery-btn" onclick="openGallery(event)">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            View Photo Gallery (20 Photos)
-          </button>
         </div>
       </div>
     </div>
-
-    <!-- VAMC — Full Width Bottom -->
+    <!-- VAMC -->
     <div class="proj-row r-full last-row">
       <div class="proj-card" style="min-height:420px;border-radius:0 0 22px 22px;">
-        <div class="pc-photo" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1600&q=80');"></div>
+        <div class="pc-photo" style="background-image:url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1600&q=80');"></div>
         <div class="pc-ov"></div>
         <div class="pc-badge">✦ Federal / VA · $4.2M</div>
         <div class="pc-body">
-          <div class="pc-cat">Federal · VA Medical Center · All Trades (Ex. MEP)</div>
+          <div class="pc-cat">Federal · VA Medical Center · All Trades (Excluding MEP)</div>
           <div class="pc-title">VA Nebraska–Western Iowa Health Care System — EHRM Infrastructure Upgrades</div>
           <div class="pc-addr">📍 4101 Woolworth Ave, Omaha, NE 68105</div>
           <div class="pc-stats">
@@ -664,7 +627,7 @@
   </div>
 </section>
 
-<!-- ════════════ STATS ════════════ -->
+<!-- STATS -->
 <section class="stats-sec">
   <div class="stats-grid">
     <div class="stat-cell reveal"><div class="stat-cell-icon">🏆</div><div class="stat-num" data-target="500" data-sfx="+">0+</div><div class="stat-lbl">Projects Completed</div></div>
@@ -674,7 +637,7 @@
   </div>
 </section>
 
-<!-- ════════════ PROCESS ════════════ -->
+<!-- PROCESS -->
 <section id="process">
   <div class="s-hdr center reveal">
     <div class="s-tag" style="justify-content:center;"><div class="s-tag-line"></div><span class="s-tag-txt">How It Works</span><div class="s-tag-line"></div></div>
@@ -689,7 +652,7 @@
   </div>
 </section>
 
-<!-- ════════════ TESTIMONIALS ════════════ -->
+<!-- TESTIMONIALS -->
 <section id="testimonials" class="testi-sec">
   <div class="s-hdr center reveal">
     <div class="s-tag" style="justify-content:center;"><div class="s-tag-line"></div><span class="s-tag-txt">Client Testimonials</span><div class="s-tag-line"></div></div>
@@ -703,7 +666,7 @@
   </div>
 </section>
 
-<!-- ════════════ CREDENTIALS ════════════ -->
+<!-- CREDENTIALS -->
 <section class="creds-sec">
   <div class="creds-row">
     <div class="cred-card reveal"><div class="cred-ico">🛡️</div><div class="cred-txt"><strong>Licensed &amp; Bonded</strong><span>License #LCO14573174 · Missouri</span></div></div>
@@ -714,14 +677,14 @@
   </div>
 </section>
 
-<!-- ════════════ CTA ════════════ -->
+<!-- CTA -->
 <section class="cta-sec" id="contact">
   <div class="cta-bg"></div>
   <div class="cta-orb"></div>
   <div class="cta-inner reveal">
     <div class="s-tag" style="justify-content:center;margin-bottom:18px;"><div class="s-tag-line"></div><span class="s-tag-txt">Ready to Win Your Next Bid?</span><div class="s-tag-line"></div></div>
     <h2 class="s-title">Let's Build Something<br><em style="color:var(--gold2)">Remarkable.</em></h2>
-    <p class="s-sub">Send us your plans today. Precise, bid-ready estimates returned in as little as 48 hours.<br>No guesswork. No surprises. Numbers you can build with.</p>
+    <p class="s-sub">Send us your plans today. Precise, bid-ready estimates returned in as little as 48 hours. No guesswork. No surprises.</p>
     <div class="cta-links">
       <button class="btn-gold" onclick="openPortal()" style="font-size:.84rem;padding:16px 36px;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -742,7 +705,7 @@
   </div>
 </section>
 
-<!-- ════════════ FOOTER ════════════ -->
+<!-- FOOTER -->
 <footer>
   <div class="foot-grid">
     <div class="foot-brand">
@@ -758,7 +721,8 @@
       </a>
       <p>JW Construction Estimating LLC delivers precision quantity takeoffs and cost analysis for aviation, residential, commercial, federal, industrial, and civil construction projects. Fast. Accurate. Trusted.</p>
       <div class="foot-socials">
-        <a href="#" class="f-soc" title="LinkedIn"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://www.linkedin.com/company/110795291/" target="_blank" class="f-soc" title="LinkedIn"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://www.instagram.com/jwestimatingllc/" target="_blank" class="f-soc" title="Instagram"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
       </div>
     </div>
     <div class="foot-col">
@@ -797,28 +761,26 @@
   </div>
 </footer>
 
-<!-- ════════════ CLIENT PORTAL MODAL ════════════ -->
+<!-- PORTAL MODAL -->
 <div class="portal-overlay" id="portalOverlay" onclick="handlePortalBgClick(event)">
   <div class="portal-modal" id="portalModal">
     <div class="portal-header">
-      <div class="portal-title" id="portalTitle">Client Portal</div>
+      <div class="portal-title">Client Portal</div>
       <button class="portal-close" onclick="closePortal()">✕</button>
     </div>
     <div class="portal-tabs" id="portalTabs">
       <div class="p-tab active" onclick="switchPortalTab('login',this)">Sign In</div>
       <div class="p-tab" onclick="switchPortalTab('register',this)">Create Account</div>
     </div>
-    <div class="portal-body" id="portalBody">
-
+    <div class="portal-body">
       <!-- LOGIN -->
       <div class="p-panel active" id="panel-login">
         <div class="p-field"><label>Email Address</label><input type="email" id="loginEmail" placeholder="you@company.com"/></div>
-        <div class="p-field"><label>Password</label><input type="password" id="loginPass" placeholder="••••••••"/></div>
-        <div class="p-forgot" onclick="">Forgot password?</div>
+        <div class="p-field"><label>Password</label><input type="password" placeholder="••••••••"/></div>
+        <div class="p-forgot">Forgot password?</div>
         <button class="p-submit" onclick="doLogin()">Sign In to Portal</button>
         <p class="p-alt">Don't have an account? <span onclick="switchPortalTab('register',null)">Create one free</span></p>
       </div>
-
       <!-- REGISTER -->
       <div class="p-panel" id="panel-register">
         <div class="p-row">
@@ -838,11 +800,10 @@
         <button class="p-submit" onclick="doRegister()">Create My Account</button>
         <p class="p-alt">Already have an account? <span onclick="switchPortalTab('login',null)">Sign in</span></p>
       </div>
-
-      <!-- DASHBOARD (shown after login) -->
+      <!-- DASHBOARD -->
       <div class="p-panel" id="panel-dashboard">
         <div class="dash-welcome">
-          <div class="dw-text"><h4>Welcome back 👋</h4><p id="dashUserName">Loading your projects…</p></div>
+          <div class="dw-text"><h4>Welcome back 👋</h4><p id="dashUserName">Loading…</p></div>
           <button class="btn-gold" style="padding:8px 16px;font-size:.72rem;" onclick="doLogout()">Sign Out</button>
         </div>
         <div class="dash-tabs">
@@ -851,8 +812,6 @@
           <button class="d-tab" onclick="switchDashTab('payments',this)">Payments</button>
           <button class="d-tab" onclick="switchDashTab('docs',this)">Documents</button>
         </div>
-
-        <!-- Projects tab -->
         <div class="d-panel active" id="d-projects">
           <div class="dash-proj"><div><div class="dp-name">KCI Airport — Exhibit B Interior Package</div><div class="dp-addr">One Airport Drive, Kansas City, MO 64153</div></div><div class="dp-status complete">Complete</div></div>
           <div class="dash-proj"><div><div class="dp-name">Eppley Airfield — Terminal Drywall Package</div><div class="dp-addr">4501 Abbott Dr, Omaha, NE 68110</div></div><div class="dp-status complete">Complete</div></div>
@@ -860,8 +819,6 @@
           <div class="dash-proj"><div><div class="dp-name">Bull Path Estate — Custom Residence GC</div><div class="dp-addr">Bull Path, East Hampton, NY 11937</div></div><div class="dp-status review">In Review</div></div>
           <button class="btn-gold" style="width:100%;margin-top:14px;padding:12px;" onclick="switchDashTab('submit',null)">+ Submit New Estimate Request</button>
         </div>
-
-        <!-- Submit request tab -->
         <div class="d-panel" id="d-submit">
           <div class="p-field"><label>Project Name</label><input type="text" placeholder="e.g. Office Renovation — Phase 1"/></div>
           <div class="p-row">
@@ -877,17 +834,13 @@
           <div class="p-field"><label>Upload Plans (PDF / DWG / Revit)</label><input type="file" accept=".pdf,.dwg,.rvt" style="cursor:pointer;padding:9px 12px;"/></div>
           <button class="p-submit" onclick="submitRequest()">Submit Estimate Request</button>
         </div>
-
-        <!-- Payments tab -->
         <div class="d-panel" id="d-payments">
           <div class="inv-item"><div class="inv-info"><strong>INV-2025-0041 · KCI Airport Package</strong><span>Issued May 1, 2025 · Due May 15, 2025</span></div><div class="inv-right"><div class="inv-amt">$4,200</div><button class="inv-pay" onclick="fakePayment(this)">Pay Now</button></div></div>
           <div class="inv-item"><div class="inv-info"><strong>INV-2025-0038 · VAMC Omaha Estimate</strong><span>Issued Apr 18, 2025 · Due May 3, 2025</span></div><div class="inv-right"><div class="inv-amt">$2,800</div><button class="inv-pay" onclick="fakePayment(this)">Pay Now</button></div></div>
           <div class="inv-item"><div class="inv-info"><strong>INV-2025-0031 · Bull Path Estate GC</strong><span>Issued Mar 10, 2025</span></div><div class="inv-right"><div class="inv-amt">$6,500</div><span class="inv-paid">Paid ✓</span></div></div>
           <div class="inv-item"><div class="inv-info"><strong>INV-2025-0022 · Eppley Airfield Package</strong><span>Issued Feb 5, 2025</span></div><div class="inv-right"><div class="inv-amt">$3,900</div><span class="inv-paid">Paid ✓</span></div></div>
-          <p style="font-size:.74rem;color:var(--muted);margin-top:16px;text-align:center;">💳 Payments processed securely via Stripe. Card details never stored on our servers.</p>
+          <p style="font-size:.74rem;color:var(--muted);margin-top:16px;text-align:center;">💳 Payments processed securely via Stripe.</p>
         </div>
-
-        <!-- Documents tab -->
         <div class="d-panel" id="d-docs">
           <div class="dash-proj"><div><div class="dp-name">KCI-ExhibitB-FinalEstimate.xlsx</div><div class="dp-addr">Delivered Apr 28, 2025 · 2.4 MB</div></div><button class="btn-outline" style="padding:6px 14px;font-size:.7rem;border-color:var(--border-g);">⬇ Download</button></div>
           <div class="dash-proj"><div><div class="dp-name">Eppley-DrywallTakeoff-v3.xlsx</div><div class="dp-addr">Delivered Mar 22, 2025 · 1.8 MB</div></div><button class="btn-outline" style="padding:6px 14px;font-size:.7rem;border-color:var(--border-g);">⬇ Download</button></div>
@@ -899,117 +852,50 @@
   </div>
 </div>
 
-<!-- ════════════ GALLERY LIGHTBOX ════════════ -->
-<div class="gallery-overlay" id="galleryOverlay">
-  <button class="gallery-close" onclick="closeGallery()">✕</button>
-  <div class="gallery-meta">
-    <h3>Bull Path Estate — East Hampton, NY</h3>
-    <p>Custom Luxury Residence · Full GC · $7,900,000 · East Hampton, NY 11937</p>
-  </div>
-  <div class="gallery-main">
-    <img id="galleryMainImg" src="" alt="Bull Path Estate" loading="lazy"/>
-    <div class="gallery-nav">
-      <button class="g-arrow" onclick="galleryPrev()">‹</button>
-      <button class="g-arrow" onclick="galleryNext()">›</button>
-    </div>
-  </div>
-  <div class="gallery-thumbs" id="galleryThumbs"></div>
-  <div class="gallery-ctr" id="galleryCtr"></div>
-</div>
-
-<!-- ════════════ SCRIPTS ════════════ -->
 <script>
-/* ── Cursor ── */
-const dot = document.getElementById('c-dot');
-const ring = document.getElementById('c-ring');
+/* Cursor */
+const dot=document.getElementById('c-dot'),ring=document.getElementById('c-ring');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
-(function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
+(function anim(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(anim);})();
 
-/* ── Preloader ── */
+/* Preloader */
 const plBar=document.getElementById('plBar'),loader=document.getElementById('preloader');
 let p=0;const ti=setInterval(()=>{p+=Math.random()*18+6;if(p>=100){p=100;clearInterval(ti);setTimeout(()=>loader.classList.add('done'),400);}plBar.style.width=Math.min(p,100)+'%';},70);
 
-/* ── Nav scroll ── */
-const nav=document.getElementById('mainNav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40));
+/* Nav */
+window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>40));
 
-/* ── Mobile nav ── */
+/* Mobile nav */
 const mobNav=document.getElementById('mob-nav');
 document.getElementById('hamBtn').addEventListener('click',()=>mobNav.classList.add('open'));
 document.getElementById('mobClose').addEventListener('click',()=>mobNav.classList.remove('open'));
 function closeMob(){mobNav.classList.remove('open');}
 
-/* ── Scroll reveal ── */
-const revEls=document.querySelectorAll('.reveal');
+/* Reveal */
 const ro=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.1});
-revEls.forEach(el=>ro.observe(el));
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
-/* ── Counter animation ── */
-const ctrs=document.querySelectorAll('[data-target]');
+/* Counters */
 const co=new IntersectionObserver(en=>{en.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,t=+el.dataset.target,sfx=el.dataset.sfx||'';let c=0;const s=t/(1800/16);const ti2=setInterval(()=>{c=Math.min(c+s,t);el.textContent=Math.floor(c)+sfx;if(c>=t)clearInterval(ti2);},16);co.unobserve(el);});},{threshold:.5});
-ctrs.forEach(c=>co.observe(c));
+document.querySelectorAll('[data-target]').forEach(c=>co.observe(c));
 
-/* ── Smooth scroll ── */
+/* Smooth scroll */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
 
-/* ── Portal ── */
+/* Portal */
 function openPortal(){document.getElementById('portalOverlay').classList.add('open');document.body.style.overflow='hidden';const s=localStorage.getItem('jw_user');if(s){showDashboard(JSON.parse(s));}}
 function closePortal(){document.getElementById('portalOverlay').classList.remove('open');document.body.style.overflow='';}
 function handlePortalBgClick(e){if(e.target===document.getElementById('portalOverlay'))closePortal();}
-function switchPortalTab(name,el){document.querySelectorAll('.p-tab').forEach(t=>t.classList.remove('active'));if(el)el.classList.add('active');else{document.querySelectorAll('.p-tab').forEach(t=>{if(t.textContent.toLowerCase().includes(name.includes('login')?'sign':'create'))t.classList.add('active');});}document.querySelectorAll('.p-panel').forEach(p=>p.classList.remove('active'));document.getElementById('panel-'+name)?.classList.add('active');}
-function doLogin(){const em=document.getElementById('loginEmail').value.trim()||'demo@example.com';const u={name:em.split('@')[0].replace(/[._]/g,' '),email:em};localStorage.setItem('jw_user',JSON.stringify(u));showDashboard(u);}
+function switchPortalTab(name,el){document.querySelectorAll('.p-tab').forEach(t=>t.classList.remove('active'));if(el)el.classList.add('active');document.querySelectorAll('.p-panel').forEach(p=>p.classList.remove('active'));document.getElementById('panel-'+name)?.classList.add('active');}
+function doLogin(){const em=document.getElementById('loginEmail').value.trim()||'demo@example.com';const u={name:em.split('@')[0],email:em};localStorage.setItem('jw_user',JSON.stringify(u));showDashboard(u);}
 function doRegister(){const u={name:'New Client',email:'client@example.com'};localStorage.setItem('jw_user',JSON.stringify(u));showDashboard(u);}
-function doLogout(){localStorage.removeItem('jw_user');document.querySelectorAll('.p-tab').forEach((t,i)=>{t.classList.toggle('active',i===0);});document.querySelectorAll('.p-panel').forEach(p=>p.classList.remove('active'));document.getElementById('panel-login').classList.add('active');document.getElementById('portalTabs').style.display='';}
+function doLogout(){localStorage.removeItem('jw_user');document.getElementById('portalTabs').style.display='';document.querySelectorAll('.p-panel').forEach(p=>p.classList.remove('active'));document.getElementById('panel-login').classList.add('active');}
 function showDashboard(u){document.getElementById('portalTabs').style.display='none';document.querySelectorAll('.p-panel').forEach(p=>p.classList.remove('active'));document.getElementById('panel-dashboard').classList.add('active');document.getElementById('dashUserName').textContent='Logged in as '+u.email;}
-function switchDashTab(name,el){document.querySelectorAll('.d-tab').forEach(t=>t.classList.remove('active'));if(el)el.classList.add('active');else{document.querySelectorAll('.d-tab').forEach(t=>{if(t.textContent.toLowerCase().includes(name))t.classList.add('active');});}document.querySelectorAll('.d-panel').forEach(p=>p.classList.remove('active'));document.getElementById('d-'+name)?.classList.add('active');}
-function submitRequest(){alert('✓ Estimate request submitted!\n\nWe\'ll review your plans and confirm scope + pricing within 24 hours.\n\nQuestions? Call 913-389-2137 or email jack@jwestimating.com');}
+function switchDashTab(name,el){document.querySelectorAll('.d-tab').forEach(t=>t.classList.remove('active'));if(el)el.classList.add('active');document.querySelectorAll('.d-panel').forEach(p=>p.classList.remove('active'));document.getElementById('d-'+name)?.classList.add('active');}
+function submitRequest(){alert('✓ Estimate request submitted!\n\nWe\'ll review your plans and confirm scope + pricing within 24 hours.\n\nQuestions? Call 913-389-2137');}
 function fakePayment(btn){btn.textContent='Processing…';setTimeout(()=>{btn.outerHTML='<span class="inv-paid">Paid ✓</span>';},1800);}
-
-/* ── Gallery ── */
-const hamptonImgs=[
-  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0325-scaled.jpg',
-  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0045-scaled.jpg',
-  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0052-scaled.jpg',
-  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0066-scaled.jpg',
-  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0094-scaled.jpg',
-  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0110-scaled.jpg',
-  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0126-scaled.jpg',
-  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0149-scaled.jpg',
-  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0163-scaled.jpg',
-  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0177-scaled.jpg',
-  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0206-scaled.jpg',
-  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0221-scaled.jpg',
-  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0249-scaled.jpg',
-  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0275-scaled.jpg',
-  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0288-scaled.jpg',
-  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0316-scaled.jpg',
-  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0341-scaled.jpg',
-  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_0344-scaled.jpg',
-  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_704-scaled.jpg',
-  'https://i0.wp.com/mccbuilders.com/wp-content/uploads/2025/02/BM_736-scaled.jpg'
-];
-let galIdx=0;
-function openGallery(e){e.stopPropagation();galIdx=0;buildGallery();document.getElementById('galleryOverlay').classList.add('open');document.body.style.overflow='hidden';}
-function closeGallery(){document.getElementById('galleryOverlay').classList.remove('open');document.body.style.overflow='';}
-function buildGallery(){
-  const thumbs=document.getElementById('galleryThumbs');
-  thumbs.innerHTML=hamptonImgs.map((s,i)=>`<img class="g-thumb${i===0?' active':''}" src="${s}?w=140&q=60" onclick="setGalleryImg(${i})" alt="Photo ${i+1}" loading="lazy"/>`).join('');
-  setGalleryImg(0);
-}
-function setGalleryImg(i){
-  galIdx=i;
-  document.getElementById('galleryMainImg').src=hamptonImgs[i]+'?w=900&q=85';
-  document.querySelectorAll('.g-thumb').forEach((t,j)=>t.classList.toggle('active',j===i));
-  document.getElementById('galleryCtr').textContent=`${i+1} / ${hamptonImgs.length}`;
-  const th=document.getElementById('galleryThumbs');
-  const thumbEl=th.children[i];
-  if(thumbEl)thumbEl.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
-}
-function galleryNext(){setGalleryImg((galIdx+1)%hamptonImgs.length);}
-function galleryPrev(){setGalleryImg((galIdx-1+hamptonImgs.length)%hamptonImgs.length);}
-document.addEventListener('keydown',e=>{if(!document.getElementById('galleryOverlay').classList.contains('open'))return;if(e.key==='ArrowRight')galleryNext();if(e.key==='ArrowLeft')galleryPrev();if(e.key==='Escape')closeGallery();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('portalOverlay').classList.contains('open'))closePortal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePortal();});
 </script>
 </body>
 </html>
