@@ -61,8 +61,8 @@
     .mob-portal-btn{margin-top:12px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink)!important;font-family:'DM Sans',sans-serif!important;font-size:1rem!important;font-weight:700;padding:14px 36px;border-radius:var(--r);border:none;cursor:pointer;}
 
     /* NAV */
-    nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:76px;transition:background var(--t),height var(--t);}
-    nav.scrolled{background:rgba(3,5,14,.93);backdrop-filter:blur(22px);border-bottom:1px solid var(--border-g);height:62px;}
+    nav{position:fixed;top:64px;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:72px;transition:background var(--t),height var(--t);}
+    nav.scrolled{background:rgba(3,5,14,.96);backdrop-filter:blur(22px);border-bottom:1px solid var(--border-g);height:60px;}
     .nav-logo{display:flex;align-items:center;gap:11px;}
     .nav-logo-svg{width:36px;height:42px;flex-shrink:0;}
     .nav-logo-txt{line-height:1.1;}
@@ -85,7 +85,7 @@
     .ham span{width:22px;height:1.5px;background:var(--white);border-radius:2px;}
 
     /* HERO */
-    .hero{min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:0 5% 7%;overflow:hidden;}
+    .hero{min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:136px 5% 7%;overflow:hidden;}
     .hero-bg{position:absolute;inset:0;z-index:0;background:url('https://images.unsplash.com/photo-1541976590-713941681591?auto=format&fit=crop&w=1920&q=85') center 40%/cover no-repeat;}
     .hero-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(175deg,rgba(3,5,14,.45) 0%,rgba(6,10,26,.65) 35%,rgba(3,5,14,.92) 75%,var(--ink) 100%);}
     .hero-grain{position:absolute;inset:0;z-index:2;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none;}
@@ -279,23 +279,23 @@
     .cta-email:hover{color:var(--gold2);}
 
     /* DIVISION TABS */
-    .div-selector{background:var(--navy);border-bottom:1px solid var(--border-g);}
+    .div-selector{position:fixed;top:0;left:0;right:0;z-index:1100;background:rgba(3,5,14,.97);backdrop-filter:blur(24px);border-bottom:1px solid var(--border-g);}
     .div-tabs{display:grid;grid-template-columns:repeat(3,1fr);max-width:100%;margin:0 auto;}
-    .div-tab{padding:36px 40px;cursor:pointer;border-right:1px solid var(--border-g);position:relative;transition:background var(--t);display:flex;align-items:center;gap:22px;}
+    .div-tab{padding:13px 28px;cursor:pointer;border-right:1px solid var(--border-g);position:relative;transition:background var(--t);display:flex;align-items:center;gap:16px;}
     .div-tab:last-child{border-right:none;}
     .div-tab:hover{background:rgba(255,255,255,.03);}
-    .div-tab.active{background:rgba(245,168,0,.04);}
-    .div-tab-ico{width:52px;height:52px;border-radius:14px;border:1px solid var(--border-g);background:var(--navy2);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;transition:border-color var(--t),background var(--t);}
+    .div-tab.active{background:rgba(245,168,0,.05);}
+    .div-tab-ico{width:36px;height:36px;border-radius:9px;border:1px solid var(--border-g);background:var(--navy2);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;transition:border-color var(--t),background var(--t);}
     .div-tab.active .div-tab-ico{border-color:var(--gold);background:rgba(245,168,0,.1);}
     .div-tab-text{}
-    .div-tab-num{font-size:.58rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;transition:color var(--t);}
+    .div-tab-num{font-size:.52rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:2px;transition:color var(--t);}
     .div-tab.active .div-tab-num{color:var(--gold);}
-    .div-tab-title{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;line-height:1.1;transition:color var(--t);}
+    .div-tab-title{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;line-height:1.1;transition:color var(--t);}
     .div-tab.active .div-tab-title{color:var(--white);}
-    .div-tab-sub{font-size:.72rem;color:var(--muted);margin-top:5px;line-height:1.5;}
-    .div-tab-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));transform:scaleX(0);transition:transform .35s var(--ease);transform-origin:left;}
+    .div-tab-sub{font-size:.63rem;color:var(--muted);margin-top:2px;line-height:1.4;}
+    .div-tab-bar{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));transform:scaleX(0);transition:transform .35s var(--ease);transform-origin:left;}
     .div-tab.active .div-tab-bar{transform:scaleX(1);}
-    .div-tab-arrow{position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:.7rem;color:var(--muted);transition:color .2s,opacity .2s;opacity:0;}
+    .div-tab-arrow{position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:.6rem;color:var(--muted);transition:color .2s,opacity .2s;opacity:0;}
     .div-tab.active .div-tab-arrow{color:var(--gold2);opacity:1;}
 
     /* DIVISION PANELS */
@@ -531,6 +531,42 @@
   <button class="mob-portal-btn" onclick="closeMob();openPortal()">Client Portal</button>
 </div>
 
+<!-- DIVISION SELECTOR — TOP BAR -->
+<div class="div-selector" id="divSelector">
+  <div class="div-tabs">
+    <div class="div-tab active" id="tab-estimating" onclick="switchDiv('estimating')">
+      <div class="div-tab-ico">📐</div>
+      <div class="div-tab-text">
+        <div class="div-tab-num">Division 01</div>
+        <div class="div-tab-title">Construction Estimating</div>
+        <div class="div-tab-sub">Quantity Takeoffs · Bid Packages · Cost Analysis · Value Engineering</div>
+      </div>
+      <div class="div-tab-arrow">▶</div>
+      <div class="div-tab-bar"></div>
+    </div>
+    <div class="div-tab" id="tab-advisory" onclick="switchDiv('advisory')">
+      <div class="div-tab-ico">🏛️</div>
+      <div class="div-tab-text">
+        <div class="div-tab-num">Division 02</div>
+        <div class="div-tab-title">Capital Advisory</div>
+        <div class="div-tab-sub">Development Advisory · Owner's Rep · Capital Project Oversight</div>
+      </div>
+      <div class="div-tab-arrow">▶</div>
+      <div class="div-tab-bar"></div>
+    </div>
+    <div class="div-tab" id="tab-design" onclick="switchDiv('design')">
+      <div class="div-tab-ico">🏗️</div>
+      <div class="div-tab-text">
+        <div class="div-tab-num">Division 03</div>
+        <div class="div-tab-title">Architecture &amp; Design</div>
+        <div class="div-tab-sub">Architectural · Structural · MEP Engineering · Interior Design</div>
+      </div>
+      <div class="div-tab-arrow">▶</div>
+      <div class="div-tab-bar"></div>
+    </div>
+  </div>
+</div>
+
 <!-- NAV -->
 <nav id="mainNav">
   <a href="#home" class="nav-logo">
@@ -610,10 +646,10 @@
   </div>
 </div>
 
-<!-- DIVISION SELECTOR -->
-<div class="div-selector" id="divSelector">
+<!-- PANEL: ESTIMATING starts below -->
+<div class="div-selector-placeholder" id="divSelectorPlaceholder" style="display:none">
   <div class="div-tabs">
-    <div class="div-tab active" id="tab-estimating" onclick="switchDiv('estimating')">
+    <div class="div-tab active" id="tab-estimating2" onclick="switchDiv('estimating')">
       <div class="div-tab-ico">📐</div>
       <div class="div-tab-text">
         <div class="div-tab-num">Division 01</div>
