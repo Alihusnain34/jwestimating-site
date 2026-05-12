@@ -278,17 +278,30 @@
     .cta-email{display:flex;align-items:center;gap:8px;font-size:.86rem;font-weight:600;color:var(--muted2);transition:color .2s;}
     .cta-email:hover{color:var(--gold2);}
 
-    /* DIVISION NAVIGATOR */
-    .div-nav-sec{background:var(--ink);border-bottom:1px solid var(--border-g);position:sticky;top:68px;z-index:800;}
-    .div-nav-inner{display:flex;justify-content:center;max-width:1200px;margin:0 auto;}
-    .div-nav-btn{flex:1;max-width:400px;padding:22px 24px;text-align:center;cursor:pointer;transition:background var(--t);position:relative;border-right:1px solid var(--border-g);}
-    .div-nav-btn:last-child{border-right:none;}
-    .div-nav-btn:hover{background:rgba(245,168,0,.04);}
-    .div-nav-num{font-size:.58rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;}
-    .div-nav-title{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;letter-spacing:.02em;}
-    .div-nav-sub{font-size:.67rem;color:var(--muted);margin-top:3px;}
-    .div-nav-bar{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));transform:scaleX(0);transition:transform .3s var(--ease);}
-    .div-nav-btn:hover .div-nav-bar{transform:scaleX(1);}
+    /* DIVISION TABS */
+    .div-selector{background:var(--navy);border-bottom:1px solid var(--border-g);}
+    .div-tabs{display:grid;grid-template-columns:repeat(3,1fr);max-width:100%;margin:0 auto;}
+    .div-tab{padding:36px 40px;cursor:pointer;border-right:1px solid var(--border-g);position:relative;transition:background var(--t);display:flex;align-items:center;gap:22px;}
+    .div-tab:last-child{border-right:none;}
+    .div-tab:hover{background:rgba(255,255,255,.03);}
+    .div-tab.active{background:rgba(245,168,0,.04);}
+    .div-tab-ico{width:52px;height:52px;border-radius:14px;border:1px solid var(--border-g);background:var(--navy2);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;transition:border-color var(--t),background var(--t);}
+    .div-tab.active .div-tab-ico{border-color:var(--gold);background:rgba(245,168,0,.1);}
+    .div-tab-text{}
+    .div-tab-num{font-size:.58rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;transition:color var(--t);}
+    .div-tab.active .div-tab-num{color:var(--gold);}
+    .div-tab-title{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;line-height:1.1;transition:color var(--t);}
+    .div-tab.active .div-tab-title{color:var(--white);}
+    .div-tab-sub{font-size:.72rem;color:var(--muted);margin-top:5px;line-height:1.5;}
+    .div-tab-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));transform:scaleX(0);transition:transform .35s var(--ease);transform-origin:left;}
+    .div-tab.active .div-tab-bar{transform:scaleX(1);}
+    .div-tab-arrow{position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:.7rem;color:var(--muted);transition:color .2s,opacity .2s;opacity:0;}
+    .div-tab.active .div-tab-arrow{color:var(--gold2);opacity:1;}
+
+    /* DIVISION PANELS */
+    .div-panel{display:none;animation:fadeInDiv .4s ease;}
+    .div-panel.active{display:block;}
+    @keyframes fadeInDiv{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
 
     /* CAPITAL ADVISORY SECTION */
     .ca-sec{background:var(--navy3);border-top:1px solid var(--border-b);}
@@ -481,8 +494,8 @@
       .ad-services-grid{grid-template-columns:1fr 1fr;}
       .dp-grid{grid-template-columns:1fr;}
       .int-gallery{grid-template-columns:1fr 1fr;}
-      .div-nav-inner{flex-direction:column;}
-      .div-nav-btn{border-right:none;border-bottom:1px solid var(--border-g);}
+      .div-tabs{grid-template-columns:1fr;}
+      .div-tab{border-right:none;border-bottom:1px solid var(--border-g);padding:22px 20px;}
     }
     @media(max-width:480px){.stats-grid{grid-template-columns:1fr;}}
   </style>
@@ -597,29 +610,44 @@
   </div>
 </div>
 
-<!-- DIVISION NAVIGATOR -->
-<div class="div-nav-sec">
-  <div class="div-nav-inner">
-    <div class="div-nav-btn" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">
-      <div class="div-nav-num">Division 01</div>
-      <div class="div-nav-title">Construction Estimating</div>
-      <div class="div-nav-sub">Takeoffs · Bid Packages · Cost Analysis</div>
-      <div class="div-nav-bar"></div>
+<!-- DIVISION SELECTOR -->
+<div class="div-selector" id="divSelector">
+  <div class="div-tabs">
+    <div class="div-tab active" id="tab-estimating" onclick="switchDiv('estimating')">
+      <div class="div-tab-ico">📐</div>
+      <div class="div-tab-text">
+        <div class="div-tab-num">Division 01</div>
+        <div class="div-tab-title">Construction Estimating</div>
+        <div class="div-tab-sub">Quantity Takeoffs · Bid Packages · Cost Analysis · Value Engineering</div>
+      </div>
+      <div class="div-tab-arrow">▶</div>
+      <div class="div-tab-bar"></div>
     </div>
-    <div class="div-nav-btn" onclick="document.getElementById('capital-advisory').scrollIntoView({behavior:'smooth'})">
-      <div class="div-nav-num">Division 02</div>
-      <div class="div-nav-title">Capital Advisory</div>
-      <div class="div-nav-sub">Development · Owner's Rep · Project Oversight</div>
-      <div class="div-nav-bar"></div>
+    <div class="div-tab" id="tab-advisory" onclick="switchDiv('advisory')">
+      <div class="div-tab-ico">🏛️</div>
+      <div class="div-tab-text">
+        <div class="div-tab-num">Division 02</div>
+        <div class="div-tab-title">Capital Advisory</div>
+        <div class="div-tab-sub">Development Advisory · Owner's Rep · Capital Project Oversight</div>
+      </div>
+      <div class="div-tab-arrow">▶</div>
+      <div class="div-tab-bar"></div>
     </div>
-    <div class="div-nav-btn" onclick="document.getElementById('architecture-design').scrollIntoView({behavior:'smooth'})">
-      <div class="div-nav-num">Division 03</div>
-      <div class="div-nav-title">Architecture &amp; Design</div>
-      <div class="div-nav-sub">Architectural · Structural · MEP · Interiors</div>
-      <div class="div-nav-bar"></div>
+    <div class="div-tab" id="tab-design" onclick="switchDiv('design')">
+      <div class="div-tab-ico">🏗️</div>
+      <div class="div-tab-text">
+        <div class="div-tab-num">Division 03</div>
+        <div class="div-tab-title">Architecture &amp; Design</div>
+        <div class="div-tab-sub">Architectural · Structural · MEP Engineering · Interior Design</div>
+      </div>
+      <div class="div-tab-arrow">▶</div>
+      <div class="div-tab-bar"></div>
     </div>
   </div>
 </div>
+
+<!-- PANEL: ESTIMATING -->
+<div class="div-panel active" id="panel-estimating">
 
 <!-- PILLARS -->
 <section class="pillars-sec">
@@ -651,6 +679,11 @@
     <div class="svc-card reveal d3"><div class="svc-glow"></div><div class="svc-n">06</div><div class="svc-ico">📊</div><h3>Value Engineering</h3><p>Cost-reduction alternatives that preserve design intent and code compliance. Build smarter without sacrificing quality or performance.</p><div class="svc-more">Learn More →</div></div>
   </div>
 </section>
+
+</div><!-- /panel-estimating -->
+
+<!-- PANEL: CAPITAL ADVISORY -->
+<div class="div-panel" id="panel-advisory">
 
 <!-- CAPITAL ADVISORY -->
 <section class="ca-sec" id="capital-advisory">
@@ -692,6 +725,11 @@
     </div>
   </div>
 </section>
+
+</div><!-- /panel-advisory -->
+
+<!-- PANEL: ARCHITECTURE & DESIGN -->
+<div class="div-panel" id="panel-design">
 
 <!-- ARCHITECTURE & DESIGN -->
 <section class="ad-sec" id="architecture-design">
@@ -773,6 +811,8 @@
     <div class="int-wrap"><img src="interior-4.jpg" alt="Interior Design — Open Plan" onerror="this.src='https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=600&q=80'"/><div class="int-label">Open Plan Living</div></div>
   </div>
 </section>
+
+</div><!-- /panel-design -->
 
 <!-- LEADERSHIP / ABOUT -->
 <section class="ceo-sec" id="about">
@@ -1242,6 +1282,15 @@ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 /* Counters */
 const co=new IntersectionObserver(en=>{en.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,t=+el.dataset.target,sfx=el.dataset.sfx||'';let c=0;const s=t/(1800/16);const ti2=setInterval(()=>{c=Math.min(c+s,t);el.textContent=Math.floor(c)+sfx;if(c>=t)clearInterval(ti2);},16);co.unobserve(el);});},{threshold:.5});
 document.querySelectorAll('[data-target]').forEach(c=>co.observe(c));
+
+/* Division Tab Switcher */
+function switchDiv(name){
+  ['estimating','advisory','design'].forEach(d=>{
+    document.getElementById('panel-'+d).classList.toggle('active', d===name);
+    document.getElementById('tab-'+d).classList.toggle('active', d===name);
+  });
+  document.getElementById('divSelector').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
 
 /* Smooth scroll */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
