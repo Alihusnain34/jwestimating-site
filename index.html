@@ -63,6 +63,7 @@
     /* NAV */
     nav{position:fixed;top:44px;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:66px;background:rgba(3,5,14,.96);backdrop-filter:blur(22px);border-bottom:1px solid rgba(255,255,255,.06);transition:height var(--t);}
     nav.scrolled{height:60px;}
+    nav.hidden{display:none!important;}
     .nav-logo{display:flex;align-items:center;gap:11px;}
     .nav-logo-svg{width:36px;height:42px;flex-shrink:0;}
     .nav-logo-txt{line-height:1.1;}
@@ -280,7 +281,7 @@
 
     /* DIVISION TABS */
     .div-selector{position:fixed;top:0;left:0;right:0;z-index:1100;background:rgba(3,5,14,.98);backdrop-filter:blur(20px);border-bottom:1px solid rgba(245,168,0,.12);}
-    .div-tabs{display:grid;grid-template-columns:repeat(3,1fr);}
+    .div-tabs{display:grid;grid-template-columns:repeat(4,1fr);}
     .div-tab{padding:10px 28px;cursor:pointer;border-right:1px solid rgba(255,255,255,.06);position:relative;transition:background .3s;display:flex;align-items:center;gap:12px;}
     .div-tab:last-child{border-right:none;}
     .div-tab:hover{background:rgba(255,255,255,.03);}
@@ -564,6 +565,14 @@
       <div class="div-tab-arrow">▶</div>
       <div class="div-tab-bar"></div>
     </div>
+    <div class="div-tab" id="tab-team" onclick="switchDiv('team')">
+      <div class="div-tab-ico">👥</div>
+      <div class="div-tab-text">
+        <div class="div-tab-num">Division 04</div>
+        <div class="div-tab-title">Meet the Team</div>
+      </div>
+      <div class="div-tab-bar"></div>
+    </div>
   </div>
 </div>
 
@@ -685,43 +694,145 @@
 <!-- PANEL: CAPITAL ADVISORY -->
 <div class="div-panel" id="panel-advisory">
 
-<!-- CAPITAL ADVISORY -->
-<section class="ca-sec" id="capital-advisory">
-  <div class="ca-header-row">
+<!-- CAPITAL ADVISORY HERO LEAD -->
+<section class="ca-lead-sec" style="background:var(--navy2);padding:80px 5% 70px;border-bottom:1px solid var(--border-g);">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:72px;align-items:center;">
+    <div style="position:relative;">
+      <div style="position:absolute;top:0;left:-16px;width:3px;height:80px;background:linear-gradient(180deg,var(--gold),var(--gold2));border-radius:2px;"></div>
+      <div style="border-radius:22px;overflow:hidden;position:relative;">
+        <img src="david.jpg" alt="David Nicolosi — Capital Advisory Lead" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80'" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top center;filter:saturate(0.8) contrast(1.08) brightness(0.97);display:block;"/>
+        <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,5,14,.8) 0%,transparent 50%);"></div>
+        <div style="position:absolute;bottom:22px;left:20px;right:20px;background:rgba(3,5,14,.88);backdrop-filter:blur(14px);border:1px solid var(--border-g);border-radius:14px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;">David Nicolosi</div>
+            <div style="font-size:.68rem;color:var(--muted2);margin-top:3px;letter-spacing:.04em;">Co-Founder · Capital Advisory Lead</div>
+          </div>
+          <div style="background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:100px;white-space:nowrap;">Advisory Lead</div>
+        </div>
+      </div>
+    </div>
     <div>
-      <div class="s-tag"><div class="s-tag-line"></div><span class="s-tag-txt">Division 02 · Capital Advisory</span></div>
-      <h2 class="s-title" style="margin-top:14px;">Real Estate Development &amp;<br><em style="color:var(--blue3)">Capital Advisory.</em></h2>
-      <p class="s-sub" style="max-width:560px;">Independent strategic guidance across the full development lifecycle — from acquisition through delivery. Protecting capital, controlling risk, and ensuring disciplined execution for developers, investors, and institutional owners.</p>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><div style="width:28px;height:1px;background:var(--gold);"></div><span style="font-size:.68rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);">Capital Advisory Division</span></div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.6rem);font-weight:700;line-height:1.08;margin-bottom:22px;">Where Capital Meets<br><em style="color:var(--gold2)">Discipline.</em></h2>
+      <p style="font-size:.95rem;color:var(--muted2);line-height:1.85;margin-bottom:18px;">David Nicolosi serves as principal advisor to developers, private equity groups, family offices, and institutional investors across the full real estate development lifecycle. With involvement on projects ranging from $10M to $700M+, he brings the structural rigor and cross-functional alignment that complex capital deployments demand.</p>
+      <p style="font-size:.95rem;color:var(--muted2);line-height:1.85;margin-bottom:32px;">Engaged most often during early underwriting, pre-development, or when projects require stronger execution control as they transition into construction — David provides the independent oversight that protects ownership while keeping GC, design, and capital teams aligned.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:32px;">
+        <div style="background:var(--navy3);border:1px solid var(--border-g);border-radius:14px;padding:18px 14px;text-align:center;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:var(--gold2);line-height:1;">100+</div>
+          <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:5px;font-weight:600;">Projects Advised</div>
+        </div>
+        <div style="background:var(--navy3);border:1px solid var(--border-g);border-radius:14px;padding:18px 14px;text-align:center;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:var(--gold2);line-height:1;">$12B+</div>
+          <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:5px;font-weight:600;">Capital Supported</div>
+        </div>
+        <div style="background:var(--navy3);border:1px solid var(--border-g);border-radius:14px;padding:18px 14px;text-align:center;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:var(--gold2);line-height:1;">20+</div>
+          <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:5px;font-weight:600;">Markets Nationwide</div>
+        </div>
+      </div>
+      <div style="font-size:.64rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Specialties</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <span style="padding:7px 15px;border:1px solid var(--border-g);border-radius:100px;background:var(--navy3);font-size:.74rem;font-weight:600;color:var(--muted2);">Owner's Representation</span>
+        <span style="padding:7px 15px;border:1px solid var(--border-g);border-radius:100px;background:var(--navy3);font-size:.74rem;font-weight:600;color:var(--muted2);">Development Advisory</span>
+        <span style="padding:7px 15px;border:1px solid var(--border-g);border-radius:100px;background:var(--navy3);font-size:.74rem;font-weight:600;color:var(--muted2);">Capital Project Oversight</span>
+        <span style="padding:7px 15px;border:1px solid var(--border-g);border-radius:100px;background:var(--navy3);font-size:.74rem;font-weight:600;color:var(--muted2);">Investor Diligence</span>
+        <span style="padding:7px 15px;border:1px solid var(--border-g);border-radius:100px;background:var(--navy3);font-size:.74rem;font-weight:600;color:var(--muted2);">Hospitality &amp; Mixed-Use</span>
+        <span style="padding:7px 15px;border:1px solid var(--border-g);border-radius:100px;background:var(--navy3);font-size:.74rem;font-weight:600;color:var(--muted2);">Private Equity RE</span>
+      </div>
     </div>
-    <div class="ca-david-credit reveal d2">
-      <img class="ca-david-av" src="david.jpg" alt="David Nicolosi" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=100&q=80'"/>
-      <div><div class="ca-david-name">David Nicolosi</div><div class="ca-david-role">Co-Founder · Capital Advisory Lead</div></div>
+  </div>
+</section>
+
+<!-- CA MOVING RIBBON -->
+<div class="marquee-wrap" style="background:var(--navy);">
+  <div class="marquee-inner">
+    <div class="mq-item"><div class="mq-sep"></div>Owner's Representation</div>
+    <div class="mq-item"><div class="mq-sep"></div>High-Rise Development</div>
+    <div class="mq-item"><div class="mq-sep"></div>Hospitality</div>
+    <div class="mq-item"><div class="mq-sep"></div>Mixed-Use</div>
+    <div class="mq-item"><div class="mq-sep"></div>Multifamily</div>
+    <div class="mq-item"><div class="mq-sep"></div>Private Equity RE</div>
+    <div class="mq-item"><div class="mq-sep"></div>Institutional</div>
+    <div class="mq-item"><div class="mq-sep"></div>Capital Project Oversight</div>
+    <div class="mq-item"><div class="mq-sep"></div>Owner's Representation</div>
+    <div class="mq-item"><div class="mq-sep"></div>High-Rise Development</div>
+    <div class="mq-item"><div class="mq-sep"></div>Hospitality</div>
+    <div class="mq-item"><div class="mq-sep"></div>Mixed-Use</div>
+    <div class="mq-item"><div class="mq-sep"></div>Multifamily</div>
+    <div class="mq-item"><div class="mq-sep"></div>Private Equity RE</div>
+    <div class="mq-item"><div class="mq-sep"></div>Institutional</div>
+    <div class="mq-item"><div class="mq-sep"></div>Capital Project Oversight</div>
+  </div>
+</div>
+
+<!-- CA SERVICE PILLARS -->
+<section style="padding:90px 5%;background:var(--navy2);">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="s-hdr center reveal" style="margin-bottom:52px;">
+      <div class="s-tag" style="justify-content:center;"><div class="s-tag-line"></div><span class="s-tag-txt">What We Do</span><div class="s-tag-line"></div></div>
+      <h2 class="s-title">Advisory Services<br>Built for Complexity</h2>
+      <p class="s-sub">We engage where the stakes are highest — protecting ownership interests through every phase of development.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+      <div class="svc-card reveal" style="padding:32px;"><div class="svc-glow"></div><div class="svc-n">01</div><div class="svc-ico">🏛️</div><h3>Owner's Representation</h3><p>Independent advocacy for ownership throughout design, permitting, and construction. We ensure your interests — not the GC's schedule or the architect's vision — drive every decision.</p></div>
+      <div class="svc-card reveal d1" style="padding:32px;"><div class="svc-glow"></div><div class="svc-n">02</div><div class="svc-ico">📊</div><h3>Development Advisory</h3><p>Strategic guidance from site acquisition through certificate of occupancy. We align capital, design, and construction teams around a single source of truth: the owner's business plan.</p></div>
+      <div class="svc-card reveal d2" style="padding:32px;"><div class="svc-glow"></div><div class="svc-n">03</div><div class="svc-ico">🔍</div><h3>Capital Project Oversight</h3><p>Hands-on monitoring of budget, schedule, and scope. We surface problems before they become change orders — and hold every party accountable to the project plan.</p></div>
+      <div class="svc-card reveal d1" style="padding:32px;"><div class="svc-glow"></div><div class="svc-n">04</div><div class="svc-ico">💼</div><h3>Investor &amp; LP Diligence</h3><p>Pre-investment project reviews for equity partners and lenders. We validate cost, schedule, and execution risk before capital is committed — protecting the capital stack from day one.</p></div>
+      <div class="svc-card reveal d2" style="padding:32px;"><div class="svc-glow"></div><div class="svc-n">05</div><div class="svc-ico">📋</div><h3>Feasibility &amp; Underwriting</h3><p>Early-stage cost validation and project viability analysis. We ground-truth proforma assumptions against real market data before you're committed to a site or a design direction.</p></div>
+      <div class="svc-card reveal d3" style="padding:32px;"><div class="svc-glow"></div><div class="svc-n">06</div><div class="svc-ico">⚖️</div><h3>Risk &amp; Dispute Advisory</h3><p>Objective analysis when projects encounter misalignment between ownership, lenders, design teams, or contractors. We restore clarity, accountability, and forward momentum.</p></div>
     </div>
   </div>
-  <div class="ca-stats-row reveal">
-    <div class="ca-stat"><div class="ca-stat-num">100+</div><div class="ca-stat-lbl">Projects Advised</div></div>
-    <div class="ca-stat"><div class="ca-stat-num">$12B+</div><div class="ca-stat-lbl">Capital Supported</div></div>
-    <div class="ca-stat"><div class="ca-stat-num">20+</div><div class="ca-stat-lbl">Markets Nationwide</div></div>
-    <div class="ca-stat"><div class="ca-stat-num">$700M+</div><div class="ca-stat-lbl">Largest Single Project</div></div>
-  </div>
-  <div class="ca-grid">
-    <div class="ca-card reveal"><div class="ca-ico">🏗️</div><h4>Development Advisory</h4><p>Strategic guidance through the full project lifecycle — from initial concept through entitlement, financing, construction, and stabilization. Minimize risk and maximize project value at every stage.</p><div class="ca-bullets"><div class="ca-bullet">Site feasibility &amp; highest-and-best-use analysis</div><div class="ca-bullet">Development budgeting &amp; financial modeling</div><div class="ca-bullet">Entitlement, zoning &amp; permitting strategy</div><div class="ca-bullet">Consultant team selection &amp; management</div></div></div>
-    <div class="ca-card reveal d1"><div class="ca-ico">🛡️</div><h4>Owner's Representation</h4><p>Independent oversight of the entire development and construction process — acting as the owner's primary advocate to ensure the project team delivers on goals, schedule, and budget.</p><div class="ca-bullets"><div class="ca-bullet">Managing architect, engineer &amp; contractor teams</div><div class="ca-bullet">Leading Owner-Architect-Contractor (OAC) meetings</div><div class="ca-bullet">Budget, schedule &amp; construction monitoring</div><div class="ca-bullet">Pay application &amp; change order review</div></div></div>
-    <div class="ca-card reveal d2"><div class="ca-ico">📋</div><h4>Preconstruction Advisory</h4><p>Focused planning to achieve cost certainty and constructability before a shovel hits the ground. Strong preconstruction can reduce construction costs by 5–15% and significantly limit change orders.</p><div class="ca-bullets"><div class="ca-bullet">Preliminary budgeting &amp; cost benchmarking</div><div class="ca-bullet">Value engineering &amp; cost optimization</div><div class="ca-bullet">Constructability review of design documents</div><div class="ca-bullet">Contractor prequalification &amp; bid management</div></div></div>
-    <div class="ca-card reveal"><div class="ca-ico">🔍</div><h4>Construction Advisory</h4><p>Independent technical oversight during construction — monitoring contractors, identifying issues early, and ensuring the project stays on budget and on schedule throughout execution.</p><div class="ca-bullets"><div class="ca-bullet">Construction progress &amp; schedule compliance</div><div class="ca-bullet">Change order analysis &amp; dispute avoidance</div><div class="ca-bullet">Contractor performance monitoring</div><div class="ca-bullet">Risk &amp; issue management reporting</div></div></div>
-    <div class="ca-card reveal d1"><div class="ca-ico">🔬</div><h4>Acquisition &amp; Due Diligence</h4><p>Before acquiring land or an existing asset, our team evaluates development potential, construction costs, and feasibility risks — helping clients avoid costly mistakes and unlock hidden value.</p><div class="ca-bullets"><div class="ca-bullet">Site feasibility &amp; development potential analysis</div><div class="ca-bullet">Construction cost projections &amp; CapEx analysis</div><div class="ca-bullet">Zoning, entitlement &amp; utility review</div><div class="ca-bullet">Development timeline &amp; risk assessment</div></div></div>
-    <div class="ca-card reveal d2"><div class="ca-ico">📊</div><h4>Capital Project Oversight</h4><p>Strategic supervision of large capital investments with full governance frameworks — giving investors and owners complete visibility, accountability, and control across complex development programs.</p><div class="ca-bullets"><div class="ca-bullet">Project governance &amp; reporting frameworks</div><div class="ca-bullet">Budget monitoring &amp; cost controls</div><div class="ca-bullet">Milestone reporting to ownership &amp; investors</div><div class="ca-bullet">Lender draw reviews &amp; construction monitoring</div></div></div>
-  </div>
-  <div class="ca-clients-row reveal">
-    <div class="ca-clients-lbl">Typical Clients</div>
-    <div class="ca-client-pills">
-      <span class="ca-cpill">Private Equity Real Estate Funds</span>
-      <span class="ca-cpill">Institutional Investors</span>
-      <span class="ca-cpill">Family Offices</span>
-      <span class="ca-cpill">REITs</span>
-      <span class="ca-cpill">Real Estate Developers</span>
-      <span class="ca-cpill">Construction Lenders</span>
-      <span class="ca-cpill">High-Net-Worth Landowners</span>
+</section>
+
+<!-- CA CONTACT FORM -->
+<section style="background:var(--navy2);border-top:1px solid var(--border-g);padding:100px 5%;" id="ca-contact">
+  <div class="cf-grid" style="max-width:1200px;margin:0 auto;">
+    <div class="cf-left reveal">
+      <div class="s-tag" style="margin-bottom:18px;"><div class="s-tag-line"></div><span class="s-tag-txt">Advisory Inquiry</span></div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:700;line-height:1.15;margin-bottom:18px;">Let's Talk<br><em style="color:var(--gold2)">Capital.</em></h2>
+      <p style="color:var(--muted2);font-size:.95rem;line-height:1.8;margin-bottom:36px;">Tell us about your project and where you need independent oversight. David responds personally to every serious inquiry — typically within 24 hours.</p>
+      <div class="cf-info-row">
+        <div class="cf-info-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div><div class="cf-info-lbl">Phone</div><div class="cf-info-txt"><a href="tel:[DAVE_PHONE_PLACEHOLDER]">[DAVE_PHONE_PLACEHOLDER]</a></div></div>
+      </div>
+      <div class="cf-info-row">
+        <div class="cf-info-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div><div class="cf-info-lbl">Email</div><div class="cf-info-txt"><a href="mailto:[DAVE_EMAIL_PLACEHOLDER]">[DAVE_EMAIL_PLACEHOLDER]</a></div></div>
+      </div>
+    </div>
+    <div class="cf-form reveal d2">
+      <form action="https://formspree.io/f/[DAVE_FORMSPREE_PLACEHOLDER]" method="POST">
+        <div class="cf-row">
+          <div class="cf-field"><label>First Name *</label><input type="text" name="first_name" placeholder="John" required/></div>
+          <div class="cf-field"><label>Last Name *</label><input type="text" name="last_name" placeholder="Smith" required/></div>
+        </div>
+        <div class="cf-row">
+          <div class="cf-field"><label>Email *</label><input type="email" name="email" placeholder="john@fund.com" required/></div>
+          <div class="cf-field"><label>Phone</label><input type="tel" name="phone" placeholder="(555) 000-0000"/></div>
+        </div>
+        <div class="cf-field"><label>Advisory Service Needed *</label>
+          <select name="service_type" required>
+            <option value="" disabled selected>Select service type...</option>
+            <option>Owner's Representation</option>
+            <option>Development Advisory</option>
+            <option>Capital Project Oversight</option>
+            <option>Investor / LP Diligence</option>
+            <option>Feasibility &amp; Underwriting</option>
+            <option>Risk &amp; Dispute Advisory</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="cf-row">
+          <div class="cf-field"><label>Project Value</label><input type="text" name="project_value" placeholder="e.g. $25M – $80M"/></div>
+          <div class="cf-field"><label>Asset Type</label><input type="text" name="asset_type" placeholder="e.g. Multifamily, Hotel"/></div>
+        </div>
+        <div class="cf-field"><label>Project Overview *</label><textarea name="message" placeholder="Brief description of project, current phase, and where you need advisory support..." required></textarea></div>
+        <button type="submit" class="cf-submit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Send Advisory Inquiry
+        </button>
+        <p class="cf-note">⚡ David responds personally · Typically within 24 hours</p>
+      </form>
     </div>
   </div>
 </section>
@@ -731,159 +842,299 @@
 <!-- PANEL: ARCHITECTURE & DESIGN -->
 <div class="div-panel" id="panel-design">
 
-<!-- ARCHITECTURE & DESIGN -->
-<section class="ad-sec" id="architecture-design">
-  <div class="s-hdr reveal">
-    <div class="s-tag"><div class="s-tag-line"></div><span class="s-tag-txt">Division 03 · Architecture &amp; Design</span></div>
-    <h2 class="s-title">Full-Spectrum Design.<br><em style="color:var(--gold2)">Nationwide.</em></h2>
-    <p class="s-sub">From concept to construction documents — architectural, structural, MEP engineering, and interior design services delivered across all 50 states. Permit-ready packages for residential, commercial, and institutional projects.</p>
+<!-- A&D LEAD PLACEHOLDER SECTION -->
+<section style="background:var(--navy2);padding:80px 5% 70px;border-bottom:1px solid var(--border-g);">
+  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:72px;align-items:center;">
+    <div style="position:relative;">
+      <div style="position:absolute;top:0;left:-16px;width:3px;height:80px;background:linear-gradient(180deg,var(--gold),var(--gold2));border-radius:2px;"></div>
+      <div style="border-radius:22px;overflow:hidden;position:relative;min-height:400px;background:var(--navy3);display:flex;align-items:center;justify-content:center;">
+        <!-- [ARCHI_LEAD_PHOTO_PLACEHOLDER] — replace src with actual photo when available -->
+        <img src="[ARCHI_LEAD_PHOTO_PLACEHOLDER]" alt="[ARCHI_LEAD_NAME_PLACEHOLDER]" onerror="this.style.display='none'" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top center;filter:saturate(0.8) contrast(1.08) brightness(0.97);display:block;"/>
+        <div style="position:absolute;bottom:22px;left:20px;right:20px;background:rgba(3,5,14,.88);backdrop-filter:blur(14px);border:1px solid var(--border-g);border-radius:14px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;">[ARCHI_LEAD_NAME_PLACEHOLDER]</div>
+            <div style="font-size:.68rem;color:var(--muted2);margin-top:3px;letter-spacing:.04em;">[ARCHI_LEAD_TITLE_PLACEHOLDER]</div>
+          </div>
+          <div style="background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);font-size:.58rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:100px;white-space:nowrap;">Design Lead</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px;"><div style="width:28px;height:1px;background:var(--gold);"></div><span style="font-size:.68rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);">Architecture &amp; Design Division</span></div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.6rem);font-weight:700;line-height:1.08;margin-bottom:22px;">Where Vision<br>Meets <em style="color:var(--gold2)">Structure.</em></h2>
+      <!-- [ARCHI_LEAD_BIO_PLACEHOLDER] — replace paragraph below with actual bio -->
+      <p style="font-size:.95rem;color:var(--muted2);line-height:1.85;margin-bottom:18px;">[ARCHI_LEAD_BIO_PLACEHOLDER]</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:32px;">
+        <!-- [ARCHI_LEAD_STATS_PLACEHOLDER] — replace stat values below with actual data -->
+        <div style="background:var(--navy3);border:1px solid var(--border-g);border-radius:14px;padding:18px 14px;text-align:center;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:var(--gold2);line-height:1;">[STAT1]</div>
+          <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:5px;font-weight:600;">[STAT1_LABEL]</div>
+        </div>
+        <div style="background:var(--navy3);border:1px solid var(--border-g);border-radius:14px;padding:18px 14px;text-align:center;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:var(--gold2);line-height:1;">[STAT2]</div>
+          <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:5px;font-weight:600;">[STAT2_LABEL]</div>
+        </div>
+        <div style="background:var(--navy3);border:1px solid var(--border-g);border-radius:14px;padding:18px 14px;text-align:center;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:var(--gold2);line-height:1;">[STAT3]</div>
+          <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:5px;font-weight:600;">[STAT3_LABEL]</div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="ad-services-grid">
-    <div class="ad-svc reveal"><div class="ad-svc-ico">🏛️</div><h4>Architectural Design</h4><p>Full architectural services from schematic design through construction documents. Residential, commercial, mixed-use, and institutional projects of all scales.</p></div>
-    <div class="ad-svc reveal d1"><div class="ad-svc-ico">⚙️</div><h4>Structural Engineering</h4><p>Complete structural analysis and design — foundations, framing, seismic and wind load compliance. Coordinated with architectural documents for seamless permitting.</p></div>
-    <div class="ad-svc reveal d2"><div class="ad-svc-ico">🔌</div><h4>MEP Engineering</h4><p>Mechanical, Electrical, and Plumbing design fully coordinated with architectural and structural plans. Code-compliant systems engineered for performance and efficiency.</p></div>
-    <div class="ad-svc reveal d3"><div class="ad-svc-ico">🛋️</div><h4>Interior Design</h4><p>High-end residential and commercial interior design — space planning, material selection, lighting concepts, and detailed 3D visualization. Where function meets beauty.</p></div>
-  </div>
+</section>
 
-  <div class="s-hdr reveal" style="margin-bottom:32px;">
-    <div class="s-tag"><div class="s-tag-line"></div><span class="s-tag-txt">Design Portfolio</span></div>
-    <h2 class="s-title" style="font-size:clamp(1.8rem,3vw,2.8rem);">Signature Design<br>Projects</h2>
+<!-- A&D MOVING RIBBON -->
+<div class="marquee-wrap" style="background:var(--navy);">
+  <div class="marquee-inner">
+    <div class="mq-item"><div class="mq-sep"></div>Residential Design</div>
+    <div class="mq-item"><div class="mq-sep"></div>Commercial Interiors</div>
+    <div class="mq-item"><div class="mq-sep"></div>Structural Engineering</div>
+    <div class="mq-item"><div class="mq-sep"></div>MEP Design</div>
+    <div class="mq-item"><div class="mq-sep"></div>Hospitality Design</div>
+    <div class="mq-item"><div class="mq-sep"></div>Mixed-Use</div>
+    <div class="mq-item"><div class="mq-sep"></div>Master Planning</div>
+    <div class="mq-item"><div class="mq-sep"></div>Adaptive Reuse</div>
+    <div class="mq-item"><div class="mq-sep"></div>Residential Design</div>
+    <div class="mq-item"><div class="mq-sep"></div>Commercial Interiors</div>
+    <div class="mq-item"><div class="mq-sep"></div>Structural Engineering</div>
+    <div class="mq-item"><div class="mq-sep"></div>MEP Design</div>
+    <div class="mq-item"><div class="mq-sep"></div>Hospitality Design</div>
+    <div class="mq-item"><div class="mq-sep"></div>Mixed-Use</div>
+    <div class="mq-item"><div class="mq-sep"></div>Master Planning</div>
+    <div class="mq-item"><div class="mq-sep"></div>Adaptive Reuse</div>
   </div>
-  <div class="dp-grid">
-    <div class="dp-card reveal">
-      <div class="dp-img-wrap"><img class="dp-img" src="luke-residence.jpg" alt="Luke Residence Colorado" onerror="this.src='https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=900&q=85'"/></div>
-      <div class="dp-body">
-        <div class="dp-badge">✦ Luxury Residential · Colorado</div>
-        <div class="dp-title">Luke Residence</div>
-        <div class="dp-addr">📍 Colorado · Custom Mountain Estate</div>
-        <div class="dp-row">
-          <div class="dp-kv"><strong>Full Design</strong><span>Arch · Structural · MEP</span></div>
-          <div class="dp-kv"><strong>Custom</strong><span>Mountain Contemporary</span></div>
-          <div class="dp-kv"><strong>Ground-Up</strong><span>New Construction</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="dp-card reveal d1">
-      <div class="dp-img-wrap"><img class="dp-img" src="dental-office.jpg" alt="Dental Office Turlock CA" onerror="this.src='https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=900&q=85'"/></div>
-      <div class="dp-body">
-        <div class="dp-badge">✦ Medical / Commercial · California</div>
-        <div class="dp-title">Turlock Dental Center</div>
-        <div class="dp-addr">📍 1733 Geer Road, Turlock, CA 95382</div>
-        <div class="dp-row">
-          <div class="dp-kv"><strong>Full Design</strong><span>Arch · Structural · MEP</span></div>
-          <div class="dp-kv"><strong>Medical Office</strong><span>Commercial Build</span></div>
-          <div class="dp-kv"><strong>Permit-Ready</strong><span>Construction Docs</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="dp-card reveal dp-full">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
-        <div class="dp-img-wrap" style="border-radius:0;aspect-ratio:16/9;">
-          <img class="dp-img" src="quendero-1.jpg" alt="Quendero Crossings Affordable Housing" onerror="this.src='https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=85'"/>
-        </div>
-        <div class="dp-img-wrap" style="border-radius:0;aspect-ratio:16/9;">
-          <img class="dp-img" src="quendero-2.jpg" alt="Quendero Crossings Unit B" onerror="this.src='https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=900&q=85'"/>
-        </div>
-      </div>
-      <div class="dp-body">
-        <div class="dp-badge">✦ Affordable Housing · Master Plan · 600 Units</div>
-        <div class="dp-title">Quendero Crossings — Affordable Housing Community</div>
-        <div class="dp-addr">📍 Quendero Crossings, Missouri/Kansas · Client: IMR Homes · Developer: CJR Construction Group</div>
-        <div class="dp-row">
-          <div class="dp-kv"><strong>600 Units</strong><span>Full Community</span></div>
-          <div class="dp-kv"><strong>Arch · Structural · MEP</strong><span>Complete Design Package</span></div>
-          <div class="dp-kv"><strong>IMR Homes</strong><span>CJR Construction Group</span></div>
-          <div class="dp-kv"><strong>Under Contract</strong><span>Active Project</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
 
-  <div class="int-hdr s-hdr reveal">
-    <div class="s-tag"><div class="s-tag-line"></div><span class="s-tag-txt">Interior Design Portfolio</span></div>
-    <h2 class="s-title" style="font-size:clamp(1.8rem,3vw,2.8rem);">Spaces That<br><em style="color:var(--gold2)">Inspire.</em></h2>
-    <p class="s-sub">Bespoke interior environments designed with precision — merging architectural intent with curated material palettes, custom millwork, and immersive lighting design.</p>
+<!-- A&D SERVICE PILLARS -->
+<section style="padding:90px 5%;background:var(--navy2);">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="s-hdr center reveal" style="margin-bottom:52px;">
+      <div class="s-tag" style="justify-content:center;"><div class="s-tag-line"></div><span class="s-tag-txt">Our Services</span><div class="s-tag-line"></div></div>
+      <h2 class="s-title">From Concept to<br>Construction Documents</h2>
+      <p class="s-sub">Permit-ready design across every project type — residential, commercial, institutional, and mixed-use — delivered nationwide.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+      <div class="svc-card reveal" style="padding:32px;"><div class="svc-glow"></div><div class="svc-n">01</div><div class="svc-ico">🏛️</div><h3>Architectural Design</h3><p>Schematic design through construction documents. We translate owner vision into permit-ready drawing sets that contractors can build from and municipalities approve.</p></div>
+      <div class="svc-card reveal d1" style="padding:32px;"><div class="svc-glow"></div><div class="svc-n">02</div><div class="svc-ico">🔩</div><h3>Structural Engineering</h3><p>Full structural design for residential, commercial, and mixed-use projects. Stamped by licensed engineers. Coordinated with architectural and MEP from day one.</p></div>
+      <div class="svc-card reveal d2" style="padding:32px;"><div class="svc-glow"></div><div class="svc-n">03</div><div class="svc-ico">⚡</div><h3>MEP Engineering</h3><p>Mechanical, electrical, and plumbing design fully coordinated with the architectural set. Efficient systems, code-compliant, and designed for long-term operational performance.</p></div>
+      <div class="svc-card reveal d1" style="padding:32px;"><div class="svc-glow"></div><div class="svc-n">04</div><div class="svc-ico">🛋️</div><h3>Interior Design</h3><p>Bespoke interior design for residential and commercial spaces — from finish selection and space planning through furniture layouts and construction-ready interior elevations.</p></div>
+      <div class="svc-card reveal d2" style="padding:32px;"><div class="svc-glow"></div><div class="svc-n">05</div><div class="svc-ico">🗺️</div><h3>Master Planning</h3><p>Large-scale site planning for multi-phase residential communities, mixed-use developments, and institutional campuses. Currently engaged on 600-unit affordable housing community design.</p></div>
+      <div class="svc-card reveal d3" style="padding:32px;"><div class="svc-glow"></div><div class="svc-n">06</div><div class="svc-ico">🏗️</div><h3>Design-Build Support</h3><p>Design services structured to align with GC workflows — drawing sets formatted for bid, value engineering collaboration, and RFI support during construction.</p></div>
+    </div>
   </div>
-  <div class="int-gallery reveal">
-    <div class="int-wrap"><img src="interior-1.jpg" alt="Interior Design — Dining Room" onerror="this.src='https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=600&q=80'"/><div class="int-label">Dining Room</div></div>
-    <div class="int-wrap"><img src="interior-2.jpg" alt="Interior Design — Bathroom" onerror="this.src='https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=600&q=80'"/><div class="int-label">Master Bath</div></div>
-    <div class="int-wrap"><img src="interior-3.jpg" alt="Interior Design — Living Room" onerror="this.src='https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80'"/><div class="int-label">Living Room</div></div>
-    <div class="int-wrap"><img src="interior-4.jpg" alt="Interior Design — Open Plan" onerror="this.src='https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=600&q=80'"/><div class="int-label">Open Plan Living</div></div>
+</section>
+
+<!-- A&D SIGNATURE PROJECTS -->
+<section style="padding:90px 5%;background:var(--navy);">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="s-hdr center reveal" style="margin-bottom:52px;">
+      <div class="s-tag" style="justify-content:center;"><div class="s-tag-line"></div><span class="s-tag-txt">Signature Work</span><div class="s-tag-line"></div></div>
+      <h2 class="s-title">Designed.<br>Engineered. <em style="color:var(--gold2)">Built.</em></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+      <div class="proj-card" style="min-height:420px;border-radius:22px;position:relative;overflow:hidden;">
+        <div class="pc-photo" style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=85');background-size:cover;background-position:center;transition:transform .7s;"></div>
+        <div class="pc-ov" style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,5,14,.92) 0%,rgba(3,5,14,.25) 60%,transparent 100%);"></div>
+        <div class="pc-badge" style="position:absolute;top:18px;right:18px;background:rgba(245,168,0,.88);backdrop-filter:blur(8px);border:1px solid var(--gold2);border-radius:8px;padding:6px 14px;font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);">✦ Luxury Residential</div>
+        <div class="pc-body" style="position:absolute;bottom:0;left:0;right:0;padding:28px 30px 32px;">
+          <div style="display:inline-block;font-size:.63rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);background:rgba(245,168,0,.12);border:1px solid var(--border-g);padding:3px 11px;border-radius:100px;margin-bottom:10px;">Architectural &amp; Structural Design</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:700;line-height:1.15;margin-bottom:6px;">Luke Residence</div>
+          <div style="font-size:.76rem;color:rgba(255,255,255,.45);margin-bottom:14px;">📍 Colorado</div>
+        </div>
+      </div>
+      <div class="proj-card" style="min-height:420px;border-radius:22px;position:relative;overflow:hidden;">
+        <div class="pc-photo" style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=900&q=85');background-size:cover;background-position:center;transition:transform .7s;"></div>
+        <div class="pc-ov" style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,5,14,.92) 0%,rgba(3,5,14,.25) 60%,transparent 100%);"></div>
+        <div class="pc-badge" style="position:absolute;top:18px;right:18px;background:rgba(245,168,0,.88);backdrop-filter:blur(8px);border:1px solid var(--gold2);border-radius:8px;padding:6px 14px;font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);">✦ Commercial · Medical</div>
+        <div class="pc-body" style="position:absolute;bottom:0;left:0;right:0;padding:28px 30px 32px;">
+          <div style="display:inline-block;font-size:.63rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);background:rgba(245,168,0,.12);border:1px solid var(--border-g);padding:3px 11px;border-radius:100px;margin-bottom:10px;">Full Architectural Design</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:700;line-height:1.15;margin-bottom:6px;">Dental Medical Office</div>
+          <div style="font-size:.76rem;color:rgba(255,255,255,.45);margin-bottom:14px;">📍 1733 Geer Road, Turlock, CA 95382</div>
+        </div>
+      </div>
+      <div class="proj-card" style="min-height:360px;border-radius:22px;position:relative;overflow:hidden;grid-column:1/-1;">
+        <div class="pc-photo" style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=85');background-size:cover;background-position:center;transition:transform .7s;"></div>
+        <div class="pc-ov" style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,5,14,.92) 0%,rgba(3,5,14,.25) 60%,transparent 100%);"></div>
+        <div class="pc-badge" style="position:absolute;top:18px;right:18px;background:rgba(245,168,0,.88);backdrop-filter:blur(8px);border:1px solid var(--gold2);border-radius:8px;padding:6px 14px;font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);">✦ Affordable Housing · 600 Units</div>
+        <div class="pc-body" style="position:absolute;bottom:0;left:0;right:0;padding:28px 30px 32px;">
+          <div style="display:inline-block;font-size:.63rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);background:rgba(245,168,0,.12);border:1px solid var(--border-g);padding:3px 11px;border-radius:100px;margin-bottom:10px;">Architecture · Structural · MEP Design</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:700;line-height:1.15;margin-bottom:6px;">Quendero Crossings — 600-Unit Affordable Housing Community</div>
+          <div style="font-size:.76rem;color:rgba(255,255,255,.45);margin-bottom:14px;">📍 Missouri/Kansas · Client: IMR Homes · Developer: CJR Construction Group</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- A&D CTA -->
+<section style="position:relative;overflow:hidden;text-align:center;padding:120px 5%;background:var(--navy2);border-top:1px solid var(--border-g);">
+  <div style="position:relative;z-index:1;max-width:700px;margin:0 auto;">
+    <div class="s-tag" style="justify-content:center;margin-bottom:18px;"><div class="s-tag-line"></div><span class="s-tag-txt">Ready to Start Designing?</span><div class="s-tag-line"></div></div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,5vw,4.2rem);font-weight:700;line-height:1.1;margin-bottom:18px;">Every Great Structure<br>Begins With a <em style="color:var(--gold2)">Drawing.</em></h2>
+    <p style="font-size:1rem;color:rgba(255,255,255,.55);line-height:1.8;margin-bottom:40px;">Submit your project brief and we'll follow up within 24 hours. Permit-ready. Fully coordinated. Designed to be built.</p>
+    <button class="btn-gold" onclick="document.getElementById('ad-contact').scrollIntoView({behavior:'smooth'})">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      Start a Design Project
+    </button>
+  </div>
+</section>
+
+<!-- A&D CONTACT FORM -->
+<section style="background:var(--navy2);border-top:1px solid var(--border-g);padding:100px 5%;" id="ad-contact">
+  <div class="cf-grid" style="max-width:1200px;margin:0 auto;">
+    <div class="cf-left reveal">
+      <div class="s-tag" style="margin-bottom:18px;"><div class="s-tag-line"></div><span class="s-tag-txt">Design Inquiry</span></div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:700;line-height:1.15;margin-bottom:18px;">Let's Talk<br><em style="color:var(--gold2)">Design.</em></h2>
+      <p style="color:var(--muted2);font-size:.95rem;line-height:1.8;margin-bottom:36px;">Share your project and vision. Our design team will review and respond within 24 hours with a scope confirmation and initial approach.</p>
+      <div class="cf-info-row">
+        <div class="cf-info-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div><div class="cf-info-lbl">Phone</div><div class="cf-info-txt"><a href="tel:[ARCHI_LEAD_PHONE_PLACEHOLDER]">[ARCHI_LEAD_PHONE_PLACEHOLDER]</a></div></div>
+      </div>
+      <div class="cf-info-row">
+        <div class="cf-info-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div><div class="cf-info-lbl">Email</div><div class="cf-info-txt"><a href="mailto:[ARCHI_LEAD_EMAIL_PLACEHOLDER]">[ARCHI_LEAD_EMAIL_PLACEHOLDER]</a></div></div>
+      </div>
+    </div>
+    <div class="cf-form reveal d2">
+      <form action="https://formspree.io/f/[ARCHI_FORMSPREE_PLACEHOLDER]" method="POST">
+        <div class="cf-row">
+          <div class="cf-field"><label>First Name *</label><input type="text" name="first_name" placeholder="Jane" required/></div>
+          <div class="cf-field"><label>Last Name *</label><input type="text" name="last_name" placeholder="Smith" required/></div>
+        </div>
+        <div class="cf-row">
+          <div class="cf-field"><label>Email *</label><input type="email" name="email" placeholder="jane@company.com" required/></div>
+          <div class="cf-field"><label>Phone</label><input type="tel" name="phone" placeholder="(555) 000-0000"/></div>
+        </div>
+        <div class="cf-field"><label>Service Needed *</label>
+          <select name="service_type" required>
+            <option value="" disabled selected>Select service type...</option>
+            <option>Schematic Design</option>
+            <option>Design Development</option>
+            <option>Construction Documents</option>
+            <option>Structural Engineering</option>
+            <option>MEP Engineering</option>
+            <option>Interior Design</option>
+            <option>Master Planning</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="cf-row">
+          <div class="cf-field"><label>Project Type</label><input type="text" name="project_type" placeholder="e.g. Custom Residence, Medical Office"/></div>
+          <div class="cf-field"><label>Approx. Sq Footage</label><input type="text" name="sq_footage" placeholder="e.g. 4,500 sq ft"/></div>
+        </div>
+        <div class="cf-field"><label>Project Description *</label><textarea name="message" placeholder="Describe your project, location, and any key design requirements or constraints..." required></textarea></div>
+        <button type="submit" class="cf-submit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Send Design Inquiry
+        </button>
+        <p class="cf-note">⚡ Response within 24 hours · Permit-ready deliverables nationwide</p>
+      </form>
+    </div>
   </div>
 </section>
 
 </div><!-- /panel-design -->
 
-<!-- LEADERSHIP / ABOUT -->
-<section class="ceo-sec" id="about">
-  <div class="s-hdr center reveal" style="margin-bottom:52px;">
-    <div class="s-tag" style="justify-content:center;"><div class="s-tag-line"></div><span class="s-tag-txt">Leadership</span><div class="s-tag-line"></div></div>
-    <h2 class="s-title">The Team Behind<br>the <em style="color:var(--gold2)">Numbers.</em></h2>
-    <p class="s-sub">Deep estimating precision meets high-level development strategy — built to serve owners, developers, and GCs at every project scale.</p>
-  </div>
-  <div class="leaders-grid">
+<!-- PANEL: MEET THE TEAM -->
+<div class="div-panel" id="panel-team">
 
-    <!-- ALI HUSNAIN -->
-    <div class="leader-card reveal">
-      <div class="ldr-img-wrap">
-        <img src="ali.jpg" alt="Ali Husnain — CEO" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80'"/>
-        <div class="ldr-img-ov"></div>
-        <div class="ldr-tag">
-          <div class="ldr-role-pill">CEO &amp; Co-Founder</div>
-          <div class="ldr-name">Ali Husnain</div>
-          <div class="ldr-title">Principal Estimator · Civil Engineer · Raytown, MO</div>
-        </div>
-      </div>
-      <div class="ldr-body">
-        <p class="ldr-bio">Licensed Civil Engineer with 7 years of hands-on estimating experience embedded directly with top-tier general contractors. Specializes in aviation terminals, federal VA facilities, luxury residential, and large-scale commercial scopes — delivering bid-ready estimates that consistently get awarded.</p>
-        <div class="ldr-stats">
-          <div class="ldr-stat"><div class="ldr-stat-num">7+</div><div class="ldr-stat-lbl">Yrs Experience</div></div>
-          <div class="ldr-stat"><div class="ldr-stat-num">$125M+</div><div class="ldr-stat-lbl">Total Value</div></div>
-          <div class="ldr-stat"><div class="ldr-stat-num">3,500+</div><div class="ldr-stat-lbl">Estimates</div></div>
-        </div>
-        <div class="ldr-pills-lbl">Collaborated With</div>
-        <div class="ldr-pills">
-          <span class="ldr-pill">Clarkson Construction</span>
-          <span class="ldr-pill">Shawmut Design &amp; Construction</span>
-          <span class="ldr-pill">JE Dunn Construction</span>
-          <span class="ldr-pill">McCownGordon Construction</span>
-          <span class="ldr-pill">Holder Construction</span>
-        </div>
-      </div>
+<section style="padding:90px 5% 80px;background:var(--navy2);">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="s-hdr center reveal" style="margin-bottom:60px;">
+      <div class="s-tag" style="justify-content:center;"><div class="s-tag-line"></div><span class="s-tag-txt">Our People</span><div class="s-tag-line"></div></div>
+      <h2 class="s-title">The Team Behind<br>the <em style="color:var(--gold2)">Numbers.</em></h2>
+      <p class="s-sub">Estimating precision. Capital discipline. Design excellence. Every engagement is led by a specialist — backed by a team that has worked at every level of the construction and development industry.</p>
     </div>
 
-    <!-- DAVID NICOLOSI -->
-    <div class="leader-card reveal d2">
-      <div class="ldr-img-wrap">
-        <img src="david.jpg" alt="David Nicolosi — Co-Founder" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80'"/>
-        <div class="ldr-img-ov"></div>
-        <div class="ldr-tag">
-          <div class="ldr-role-pill">Co-Founder</div>
-          <div class="ldr-name">David Nicolosi</div>
-          <div class="ldr-title">Real Estate Development &amp; Construction · Private Equity · Florida</div>
-        </div>
-      </div>
-      <div class="ldr-body">
-        <p class="ldr-bio">Principal advisor to developers, private equity groups, family offices, and institutional investors across the full real estate development lifecycle. Specializes in Owner's Representation, Development Advisory, and Capital Project Oversight — protecting client capital, controlling risk, and ensuring disciplined execution on complex projects from $10M to $700M+.</p>
-        <div class="ldr-stats">
-          <div class="ldr-stat"><div class="ldr-stat-num">100+</div><div class="ldr-stat-lbl">Projects Advised</div></div>
-          <div class="ldr-stat"><div class="ldr-stat-num">$12B+</div><div class="ldr-stat-lbl">Capital Supported</div></div>
-          <div class="ldr-stat"><div class="ldr-stat-num">20+</div><div class="ldr-stat-lbl">Markets Nationwide</div></div>
-        </div>
-        <div class="ldr-pills-lbl">Specialties</div>
-        <div class="ldr-pills">
-          <span class="ldr-pill">Hospitality</span>
-          <span class="ldr-pill">Multifamily</span>
-          <span class="ldr-pill">Mixed-Use</span>
-          <span class="ldr-pill">Large-Scale Redevelopment</span>
-          <span class="ldr-pill">Private Equity</span>
-          <span class="ldr-pill">Capital Risk Management</span>
-        </div>
-      </div>
-    </div>
+    <!-- TEAM GRID — add new members by duplicating a .team-card block -->
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:32px;max-width:960px;margin:0 auto;">
 
+      <!-- ALI HUSNAIN -->
+      <div class="leader-card reveal" style="background:var(--navy3);border:1px solid var(--border-g);border-radius:22px;overflow:hidden;">
+        <div style="position:relative;">
+          <img src="ali.jpg" alt="Ali Husnain" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80'" style="width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top center;filter:saturate(0.75) contrast(1.12) brightness(0.95);display:block;"/>
+          <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,5,14,.8) 0%,transparent 50%);"></div>
+          <div style="position:absolute;bottom:18px;left:18px;right:18px;background:rgba(3,5,14,.88);backdrop-filter:blur(14px);border:1px solid var(--border-g);border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;">
+            <div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;">Ali Husnain</div>
+              <div style="font-size:.65rem;color:var(--muted2);margin-top:2px;">Principal Estimator · Civil Engineer · Raytown, MO</div>
+            </div>
+            <div style="background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);font-size:.55rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:100px;white-space:nowrap;">CEO &amp; Co-Founder</div>
+          </div>
+        </div>
+        <div style="padding:26px 26px 30px;">
+          <p style="font-size:.87rem;color:var(--muted2);line-height:1.82;margin-bottom:20px;">Licensed Civil Engineer with 7 years of hands-on estimating experience embedded directly with top-tier general contractors. Specializes in aviation terminals, federal VA facilities, luxury residential, and large-scale commercial scopes — delivering bid-ready estimates that consistently get awarded.</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:20px;">
+            <div style="background:var(--navy2);border:1px solid var(--border-g);border-radius:10px;padding:12px 8px;text-align:center;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--gold2);">7+</div>
+              <div style="font-size:.56rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:3px;font-weight:600;">Yrs Experience</div>
+            </div>
+            <div style="background:var(--navy2);border:1px solid var(--border-g);border-radius:10px;padding:12px 8px;text-align:center;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--gold2);">$125M+</div>
+              <div style="font-size:.56rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:3px;font-weight:600;">Total Value</div>
+            </div>
+            <div style="background:var(--navy2);border:1px solid var(--border-g);border-radius:10px;padding:12px 8px;text-align:center;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--gold2);">3,500+</div>
+              <div style="font-size:.56rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:3px;font-weight:600;">Estimates</div>
+            </div>
+          </div>
+          <div style="font-size:.6rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Collaborated With</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;">
+            <span style="padding:5px 12px;border:1px solid var(--border-g);border-radius:100px;background:var(--navy2);font-size:.69rem;font-weight:600;color:var(--muted2);">Clarkson Construction</span>
+            <span style="padding:5px 12px;border:1px solid var(--border-g);border-radius:100px;background:var(--navy2);font-size:.69rem;font-weight:600;color:var(--muted2);">Shawmut Design &amp; Construction</span>
+            <span style="padding:5px 12px;border:1px solid var(--border-g);border-radius:100px;background:var(--navy2);font-size:.69rem;font-weight:600;color:var(--muted2);">JE Dunn Construction</span>
+            <span style="padding:5px 12px;border:1px solid var(--border-g);border-radius:100px;background:var(--navy2);font-size:.69rem;font-weight:600;color:var(--muted2);">McCownGordon</span>
+            <span style="padding:5px 12px;border:1px solid var(--border-g);border-radius:100px;background:var(--navy2);font-size:.69rem;font-weight:600;color:var(--muted2);">Holder Construction</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAVID NICOLOSI -->
+      <div class="leader-card reveal d2" style="background:var(--navy3);border:1px solid var(--border-g);border-radius:22px;overflow:hidden;">
+        <div style="position:relative;">
+          <img src="david.jpg" alt="David Nicolosi" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80'" style="width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top center;filter:saturate(0.8) contrast(1.08) brightness(0.97);display:block;"/>
+          <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,5,14,.8) 0%,transparent 50%);"></div>
+          <div style="position:absolute;bottom:18px;left:18px;right:18px;background:rgba(3,5,14,.88);backdrop-filter:blur(14px);border:1px solid var(--border-g);border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;">
+            <div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;">David Nicolosi</div>
+              <div style="font-size:.65rem;color:var(--muted2);margin-top:2px;">Real Estate Development &amp; Construction · Private Equity · Florida</div>
+            </div>
+            <div style="background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);font-size:.55rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 11px;border-radius:100px;white-space:nowrap;">Co-Founder</div>
+          </div>
+        </div>
+        <div style="padding:26px 26px 30px;">
+          <p style="font-size:.87rem;color:var(--muted2);line-height:1.82;margin-bottom:20px;">Principal advisor to developers, private equity groups, family offices, and institutional investors across the full real estate development lifecycle. Specializes in Owner's Representation, Development Advisory, and Capital Project Oversight — protecting client capital, controlling risk, and ensuring disciplined execution on complex projects from $10M to $700M+.</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:20px;">
+            <div style="background:var(--navy2);border:1px solid var(--border-g);border-radius:10px;padding:12px 8px;text-align:center;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--gold2);">100+</div>
+              <div style="font-size:.56rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:3px;font-weight:600;">Projects Advised</div>
+            </div>
+            <div style="background:var(--navy2);border:1px solid var(--border-g);border-radius:10px;padding:12px 8px;text-align:center;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--gold2);">$12B+</div>
+              <div style="font-size:.56rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:3px;font-weight:600;">Capital Supported</div>
+            </div>
+            <div style="background:var(--navy2);border:1px solid var(--border-g);border-radius:10px;padding:12px 8px;text-align:center;">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--gold2);">20+</div>
+              <div style="font-size:.56rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-top:3px;font-weight:600;">Markets Nationwide</div>
+            </div>
+          </div>
+          <div style="font-size:.6rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Specialties</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;">
+            <span style="padding:5px 12px;border:1px solid var(--border-g);border-radius:100px;background:var(--navy2);font-size:.69rem;font-weight:600;color:var(--muted2);">Owner's Representation</span>
+            <span style="padding:5px 12px;border:1px solid var(--border-g);border-radius:100px;background:var(--navy2);font-size:.69rem;font-weight:600;color:var(--muted2);">Development Advisory</span>
+            <span style="padding:5px 12px;border:1px solid var(--border-g);border-radius:100px;background:var(--navy2);font-size:.69rem;font-weight:600;color:var(--muted2);">Hospitality</span>
+            <span style="padding:5px 12px;border:1px solid var(--border-g);border-radius:100px;background:var(--navy2);font-size:.69rem;font-weight:600;color:var(--muted2);">Multifamily</span>
+            <span style="padding:5px 12px;border:1px solid var(--border-g);border-radius:100px;background:var(--navy2);font-size:.69rem;font-weight:600;color:var(--muted2);">Private Equity RE</span>
+            <span style="padding:5px 12px;border:1px solid var(--border-g);border-radius:100px;background:var(--navy2);font-size:.69rem;font-weight:600;color:var(--muted2);">Mixed-Use</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /team grid -->
   </div>
 </section>
+
+</div><!-- /panel-team -->
 
 <!-- PROJECTS -->
 <section id="projects" class="projects-sec">
@@ -1264,7 +1515,7 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.le
 
 /* Preloader */
 const plBar=document.getElementById('plBar'),loader=document.getElementById('preloader');
-let p=0;const ti=setInterval(()=>{p+=Math.random()*18+6;if(p>=100){p=100;clearInterval(ti);setTimeout(()=>loader.classList.add('done'),400);}plBar.style.width=Math.min(p,100)+'%';},70);
+let p=0;const ti=setInterval(()=>{p+=Math.random()*18+6;if(p>=100){p=100;clearInterval(ti);setTimeout(()=>{loader.classList.add('done');switchDiv('estimating');},400);}plBar.style.width=Math.min(p,100)+'%';},70);
 
 /* Nav */
 window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>40));
@@ -1284,35 +1535,49 @@ const co=new IntersectionObserver(en=>{en.forEach(e=>{if(!e.isIntersecting)retur
 document.querySelectorAll('[data-target]').forEach(c=>co.observe(c));
 
 /* Division Tab Switcher */
-const divContent={
-  estimating:{
-    eyebrow:'Licensed · Bonded · #LCO14573174 · Raytown, MO',
-    h1:'Estimates That <em>Win.</em><br>Delivered With Precision.',
-    sub:'From major airport terminals to VA medical centers and Hamptons estates — JW delivers exact-to-the-dollar takeoffs and bid packages that get awarded.'
+const divContent = {
+  estimating: {
+    eyebrow: 'Licensed · Bonded · #LCO14573174 · Raytown, MO',
+    h1: 'Estimates That <em>Win.</em><br>Delivered With Precision.',
+    sub: 'From major airport terminals to VA medical centers and Hamptons estates — JW delivers exact-to-the-dollar takeoffs and bid packages that get awarded.'
   },
-  advisory:{
-    eyebrow:'Real Estate Development & Capital Advisory · Nationwide',
-    h1:'Protect Capital.<br>Control <em>Risk.</em>',
-    sub:'Independent advisory across the full development lifecycle — from acquisition and underwriting through construction delivery. Serving PE funds, family offices, and institutional developers.'
+  advisory: {
+    eyebrow: 'Real Estate Development & Capital Advisory · Nationwide',
+    h1: 'Protect Capital.<br>Control <em>Risk.</em>',
+    sub: 'Independent advisory across the full development lifecycle — from acquisition and underwriting through construction delivery. Serving private equity groups, family offices, and institutional developers on projects from $10M to $700M+.'
   },
-  design:{
-    eyebrow:'Architecture · Structural · MEP · Interior Design · All 50 States',
-    h1:'Design That<br>Builds <em>Value.</em>',
-    sub:'Full-spectrum architectural, structural, MEP, and interior design services — from luxury custom residences to 600-unit affordable housing communities. Permit-ready. Nationwide.'
+  design: {
+    eyebrow: 'Architecture · Structural · MEP · Interior Design · All 50 States',
+    h1: 'Design That<br>Builds <em>Value.</em>',
+    sub: 'Full-spectrum architectural, structural, MEP, and interior design services — from luxury custom residences to 600-unit affordable housing communities. Permit-ready. Nationwide.'
+  },
+  team: {
+    eyebrow: 'The People Behind Every Number, Every Drawing, Every Deal',
+    h1: 'Built by the<br>Best in the <em>Business.</em>',
+    sub: 'A multidisciplinary leadership team spanning construction estimating, real estate development, capital advisory, and architectural design — united by a commitment to precision and client success.'
   }
 };
 function switchDiv(name){
-  ['estimating','advisory','design'].forEach(d=>{
-    document.getElementById('panel-'+d).classList.toggle('active', d===name);
-    document.getElementById('tab-'+d).classList.toggle('active', d===name);
+  ['estimating','advisory','design','team'].forEach(d=>{
+    const panel = document.getElementById('panel-'+d);
+    const tab = document.getElementById('tab-'+d);
+    if(panel) panel.classList.toggle('active', d===name);
+    if(tab) tab.classList.toggle('active', d===name);
   });
-  const c=divContent[name];
+  // Show sub-nav only on estimating
+  const subNav = document.getElementById('mainNav');
+  if(subNav) subNav.style.display = name==='estimating' ? 'flex' : 'none';
+  // Update hero content
+  const c = divContent[name];
   if(c){
-    document.getElementById('heroEyebrow').textContent=c.eyebrow;
-    document.getElementById('heroH1').innerHTML=c.h1;
-    document.getElementById('heroSub').textContent=c.sub;
+    const ey = document.getElementById('heroEyebrow');
+    const h1 = document.getElementById('heroH1');
+    const sub = document.getElementById('heroSub');
+    if(ey) ey.textContent = c.eyebrow;
+    if(h1) h1.innerHTML = c.h1;
+    if(sub) sub.textContent = c.sub;
   }
-  window.scrollTo({top:0,behavior:'smooth'});
+  window.scrollTo({top:0, behavior:'smooth'});
 }
 
 /* Smooth scroll */
