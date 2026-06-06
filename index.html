@@ -142,8 +142,8 @@ body.team-active #sub-nav{height:0;opacity:0;pointer-events:none;}
 .divider{height:1px;background:rgba(255,255,255,.07);margin:0 5%;}
 
 /* ── SERVICE CARDS ──────────────────── */
-.srv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px;}
-.srv-card{position:relative;padding:44px 36px;background:var(--navy2);overflow:hidden;transition:all .3s;}
+.srv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:2px;}
+.srv-card{position:relative;padding:56px 44px;background:var(--navy2);overflow:hidden;transition:all .3s;min-height:260px;}
 .srv-card:hover{background:var(--navy3);}
 .srv-card-icon{width:44px;height:44px;border:1px solid var(--gold-dim);border-radius:4px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;background:rgba(245,168,0,.06);}
 .srv-card-icon svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:1.5;}
@@ -166,15 +166,27 @@ body.team-active #sub-nav{height:0;opacity:0;pointer-events:none;}
 
 /* ── SHOWCASE / PROJECT CARDS ───────── */
 .showcase-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:2px;}
+.showcase-grid-large{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:2px;}
 .showcase-card{position:relative;overflow:hidden;aspect-ratio:16/9;cursor:default;}
+.showcase-card-tall{position:relative;overflow:hidden;aspect-ratio:3/2;cursor:default;}
 .showcase-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .55s ease;}
-.showcase-card:hover .showcase-bg{transform:scale(1.06);}
+.showcase-card:hover .showcase-bg,.showcase-card-tall:hover .showcase-bg{transform:scale(1.06);}
 .showcase-ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,5,14,.92) 0%,rgba(3,5,14,.25) 65%);}
-.showcase-body{position:absolute;bottom:0;left:0;right:0;padding:28px 24px;}
+.showcase-body{position:absolute;bottom:0;left:0;right:0;padding:32px 28px;}
 .showcase-tag{font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
-.showcase-body h4{font-family:'Cormorant Garamond',serif;font-size:1.18rem;font-weight:600;color:#fff;margin-bottom:6px;}
-.showcase-body p{font-size:.78rem;color:var(--w2);line-height:1.5;}
-.showcase-value{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold2);}
+.showcase-client{font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--w3);margin-bottom:6px;}
+.showcase-body h4{font-family:'Cormorant Garamond',serif;font-size:1.28rem;font-weight:600;color:#fff;margin-bottom:8px;}
+.showcase-body p{font-size:.8rem;color:var(--w2);line-height:1.55;}
+.showcase-value{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold2);}
+/* ── TESTIMONIALS GRID ──────────────── */
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px;}
+.review-card{padding:44px 36px;background:var(--navy3);border-top:2px solid var(--gold-dim);transition:border-color .3s;}
+.review-card:hover{border-color:rgba(245,168,0,.4);}
+.review-stars{display:flex;gap:3px;margin-bottom:20px;}
+.review-stars span{color:var(--gold);font-size:.85rem;}
+.review-quote{font-family:'Cormorant Garamond',serif;font-size:1.08rem;font-style:italic;color:rgba(255,255,255,.85);line-height:1.62;margin-bottom:24px;}
+.review-author{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--w3);}
+.review-company{font-size:.7rem;color:var(--gold);font-weight:600;margin-top:2px;}
 
 /* ── TESTIMONIAL ────────────────────── */
 .testimonial-wrap{max-width:800px;margin:0 auto;text-align:center;padding:80px 5%;}
@@ -272,6 +284,13 @@ body.team-active #sub-nav{height:0;opacity:0;pointer-events:none;}
 .reveal-delay-1{transition-delay:.1s;}.reveal-delay-2{transition-delay:.2s;}
 .reveal-delay-3{transition-delay:.3s;}.reveal-delay-4{transition-delay:.4s;}
 
+/* ── PROCESS FULL-WIDTH RESPONSIVE ─── */
+@media(max-width:860px){
+  #est-process > div:last-child{grid-template-columns:1fr 1fr !important;}
+}
+@media(max-width:540px){
+  #est-process > div:last-child{grid-template-columns:1fr !important;}
+}
 /* ── TEAM PAGE HERO ─────────────────── */
 .team-page-hero{background:var(--navy2);padding:80px 5% 64px;text-align:center;border-bottom:1px solid var(--w5);}
 .team-page-hero p{font-size:.95rem;color:var(--w2);max-width:560px;margin:0 auto;line-height:1.75;}
@@ -343,7 +362,7 @@ body.team-active #sub-nav{height:0;opacity:0;pointer-events:none;}
       </div>
       <div class="p-hero-kpis">
         <div class="p-kpi"><div class="p-kpi-val" data-target="3500" data-suffix="+">0</div><div class="p-kpi-lbl">Projects Completed</div></div>
-        <div class="p-kpi"><div class="p-kpi-val">$125M+</div><div class="p-kpi-lbl">Total Project Value</div></div>
+        <div class="p-kpi"><div class="p-kpi-val">$175M+</div><div class="p-kpi-lbl">Total Project Value</div></div>
         <div class="p-kpi"><div class="p-kpi-val" data-target="7" data-suffix="+">0</div><div class="p-kpi-lbl">Years of Excellence</div></div>
         <div class="p-kpi"><div class="p-kpi-val" data-target="98" data-suffix="%">0</div><div class="p-kpi-lbl">Accuracy Rate</div></div>
       </div>
@@ -400,111 +419,194 @@ body.team-active #sub-nav{height:0;opacity:0;pointer-events:none;}
   <div class="divider"></div>
 
   <!-- PROCESS -->
-  <section class="section" id="est-process">
-    <div class="reveal">
+  <section id="est-process" style="padding:96px 0;background:var(--navy2);">
+    <div style="padding:0 5%;" class="reveal">
       <div class="section-label">How It Works</div>
       <h2 class="section-h">Our <em>Streamlined</em> Process</h2>
       <p class="section-sub">From first contact to delivered estimate — fast, transparent, and precise.</p>
     </div>
-    <div class="process-grid">
-      <div class="proc-item reveal reveal-delay-1"><h4>Submit Your Plans</h4><p>Share drawings, specs, or project scope via email or our secure portal — any format accepted.</p></div>
-      <div class="proc-item reveal reveal-delay-2"><h4>Scope Review</h4><p>We analyze your requirements and confirm estimate type, turnaround time, and deliverables.</p></div>
-      <div class="proc-item reveal reveal-delay-3"><h4>Detailed Takeoff</h4><p>Our estimators perform a complete quantity takeoff and price every division using current market data.</p></div>
-      <div class="proc-item reveal reveal-delay-4"><h4>Delivery &amp; Review</h4><p>Receive a fully itemized estimate report. We walk you through the numbers and address questions.</p></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(255,255,255,.07);">
+      <div style="padding:56px 40px;border-right:1px solid rgba(255,255,255,.07);" class="reveal reveal-delay-1">
+        <div style="font-size:.6rem;font-weight:700;letter-spacing:.14em;color:var(--gold);margin-bottom:14px;">01</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:#fff;margin-bottom:10px;">Submit Your Plans</h4>
+        <p style="font-size:.84rem;color:var(--w2);line-height:1.7;">Share drawings, specs, or project scope via email or our secure portal — any format accepted.</p>
+      </div>
+      <div style="padding:56px 40px;border-right:1px solid rgba(255,255,255,.07);" class="reveal reveal-delay-2">
+        <div style="font-size:.6rem;font-weight:700;letter-spacing:.14em;color:var(--gold);margin-bottom:14px;">02</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:#fff;margin-bottom:10px;">Scope Review</h4>
+        <p style="font-size:.84rem;color:var(--w2);line-height:1.7;">We analyze your requirements and confirm estimate type, turnaround time, and deliverables within hours.</p>
+      </div>
+      <div style="padding:56px 40px;border-right:1px solid rgba(255,255,255,.07);" class="reveal reveal-delay-3">
+        <div style="font-size:.6rem;font-weight:700;letter-spacing:.14em;color:var(--gold);margin-bottom:14px;">03</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:#fff;margin-bottom:10px;">Detailed Takeoff</h4>
+        <p style="font-size:.84rem;color:var(--w2);line-height:1.7;">Our estimators perform a complete quantity takeoff and price every division using current market data.</p>
+      </div>
+      <div style="padding:56px 40px;" class="reveal reveal-delay-4">
+        <div style="font-size:.6rem;font-weight:700;letter-spacing:.14em;color:var(--gold);margin-bottom:14px;">04</div>
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:#fff;margin-bottom:10px;">Delivery &amp; Review</h4>
+        <p style="font-size:.84rem;color:var(--w2);line-height:1.7;">Receive a fully itemized estimate report. We walk you through every number and address any questions.</p>
+      </div>
     </div>
   </section>
 
   <!-- STATS -->
   <div class="stats-bar">
     <div class="stat-item reveal"><div class="stat-item-val" data-target="3500" data-suffix="+">0</div><div class="stat-item-lbl">Projects Completed</div></div>
-    <div class="stat-item reveal reveal-delay-1"><div class="stat-item-val">$125M+</div><div class="stat-item-lbl">Total Project Value</div></div>
+    <div class="stat-item reveal reveal-delay-1"><div class="stat-item-val">$175M+</div><div class="stat-item-lbl">Total Project Value</div></div>
     <div class="stat-item reveal reveal-delay-2"><div class="stat-item-val" data-target="7" data-suffix="+">0</div><div class="stat-item-lbl">Years in Business</div></div>
     <div class="stat-item reveal reveal-delay-3"><div class="stat-item-val" data-target="98" data-suffix="%">0</div><div class="stat-item-lbl">Accuracy Rate</div></div>
     <div class="stat-item reveal reveal-delay-4"><div class="stat-item-val" data-target="48" data-suffix="h">0</div><div class="stat-item-lbl">Avg Turnaround</div></div>
   </div>
 
   <!-- FEATURED PROJECTS SHOWCASE -->
-  <section class="section" id="est-showcase">
-    <div class="reveal">
+  <section id="est-showcase" style="padding:96px 0;">
+    <div style="padding:0 5%;" class="reveal">
       <div class="section-label">Featured Work</div>
-      <h2 class="section-h">Projects We're <em>Proud Of</em></h2>
-      <p class="section-sub">A selection of high-value, complex, and award-winning projects our estimates helped bring to life.</p>
+      <h2 class="section-h">Client Projects We <em>Helped Win</em></h2>
+      <p class="section-sub">Real bids. Real clients. Real results. A selection of awarded contracts our estimates helped secure — from airport terminals to luxury residences.</p>
     </div>
-    <div class="showcase-grid">
-      <div class="showcase-card reveal reveal-delay-1">
-        <div class="showcase-bg" style="background-image:url('https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=800&q=80&auto=format&fit=crop');"></div>
+    <div class="showcase-grid-large" style="margin-top:48px;">
+
+      <!-- 1: KCI Drywall & Framing -->
+      <div class="showcase-card-tall reveal reveal-delay-1">
+        <div class="showcase-bg" style="background-image:url('https://images.unsplash.com/photo-1541976590-713941681591?w=900&q=80&auto=format&fit=crop');"></div>
         <div class="showcase-ov"></div>
         <div class="showcase-body">
-          <div class="showcase-tag">Healthcare · Federal</div>
-          <h4>Veterans Affairs Medical Center</h4>
-          <p>Full MEP &amp; structural cost estimate for a 320,000 SF federal medical facility expansion.</p>
+          <div class="showcase-tag">Airport · Drywall &amp; Framing</div>
+          <div class="showcase-client">Client: CJR Construction Group</div>
+          <h4>KCI International Airport — Drywall &amp; Framing Package</h4>
+          <p>Structural drywall and framing packages across multiple concourses in KCI's brand-new terminal — Kansas City, MO.</p>
           <div class="showcase-value">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-            $48M Estimate Value
+            Contract Awarded: $8.5M
           </div>
         </div>
       </div>
-      <div class="showcase-card reveal reveal-delay-2">
-        <div class="showcase-bg" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80&auto=format&fit=crop');"></div>
+
+      <!-- 2: KCI Marshall Retail -->
+      <div class="showcase-card-tall reveal reveal-delay-2">
+        <div class="showcase-bg" style="background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&q=80&auto=format&fit=crop');"></div>
         <div class="showcase-ov"></div>
         <div class="showcase-body">
-          <div class="showcase-tag">Luxury Residential · Multi-Phase</div>
-          <h4>Bull Path Estate Development</h4>
-          <p>Complete cost management and material takeoff for a 14-lot luxury residential community.</p>
+          <div class="showcase-tag">Airport · Retail · Full GC Scope</div>
+          <div class="showcase-client">Client: CJR Construction Group</div>
+          <h4>KCI Airport — Marshall Retail Group (10 Concepts)</h4>
+          <p>Full GC scope for 10 retail concepts at KCI's new terminal: Made in KC, Lego Travel Store, City Market KC, Turn the Page KC, The Pitch, InMotion, and more.</p>
           <div class="showcase-value">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-            $22M Estimate Value
+            Contract Awarded: $14.5M
           </div>
         </div>
       </div>
-      <div class="showcase-card reveal reveal-delay-3">
-        <div class="showcase-bg" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80&auto=format&fit=crop');"></div>
+
+      <!-- 3: Eppley Airfield -->
+      <div class="showcase-card-tall reveal reveal-delay-3">
+        <div class="showcase-bg" style="background-image:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=900&q=80&auto=format&fit=crop');"></div>
         <div class="showcase-ov"></div>
         <div class="showcase-body">
-          <div class="showcase-tag">Commercial · High-Rise</div>
-          <h4>Eppley Commercial Tower</h4>
-          <p>Bid-ready estimate for a 24-story mixed-use tower — ground floor retail, 18 office floors, 6 residential.</p>
+          <div class="showcase-tag">Airport · Interior Finishes Package</div>
+          <div class="showcase-client">Eppley Airfield — Omaha, NE</div>
+          <h4>Eppley Airfield — Drywall, Framing &amp; Painting</h4>
+          <p>One of the largest interior finish packages in the region — complete drywall, framing, and painting scope at Eppley Airfield, Omaha.</p>
           <div class="showcase-value">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-            $74M Estimate Value
+            Contract Awarded: $27.7M
           </div>
         </div>
       </div>
+
+      <!-- 4: VAMC Omaha -->
+      <div class="showcase-card-tall reveal reveal-delay-1">
+        <div class="showcase-bg" style="background-image:url('https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=900&q=80&auto=format&fit=crop');"></div>
+        <div class="showcase-ov"></div>
+        <div class="showcase-body">
+          <div class="showcase-tag">Federal · Healthcare · GC Scope</div>
+          <div class="showcase-client">VAMC — Omaha, NE</div>
+          <h4>Veterans Affairs Medical Center — Complete GC Package</h4>
+          <p>Full general contractor scope (excluding MEP) for the VAMC Omaha facility — delivered to federal specification standards with strict compliance requirements.</p>
+          <div class="showcase-value">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            Contract Awarded: $5.8M
+          </div>
+        </div>
+      </div>
+
+      <!-- 5: LJM 113 Kings St -->
+      <div class="showcase-card-tall reveal reveal-delay-2">
+        <div class="showcase-bg" style="background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80&auto=format&fit=crop');"></div>
+        <div class="showcase-ov"></div>
+        <div class="showcase-body">
+          <div class="showcase-tag">Commercial · Drywall &amp; Framing</div>
+          <div class="showcase-client">Client: LJM Builders</div>
+          <h4>113 Kings Street — Drywall &amp; Framing Package</h4>
+          <p>Full drywall and framing scope package for a major commercial development at 113 Kings Street, Connecticut — precision estimating that secured the bid.</p>
+          <div class="showcase-value">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            Contract Awarded: $3.5M
+          </div>
+        </div>
+      </div>
+
+      <!-- 6: LJM Heron Way RI -->
+      <div class="showcase-card-tall reveal reveal-delay-3">
+        <div class="showcase-bg" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80&auto=format&fit=crop');"></div>
+        <div class="showcase-ov"></div>
+        <div class="showcase-body">
+          <div class="showcase-tag">Residential · Drywall &amp; Painting</div>
+          <div class="showcase-client">Client: LJM Builders</div>
+          <h4>68 &amp; 92 Heron Way — Drywall &amp; Painting</h4>
+          <p>Complete drywall and painting packages for twin residential developments at 68 and 92 Heron Way, Rhode Island.</p>
+          <div class="showcase-value">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            Contract Awarded: $1.1M
+          </div>
+        </div>
+      </div>
+
+      <!-- 7: Bull Path MCC Builders -->
+      <div class="showcase-card-tall reveal reveal-delay-1">
+        <div class="showcase-bg" style="background-image:url('https://images.unsplash.com/photo-1613977257363-707ba9348227?w=900&q=80&auto=format&fit=crop');"></div>
+        <div class="showcase-ov"></div>
+        <div class="showcase-body">
+          <div class="showcase-tag">Luxury Residential · High-End Custom Build</div>
+          <div class="showcase-client">Client: MCC Builders</div>
+          <h4>Bull Path Estate — Luxury Residence</h4>
+          <p>Comprehensive estimate for one of the most refined custom residences on Long Island's East End — meticulous scope covering all trades for this high-end build.</p>
+          <div class="showcase-value">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            Contract Awarded: $7.5M
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- ABOUT ALI -->
-  <section class="section" id="est-about">
-    <div class="about-grid">
-      <div class="about-photo-wrap reveal">
-        <img src="ali.jpg" alt="Ali Husnain — CEO" class="about-photo"/>
-        <div class="about-photo-frame"></div>
-      </div>
-      <div class="reveal reveal-delay-2">
-        <div class="section-label">Leadership</div>
-        <h2 class="section-h">Ali <em>Husnain</em></h2>
-        <p style="font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;">Founder &amp; CEO — JW Construction Estimating LLC</p>
-        <div class="about-text">
-          <p>Ali Husnain founded JW Construction Estimating with a single conviction: contractors deserve estimating services that are as rigorous as the buildings they construct. With over 7 years of hands-on experience, Ali has led the team to complete more than 3,500 projects across residential, commercial, and industrial sectors.</p>
-          <p>His technical precision, deep knowledge of material markets, and commitment to rapid turnaround have made JW a trusted partner for GCs, developers, and subcontractors across North America.</p>
-        </div>
-        <div class="about-sig">Ali Husnain</div>
-        <div class="tcl">
-          <a href="mailto:ali@jwestimating.com"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>ali@jwestimating.com</a>
-          <a href="mailto:Jack@jwestimating.com"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Jack@jwestimating.com</a>
-          <a href="https://www.linkedin.com/in/ali-husnain-7a05b5233" target="_blank"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
-        </div>
-      </div>
+  <!-- CLIENT TESTIMONIALS -->
+  <div style="background:var(--navy2);border-top:1px solid var(--w5);border-bottom:1px solid var(--w5);padding:80px 5%;">
+    <div class="reveal" style="margin-bottom:48px;">
+      <div class="section-label">Client Reviews</div>
+      <h2 class="section-h">What Our <em>Clients Say</em></h2>
     </div>
-  </section>
-
-  <div style="background:var(--navy3);border-top:1px solid var(--w5);border-bottom:1px solid var(--w5);">
-    <div class="testimonial-wrap reveal">
-      <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      <p class="testimonial-quote">"JW Estimating turned around a complete commercial bid package in under 36 hours — and we won the job. Their numbers were spot-on and the detail gave us complete confidence."</p>
-      <p class="testimonial-author">Senior Project Manager &mdash; Commercial GC, New York</p>
+    <div class="reviews-grid">
+      <div class="review-card reveal reveal-delay-1">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-quote">"JW Estimating has been our go-to for every major airport bid. Their precision on the KCI terminal packages — both the drywall scope and the full GC for Marshall Retail — gave us the confidence to bid aggressively and win. Turnaround was unbelievable."</p>
+        <div class="review-author">Project Director</div>
+        <div class="review-company">CJR Construction Group</div>
+      </div>
+      <div class="review-card reveal reveal-delay-2">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-quote">"Working with JW on our Connecticut and Rhode Island projects was seamless from day one. They understand scope, they understand timelines, and their numbers hold up when subcontractors start sharpening their pencils. We don't bid without them."</p>
+        <div class="review-author">Charles, Paulo &amp; Abe</div>
+        <div class="review-company">LJM Builders</div>
+      </div>
+      <div class="review-card reveal reveal-delay-3">
+        <div class="review-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="review-quote">"JW's estimates for our painting packages have been consistently accurate and delivered fast. When you're pricing competitive bids, having numbers you can trust makes all the difference. They've helped us win jobs we wouldn't have had the confidence to bid on alone."</p>
+        <div class="review-author">Operations Manager</div>
+        <div class="review-company">Well Done Painting</div>
+      </div>
     </div>
   </div>
 
@@ -593,7 +695,7 @@ body.team-active #sub-nav{height:0;opacity:0;pointer-events:none;}
         </a>
       </div>
       <div class="p-hero-kpis">
-        <div class="p-kpi"><div class="p-kpi-val">$125M+</div><div class="p-kpi-lbl">Total Value Advised</div></div>
+        <div class="p-kpi"><div class="p-kpi-val">$175M+</div><div class="p-kpi-lbl">Total Value Advised</div></div>
         <div class="p-kpi"><div class="p-kpi-val" data-target="15" data-suffix="+">0</div><div class="p-kpi-lbl">Years Experience</div></div>
         <div class="p-kpi"><div class="p-kpi-val" data-target="50" data-suffix="+">0</div><div class="p-kpi-lbl">Deals Structured</div></div>
       </div>
@@ -693,7 +795,7 @@ body.team-active #sub-nav{height:0;opacity:0;pointer-events:none;}
         <p style="font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;">Co-Founder — JW Capital Advisory</p>
         <div class="about-text">
           <p>David Nicolosi leads JW's Capital Advisory division with 15+ years of real estate development and investment expertise. His career spans ground-up development, institutional acquisitions, and complex capital structuring across gateway and secondary markets throughout North America.</p>
-          <p>David has informed over $125 million in total project value — helping clients deploy capital with confidence and maximize risk-adjusted returns.</p>
+          <p>David has informed over $175 million in total project value — helping clients deploy capital with confidence and maximize risk-adjusted returns.</p>
         </div>
         <div class="about-sig">David Nicolosi</div>
         <div class="tcl">
@@ -887,7 +989,7 @@ body.team-active #sub-nav{height:0;opacity:0;pointer-events:none;}
         <div class="team-card-body">
           <div class="team-card-role">Founder &amp; CEO — Construction Estimating</div>
           <h3 class="team-card-name">Ali Husnain</h3>
-          <p class="team-card-bio">Ali founded JW Construction Estimating with a commitment to delivering the most accurate, fastest, and most reliable cost estimates in the industry. With 7+ years of hands-on construction cost management across residential, commercial, and industrial sectors, Ali has led a team that has completed over 3,500 projects totaling $125M+ in value.</p>
+          <p class="team-card-bio">Ali founded JW Construction Estimating with a commitment to delivering the most accurate, fastest, and most reliable cost estimates in the industry. With 7+ years of hands-on construction cost management across residential, commercial, and industrial sectors, Ali has led a team that has completed over 3,500 projects totaling $175M+ in value.</p>
           <p class="team-card-bio">His vision: estimating services that match the caliber of the buildings they help build.</p>
           <div class="tcl">
             <a href="mailto:ali@jwestimating.com"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>ali@jwestimating.com</a>
@@ -901,7 +1003,7 @@ body.team-active #sub-nav{height:0;opacity:0;pointer-events:none;}
           <div class="team-card-role">Co-Founder — Capital Advisory</div>
           <h3 class="team-card-name">David Nicolosi</h3>
           <p class="team-card-bio">David leads JW's Capital Advisory division, bringing 15+ years of real estate development and investment expertise. His career spans ground-up development, institutional acquisitions, and complex capital structuring across gateway and secondary markets throughout North America.</p>
-          <p class="team-card-bio">David has informed over $125 million in total project value, helping clients deploy capital with precision and confidence.</p>
+          <p class="team-card-bio">David has informed over $175 million in total project value, helping clients deploy capital with precision and confidence.</p>
           <div class="tcl">
             <a href="mailto:david@jwestimating.com"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>david@jwestimating.com</a>
             <a href="https://www.linkedin.com/in/david-nicolosi" target="_blank"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
@@ -921,7 +1023,7 @@ body.team-active #sub-nav{height:0;opacity:0;pointer-events:none;}
     </div>
     <div class="process-grid" style="margin-top:64px;max-width:960px;margin-left:auto;margin-right:auto;">
       <div class="proc-item reveal reveal-delay-1" style="padding-left:0;"><h4>Construction Estimating</h4><p>3,500+ projects. Nationwide. The most accurate numbers in the industry with the fastest turnaround.</p></div>
-      <div class="proc-item reveal reveal-delay-2" style="padding-left:0;"><h4>Capital Advisory</h4><p>$125M+ in advised value. Institutional-grade analysis and strategic guidance for real estate capital decisions.</p></div>
+      <div class="proc-item reveal reveal-delay-2" style="padding-left:0;"><h4>Capital Advisory</h4><p>$175M+ in advised value. Institutional-grade analysis and strategic guidance for real estate capital decisions.</p></div>
       <div class="proc-item reveal reveal-delay-3" style="padding-left:0;"><h4>Architecture &amp; Design</h4><p>Full-service design studio where aesthetic ambition meets construction-ready precision and budget discipline.</p></div>
     </div>
   </section>
@@ -960,7 +1062,7 @@ const SUB_NAVS = {
     {label:'Services',    target:'est-services'},
     {label:'Process',     target:'est-process'},
     {label:'Featured Projects', target:'est-showcase', highlight:true},
-    {label:'About',       target:'est-about'},
+    {label:'Reviews',     target:'est-contact'},
     {label:'Contact',     target:'est-contact'},
   ],
   adv: [
