@@ -4,484 +4,325 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>JW Construction Estimating | Capital Advisory | Architecture & Design</title>
-<meta name="description" content="JW Construction Estimating — precision cost estimating, capital advisory, and architectural design services for commercial and residential projects."/>
+<meta name="description" content="JW Construction Estimating — precision cost estimating, capital advisory, and architectural design services."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet"/>
 <style>
-/* ─── RESET & VARIABLES ─────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --ink:#03050E;
-  --navy:#060A1A;
-  --navy2:#0A1028;
-  --navy3:#0F1638;
-  --gold:#F5A800;
-  --gold2:#FAB81C;
-  --gold-dim:rgba(245,168,0,.12);
-  --blue:#1B5AA8;
-  --blue2:#2467B8;
-  --blue3:#4A90D8;
-  --white:rgba(255,255,255,.92);
-  --white2:rgba(255,255,255,.62);
-  --white3:rgba(255,255,255,.38);
-  --white4:rgba(255,255,255,.14);
-  --white5:rgba(255,255,255,.07);
+  --ink:#03050E;--navy:#060A1A;--navy2:#0A1028;--navy3:#0F1638;
+  --gold:#F5A800;--gold2:#FAB81C;--gold-dim:rgba(245,168,0,.12);
+  --blue:#1B5AA8;--blue3:#4A90D8;
+  --w:rgba(255,255,255,.92);--w2:rgba(255,255,255,.62);--w3:rgba(255,255,255,.38);
+  --w4:rgba(255,255,255,.14);--w5:rgba(255,255,255,.07);
 }
-html{font-size:16px;scroll-behavior:smooth;}
-body{
-  background:var(--ink);
-  color:var(--white);
-  font-family:'DM Sans',sans-serif;
-  font-weight:400;
-  line-height:1.65;
-  cursor:none;
-  overflow:hidden;
-  height:100vh;
-}
-a{color:inherit;text-decoration:none;}
-img{display:block;max-width:100%;}
-button{border:none;background:none;cursor:none;font-family:inherit;}
+html{font-size:16px;}
+body{background:var(--ink);color:var(--w);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.65;cursor:none;overflow:hidden;height:100vh;}
+a{color:inherit;text-decoration:none;}img{display:block;max-width:100%;}button{border:none;background:none;cursor:none;font-family:inherit;}
 
-/* ─── CUSTOM CURSOR ─────────────────────────────────────────── */
-#cursor-dot{
-  position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;
-  pointer-events:none;z-index:99999;transform:translate(-50%,-50%);
-  transition:opacity .3s;
-}
-#cursor-ring{
-  position:fixed;width:38px;height:38px;border:1.5px solid rgba(245,168,0,.5);
-  border-radius:50%;pointer-events:none;z-index:99998;
-  transform:translate(-50%,-50%);transition:width .2s,height .2s,opacity .3s;
-}
+/* ── CURSOR ───────────────────────────── */
+#cur-dot{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);}
+#cur-ring{position:fixed;width:38px;height:38px;border:1.5px solid rgba(245,168,0,.5);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .2s,height .2s;}
 
-/* ─── PRELOADER ─────────────────────────────────────────────── */
-#preloader{
-  position:fixed;inset:0;z-index:99990;background:var(--ink);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;
-  transition:opacity .6s ease, visibility .6s ease;
-}
+/* ── PRELOADER ────────────────────────── */
+#preloader{position:fixed;inset:0;z-index:99990;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;transition:opacity .6s,visibility .6s;}
 #preloader.out{opacity:0;visibility:hidden;}
-.pre-logo{width:56px;height:64px;animation:pre-pulse 1.4s ease-in-out infinite;}
-@keyframes pre-pulse{0%,100%{opacity:.4;transform:scale(.96);}50%{opacity:1;transform:scale(1.04);}}
-.pre-bar{width:160px;height:2px;background:var(--white5);border-radius:2px;overflow:hidden;}
-.pre-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:2px;animation:pre-load 1.2s ease forwards;}
-@keyframes pre-load{from{width:0;}to{width:100%;}}
+.pre-logo{width:56px;height:64px;animation:ppulse 1.4s ease-in-out infinite;}
+@keyframes ppulse{0%,100%{opacity:.4;transform:scale(.96);}50%{opacity:1;transform:scale(1.04);}}
+.pre-bar{width:160px;height:2px;background:var(--w5);border-radius:2px;overflow:hidden;}
+.pre-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));animation:pfill 1.2s ease forwards;}
+@keyframes pfill{from{width:0;}to{width:100%;}}
 
-/* ─── DIVISION SWITCHER ─────────────────────────────────────── */
-#ds{
-  position:fixed;top:0;left:0;right:0;z-index:9999;height:44px;
-  background:rgba(3,5,14,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(245,168,0,.12);
-  display:grid;grid-template-columns:repeat(4,1fr);
-}
-.ds-tab{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  cursor:none;border-right:1px solid rgba(255,255,255,.06);
-  font-size:.61rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(255,255,255,.38);transition:all .22s;position:relative;
-  user-select:none;
-}
-.ds-tab:last-child{border-right:none;}
-.ds-tab:hover{color:rgba(255,255,255,.7);background:rgba(255,255,255,.03);}
-.ds-tab.active{color:var(--gold);}
-.ds-tab::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--gold),var(--gold2));
-  transform:scaleX(0);transition:transform .3s cubic-bezier(.4,0,.2,1);transform-origin:left;
-}
-.ds-tab.active::after{transform:scaleX(1);}
-.ds-num{font-size:.55rem;opacity:.5;}
-.ds-lbl{display:none;}
-@media(min-width:540px){.ds-lbl{display:inline;}}
-
-/* ─── PAGE SYSTEM ───────────────────────────────────────────── */
-.page{
-  display:none;position:fixed;inset:44px 0 0 0;overflow-y:auto;
-  background:var(--ink);
-}
-.page.active{display:block;}
-
-/* ─── PER-PAGE NAV ──────────────────────────────────────────── */
-.p-nav{
-  position:sticky;top:0;z-index:100;height:68px;
-  display:flex;align-items:center;justify-content:space-between;padding:0 5%;
-  background:rgba(3,5,14,.96);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+/* ══════════════════════════════════════
+   MAIN NAV (68px) — logo + division tabs + CTA
+══════════════════════════════════════ */
+#main-nav{
+  position:fixed;top:0;left:0;right:0;z-index:9999;height:68px;
+  display:flex;align-items:center;
+  background:rgba(3,5,14,.98);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
   border-bottom:1px solid rgba(255,255,255,.07);
 }
-.p-nav-logo{display:flex;align-items:center;gap:10px;}
-.p-nav-logo svg{width:30px;height:34px;}
-.p-nav-wordmark{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;letter-spacing:.04em;}
-.p-nav-wordmark span{color:var(--gold);}
-.p-nav-links{display:flex;align-items:center;gap:32px;}
-.p-nav-links a{
-  font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--white2);transition:color .2s;cursor:none;
+.mn-logo{
+  display:flex;align-items:center;gap:10px;padding:0 24px;flex-shrink:0;
+  border-right:1px solid var(--w5);height:100%;
 }
-.p-nav-links a:hover{color:var(--gold);}
-.p-nav-cta{
-  padding:9px 20px;border:1px solid var(--gold);border-radius:3px;
-  font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--gold);transition:all .22s;cursor:none;
+.mn-logo svg{width:28px;height:32px;}
+.mn-wordmark{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;letter-spacing:.03em;}
+.mn-wordmark span{color:var(--gold);}
+/* division tabs */
+.mn-tabs{display:flex;align-items:stretch;flex:1;height:100%;}
+.mn-tab{
+  display:flex;align-items:center;justify-content:center;gap:8px;flex:1;
+  cursor:none;border-right:1px solid var(--w5);
+  font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--w3);transition:all .22s;position:relative;padding:0 10px;
+  user-select:none;
 }
-.p-nav-cta:hover{background:var(--gold);color:var(--ink);}
-@media(max-width:860px){.p-nav-links{display:none;}}
+.mn-tab:hover{color:rgba(255,255,255,.7);background:rgba(255,255,255,.02);}
+.mn-tab.active{color:var(--gold);background:rgba(245,168,0,.04);}
+.mn-tab::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--gold2));
+  transform:scaleX(0);transition:transform .32s cubic-bezier(.4,0,.2,1);transform-origin:left;
+}
+.mn-tab.active::after{transform:scaleX(1);}
+.mn-num{font-size:.5rem;opacity:.45;flex-shrink:0;}
+.mn-lbl{display:none;}
+@media(min-width:600px){.mn-lbl{display:inline;}}
+/* CTA */
+.mn-cta{
+  flex-shrink:0;margin:0 20px;padding:9px 20px;
+  border:1px solid var(--gold);border-radius:3px;
+  font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold);transition:all .22s;cursor:none;white-space:nowrap;
+}
+.mn-cta:hover{background:var(--gold);color:var(--ink);}
 
-/* ─── HERO ──────────────────────────────────────────────────── */
-.p-hero{
-  position:relative;min-height:calc(100vh - 112px);
-  display:flex;flex-direction:column;justify-content:flex-end;
-  padding:0 5% 7%;overflow:hidden;
+/* ══════════════════════════════════════
+   SUB-NAV (44px) — per-division section links
+══════════════════════════════════════ */
+#sub-nav{
+  position:fixed;top:68px;left:0;right:0;z-index:9998;
+  height:44px;overflow:hidden;
+  background:rgba(6,10,26,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  display:flex;align-items:center;justify-content:center;
+  transition:height .28s ease,opacity .28s ease;
 }
-.p-hero-bg{
-  position:absolute;inset:0;
-  background-size:cover;background-position:center;z-index:0;
-  transition:transform 8s ease;
+#sub-nav.hidden{height:0;opacity:0;pointer-events:none;}
+.sn-link{
+  display:flex;align-items:center;height:44px;padding:0 22px;
+  font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--w3);transition:color .2s,background .2s;cursor:none;
+  border-right:1px solid rgba(255,255,255,.05);position:relative;
 }
+.sn-link:first-child{border-left:1px solid rgba(255,255,255,.05);}
+.sn-link:hover{color:var(--gold);background:rgba(245,168,0,.04);}
+.sn-link.highlight{color:var(--gold2);}
+
+/* ══════════════════════════════════════
+   PAGE SYSTEM
+══════════════════════════════════════ */
+.page{display:none;position:fixed;top:112px;left:0;right:0;bottom:0;overflow-y:auto;background:var(--ink);}
+.page.active{display:block;}
+/* team page: no sub-nav, starts at 68px */
+#page-team{top:68px;}
+body.team-active #sub-nav{height:0;opacity:0;pointer-events:none;}
+
+/* ── HERO ───────────────────────────── */
+.p-hero{position:relative;min-height:calc(100vh - 112px);display:flex;flex-direction:column;justify-content:flex-end;padding:0 5% 7%;overflow:hidden;}
+.p-hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0;transition:transform 8s ease;}
 .page.active .p-hero-bg{transform:scale(1.04);}
-.p-hero-ov{
-  position:absolute;inset:0;z-index:1;
-  background:linear-gradient(175deg,rgba(3,5,14,.3) 0%,rgba(6,10,26,.5) 35%,rgba(3,5,14,.88) 75%,var(--ink) 100%);
-}
+.p-hero-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(175deg,rgba(3,5,14,.3) 0%,rgba(6,10,26,.5) 35%,rgba(3,5,14,.88) 75%,var(--ink) 100%);}
 .p-hero-content{position:relative;z-index:2;max-width:860px;}
-.p-hero-label{
-  display:inline-flex;align-items:center;gap:10px;
-  font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:22px;
-}
+.p-hero-label{display:inline-flex;align-items:center;gap:10px;font-size:.65rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;}
 .p-hero-label::before{content:'';width:32px;height:1px;background:var(--gold);}
-.p-hero h1{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2.6rem,6.5vw,5rem);
-  font-weight:600;line-height:1.06;letter-spacing:-.01em;
-  color:#fff;margin-bottom:24px;
-}
+.p-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,6.5vw,5rem);font-weight:600;line-height:1.06;color:#fff;margin-bottom:24px;}
 .p-hero h1 em{font-style:italic;color:var(--gold);}
-.p-hero-sub{
-  font-size:clamp(.9rem,1.8vw,1.05rem);font-weight:300;
-  color:rgba(255,255,255,.72);max-width:520px;line-height:1.7;margin-bottom:40px;
-}
+.p-hero-sub{font-size:clamp(.9rem,1.8vw,1.05rem);font-weight:300;color:rgba(255,255,255,.72);max-width:520px;line-height:1.7;margin-bottom:40px;}
 .p-hero-btns{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:56px;}
-.btn-gold{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:14px 30px;background:linear-gradient(135deg,var(--gold),var(--gold2));
-  color:var(--ink);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  border-radius:3px;transition:all .25s;cursor:none;
-}
+.btn-gold{display:inline-flex;align-items:center;gap:10px;padding:14px 30px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:3px;transition:all .25s;cursor:none;}
 .btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(245,168,0,.35);}
-.btn-outline{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:13px 28px;border:1px solid rgba(255,255,255,.3);
-  color:rgba(255,255,255,.85);font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-  border-radius:3px;transition:all .25s;cursor:none;
-}
+.btn-outline{display:inline-flex;align-items:center;gap:10px;padding:13px 28px;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.85);font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:3px;transition:all .25s;cursor:none;}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
-.p-hero-kpis{
-  display:flex;flex-wrap:wrap;gap:0;
-  border-top:1px solid rgba(255,255,255,.1);
-  padding-top:40px;
-}
+.p-hero-kpis{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid rgba(255,255,255,.1);padding-top:40px;}
 .p-kpi{padding:0 40px 0 0;}
-.p-kpi-val{
-  font-family:'Cormorant Garamond',serif;
-  font-size:2.2rem;font-weight:600;color:var(--gold);line-height:1;
-  margin-bottom:4px;
-}
-.p-kpi-lbl{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--white3);}
+.p-kpi-val{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--gold);line-height:1;margin-bottom:4px;}
+.p-kpi-lbl{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--w3);}
 
-/* ─── SECTION SCAFFOLDING ───────────────────────────────────── */
+/* ── SECTIONS ───────────────────────── */
 .section{padding:96px 5%;}
 .section-sm{padding:64px 5%;}
-.section-label{
-  display:inline-flex;align-items:center;gap:10px;
-  font-size:.63rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:16px;
-}
+.section-label{display:inline-flex;align-items:center;gap:10px;font-size:.63rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
 .section-label::before{content:'';width:24px;height:1px;background:var(--gold);}
-.section-h{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.9rem,4vw,2.9rem);font-weight:600;line-height:1.1;
-  letter-spacing:-.01em;color:#fff;margin-bottom:16px;
-}
+.section-h{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,4vw,2.9rem);font-weight:600;line-height:1.1;color:#fff;margin-bottom:16px;}
 .section-h em{font-style:italic;color:var(--gold);}
-.section-sub{
-  font-size:.95rem;font-weight:300;color:var(--white2);
-  max-width:560px;line-height:1.72;margin-bottom:48px;
-}
+.section-sub{font-size:.95rem;font-weight:300;color:var(--w2);max-width:560px;line-height:1.72;margin-bottom:48px;}
 .divider{height:1px;background:rgba(255,255,255,.07);margin:0 5%;}
 
-/* ─── SERVICES GRID ─────────────────────────────────────────── */
-.srv-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-  gap:2px;
-}
-.srv-card{
-  position:relative;padding:44px 36px;background:var(--navy2);
-  overflow:hidden;transition:all .3s;cursor:default;
-}
+/* ── SERVICE CARDS ──────────────────── */
+.srv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px;}
+.srv-card{position:relative;padding:44px 36px;background:var(--navy2);overflow:hidden;transition:all .3s;}
 .srv-card:hover{background:var(--navy3);}
-.srv-card-icon{
-  width:44px;height:44px;border:1px solid var(--gold-dim);border-radius:4px;
-  display:flex;align-items:center;justify-content:center;margin-bottom:20px;
-  background:rgba(245,168,0,.06);
-}
+.srv-card-icon{width:44px;height:44px;border:1px solid var(--gold-dim);border-radius:4px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;background:rgba(245,168,0,.06);}
 .srv-card-icon svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:1.5;}
-.srv-card h3{
-  font-family:'Cormorant Garamond',serif;font-size:1.22rem;font-weight:600;
-  color:#fff;margin-bottom:10px;
-}
-.srv-card p{font-size:.84rem;font-weight:300;color:var(--white2);line-height:1.68;}
-.srv-card-line{
-  position:absolute;bottom:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,var(--gold),transparent);
-  transform:scaleX(0);transform-origin:left;transition:transform .35s;
-}
+.srv-card h3{font-family:'Cormorant Garamond',serif;font-size:1.22rem;font-weight:600;color:#fff;margin-bottom:10px;}
+.srv-card p{font-size:.84rem;font-weight:300;color:var(--w2);line-height:1.68;}
+.srv-card-line{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:transform .35s;}
 .srv-card:hover .srv-card-line{transform:scaleX(1);}
 
-/* ─── PROCESS ───────────────────────────────────────────────── */
-.process-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
-  gap:32px;counter-reset:proc;
-}
-.proc-item{counter-increment:proc;position:relative;padding-left:20px;}
-.proc-item::before{
-  content:counter(proc,decimal-leading-zero);
-  display:block;font-size:.6rem;font-weight:700;letter-spacing:.14em;
-  color:var(--gold);margin-bottom:12px;
-}
-.proc-item h4{
-  font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;
-  color:#fff;margin-bottom:8px;
-}
-.proc-item p{font-size:.82rem;color:var(--white2);line-height:1.65;}
+/* ── PROCESS ────────────────────────── */
+.process-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:32px;counter-reset:proc;}
+.proc-item{counter-increment:proc;padding-left:20px;}
+.proc-item::before{content:counter(proc,decimal-leading-zero);display:block;font-size:.6rem;font-weight:700;letter-spacing:.14em;color:var(--gold);margin-bottom:12px;}
+.proc-item h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;margin-bottom:8px;}
+.proc-item p{font-size:.82rem;color:var(--w2);line-height:1.65;}
 
-/* ─── STATS BAR ─────────────────────────────────────────────── */
-.stats-bar{
-  background:var(--navy2);border-top:1px solid var(--white5);
-  border-bottom:1px solid var(--white5);padding:56px 5%;
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:40px;
-  text-align:center;
-}
-.stat-item-val{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2rem,4vw,2.8rem);font-weight:600;
-  color:var(--gold);line-height:1;margin-bottom:6px;
-}
-.stat-item-lbl{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--white3);}
+/* ── STATS BAR ──────────────────────── */
+.stats-bar{background:var(--navy2);border-top:1px solid var(--w5);border-bottom:1px solid var(--w5);padding:56px 5%;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:40px;text-align:center;}
+.stat-item-val{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:600;color:var(--gold);line-height:1;margin-bottom:6px;}
+.stat-item-lbl{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--w3);}
 
-/* ─── TESTIMONIAL ───────────────────────────────────────────── */
+/* ── SHOWCASE / PROJECT CARDS ───────── */
+.showcase-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:2px;}
+.showcase-card{position:relative;overflow:hidden;aspect-ratio:16/9;cursor:default;}
+.showcase-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .55s ease;}
+.showcase-card:hover .showcase-bg{transform:scale(1.06);}
+.showcase-ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,5,14,.92) 0%,rgba(3,5,14,.25) 65%);}
+.showcase-body{position:absolute;bottom:0;left:0;right:0;padding:28px 24px;}
+.showcase-tag{font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+.showcase-body h4{font-family:'Cormorant Garamond',serif;font-size:1.18rem;font-weight:600;color:#fff;margin-bottom:6px;}
+.showcase-body p{font-size:.78rem;color:var(--w2);line-height:1.5;}
+.showcase-value{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold2);}
+
+/* ── TESTIMONIAL ────────────────────── */
 .testimonial-wrap{max-width:800px;margin:0 auto;text-align:center;padding:80px 5%;}
 .testimonial-stars{display:flex;justify-content:center;gap:4px;margin-bottom:28px;}
 .testimonial-stars span{color:var(--gold);font-size:1rem;}
-.testimonial-quote{
-  font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2.5vw,1.8rem);
-  font-style:italic;font-weight:400;color:rgba(255,255,255,.88);
-  line-height:1.55;margin-bottom:28px;
-}
-.testimonial-author{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--white3);}
+.testimonial-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2.5vw,1.8rem);font-style:italic;font-weight:400;color:rgba(255,255,255,.88);line-height:1.55;margin-bottom:28px;}
+.testimonial-author{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--w3);}
 
-/* ─── TEAM CARDS ─────────────────────────────────────────────── */
-.team-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));
-  gap:2px;
-}
+/* ── ABOUT / TEAM ───────────────────── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:48px;}}
+.about-photo-wrap{position:relative;}
+.about-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;filter:saturate(.72) contrast(1.14) brightness(.94);}
+.about-photo-frame{position:absolute;top:24px;left:24px;right:-24px;bottom:-24px;border:1px solid var(--gold-dim);z-index:-1;}
+.about-text p{font-size:.9rem;color:var(--w2);line-height:1.8;margin-bottom:16px;}
+.about-sig{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--gold);margin-top:28px;}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:2px;}
 .team-card{background:var(--navy2);overflow:hidden;display:flex;flex-direction:column;}
-.team-card-photo{
-  width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;
-  filter:saturate(0.72) contrast(1.14) brightness(0.94);
-  transition:transform .6s ease,filter .4s;
-}
-.team-card:hover .team-card-photo{transform:scale(1.03);filter:saturate(0.9) contrast(1.1) brightness(0.98);}
+.team-card-photo{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;filter:saturate(.72) contrast(1.14) brightness(.94);transition:transform .6s,filter .4s;}
+.team-card:hover .team-card-photo{transform:scale(1.03);filter:saturate(.9) contrast(1.1) brightness(.98);}
 .team-card-body{padding:36px 32px 40px;}
-.team-card-role{
-  font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:10px;
-}
-.team-card-name{
-  font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:600;
-  color:#fff;margin-bottom:14px;line-height:1.1;
-}
-.team-card-bio{font-size:.85rem;font-weight:300;color:var(--white2);line-height:1.72;margin-bottom:12px;}
-.team-card-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
-.team-card-link{
-  display:inline-flex;align-items:center;gap:7px;
-  font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--white3);border:1px solid var(--white4);padding:8px 14px;border-radius:3px;
-  transition:all .22s;cursor:none;
-}
-.team-card-link:hover{color:var(--gold);border-color:var(--gold-dim);}
-.team-card-link svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.8;}
+.team-card-role{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.team-card-name{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:600;color:#fff;margin-bottom:14px;line-height:1.1;}
+.team-card-bio{font-size:.85rem;font-weight:300;color:var(--w2);line-height:1.72;margin-bottom:12px;}
+.tcl{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+.tcl a{display:inline-flex;align-items:center;gap:7px;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--w3);border:1px solid var(--w4);padding:8px 14px;border-radius:3px;transition:all .22s;cursor:none;}
+.tcl a:hover{color:var(--gold);border-color:var(--gold-dim);}
+.tcl a svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.8;}
 
-/* ─── CONTACT FORM ──────────────────────────────────────────── */
-.contact-wrap{
-  display:grid;grid-template-columns:1fr 1fr;gap:80px;
-  align-items:start;
-}
+/* ── ADVISORY FOCUS ─────────────────── */
+.adv-focus-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;}
+.adv-focus-card{padding:32px 28px;border:1px solid var(--w5);border-radius:4px;background:var(--navy2);transition:border-color .3s,background .3s;}
+.adv-focus-card:hover{border-color:var(--gold-dim);background:var(--navy3);}
+.adv-focus-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:600;color:rgba(245,168,0,.18);line-height:1;margin-bottom:12px;}
+.adv-focus-card h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;margin-bottom:8px;}
+.adv-focus-card p{font-size:.82rem;color:var(--w2);line-height:1.65;}
+
+/* ── ARCH PORTFOLIO ─────────────────── */
+.arch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:3px;}
+.arch-item{position:relative;overflow:hidden;aspect-ratio:4/3;}
+.arch-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .5s;}
+.arch-item:hover .arch-bg{transform:scale(1.06);}
+.arch-ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,5,14,.85) 0%,rgba(3,5,14,.2) 60%);}
+.arch-label{position:absolute;bottom:0;left:0;right:0;padding:24px 20px;}
+.arch-label h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;margin-bottom:4px;}
+.arch-label p{font-size:.72rem;color:var(--w2);}
+
+/* ── CONTACT ────────────────────────── */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
 @media(max-width:860px){.contact-wrap{grid-template-columns:1fr;gap:48px;}}
-.contact-info h3{
-  font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;
-  color:#fff;margin-bottom:16px;
-}
-.contact-info p{font-size:.88rem;color:var(--white2);line-height:1.72;margin-bottom:32px;}
-.contact-detail{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px;}
-.contact-detail svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.5;flex-shrink:0;margin-top:2px;}
-.contact-detail-text{font-size:.84rem;color:var(--white2);line-height:1.6;}
-.contact-detail-text strong{display:block;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--white3);margin-bottom:3px;}
-.form-group{margin-bottom:18px;}
-.form-group label{display:block;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--white3);margin-bottom:8px;}
-.form-group input,
-.form-group select,
-.form-group textarea{
-  width:100%;background:var(--navy2);border:1px solid var(--white5);
-  padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:.88rem;
-  border-radius:3px;transition:border-color .2s;outline:none;
-}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:rgba(245,168,0,.4);}
-.form-group select option{background:var(--navy2);color:#fff;}
-.form-group textarea{height:130px;resize:vertical;}
+.contact-info h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:#fff;margin-bottom:16px;}
+.contact-info p{font-size:.88rem;color:var(--w2);line-height:1.72;margin-bottom:32px;}
+.cd{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px;}
+.cd svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.5;flex-shrink:0;margin-top:2px;}
+.cd-text{font-size:.84rem;color:var(--w2);line-height:1.6;}
+.cd-text strong{display:block;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--w3);margin-bottom:3px;}
+.fg{margin-bottom:18px;}
+.fg label{display:block;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--w3);margin-bottom:8px;}
+.fg input,.fg select,.fg textarea{width:100%;background:var(--navy2);border:1px solid var(--w5);padding:13px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:.88rem;border-radius:3px;transition:border-color .2s;outline:none;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:rgba(245,168,0,.4);}
+.fg select option{background:var(--navy2);color:#fff;}
+.fg textarea{height:130px;resize:vertical;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 @media(max-width:540px){.form-row{grid-template-columns:1fr;}}
-.form-submit{
-  width:100%;padding:15px;background:linear-gradient(135deg,var(--gold),var(--gold2));
-  color:var(--ink);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  border-radius:3px;transition:all .25s;cursor:none;
-}
+.form-submit{width:100%;padding:15px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:3px;transition:all .25s;cursor:none;}
 .form-submit:hover{transform:translateY(-1px);box-shadow:0 8px 30px rgba(245,168,0,.3);}
-.form-success{
-  display:none;text-align:center;padding:40px;border:1px solid var(--gold-dim);
-  border-radius:4px;background:rgba(245,168,0,.04);
-}
+.form-success{display:none;text-align:center;padding:40px;border:1px solid var(--gold-dim);border-radius:4px;background:rgba(245,168,0,.04);}
 .form-success.show{display:block;}
 
-/* ─── FOOTER ────────────────────────────────────────────────── */
-.p-footer{
-  background:var(--navy);border-top:1px solid var(--white5);
-  padding:56px 5% 40px;
-}
-.p-footer-grid{
-  display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px;
-}
+/* ── FOOTER ─────────────────────────── */
+.p-footer{background:var(--navy);border-top:1px solid var(--w5);padding:56px 5% 40px;}
+.p-footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px;}
 @media(max-width:720px){.p-footer-grid{grid-template-columns:1fr;gap:32px;}}
 .footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
 .footer-brand svg{width:28px;height:32px;}
 .footer-brand-name{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;}
 .footer-brand-name span{color:var(--gold);}
-.footer-desc{font-size:.82rem;color:var(--white2);line-height:1.7;max-width:280px;margin-bottom:20px;}
+.footer-desc{font-size:.82rem;color:var(--w2);line-height:1.7;max-width:280px;margin-bottom:20px;}
 .footer-socials{display:flex;gap:10px;}
-.footer-social{
-  width:34px;height:34px;border:1px solid var(--white4);border-radius:3px;
-  display:flex;align-items:center;justify-content:center;transition:all .2s;cursor:none;
-}
+.footer-social{width:34px;height:34px;border:1px solid var(--w4);border-radius:3px;display:flex;align-items:center;justify-content:center;transition:all .2s;cursor:none;}
 .footer-social:hover{border-color:var(--gold);color:var(--gold);}
 .footer-social svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.7;}
-.footer-col h5{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--white3);margin-bottom:16px;}
+.footer-col h5{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--w3);margin-bottom:16px;}
 .footer-col ul{list-style:none;}
 .footer-col ul li{margin-bottom:9px;}
-.footer-col ul li a{font-size:.82rem;color:var(--white2);transition:color .2s;cursor:none;}
+.footer-col ul li a{font-size:.82rem;color:var(--w2);transition:color .2s;cursor:none;}
 .footer-col ul li a:hover{color:var(--gold);}
-.footer-bottom{
-  border-top:1px solid var(--white5);padding-top:28px;
-  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
-}
-.footer-copy{font-size:.72rem;color:var(--white3);}
+.footer-bottom{border-top:1px solid var(--w5);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.footer-copy{font-size:.72rem;color:var(--w3);}
 .footer-copy span{color:var(--gold);}
 
-/* ─── SCROLL REVEAL ─────────────────────────────────────────── */
+/* ── SCROLL REVEAL ──────────────────── */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
 .reveal.in{opacity:1;transform:none;}
-.reveal-delay-1{transition-delay:.1s;}
-.reveal-delay-2{transition-delay:.2s;}
-.reveal-delay-3{transition-delay:.3s;}
-.reveal-delay-4{transition-delay:.4s;}
+.reveal-delay-1{transition-delay:.1s;}.reveal-delay-2{transition-delay:.2s;}
+.reveal-delay-3{transition-delay:.3s;}.reveal-delay-4{transition-delay:.4s;}
 
-/* ─── ABOUT BIO SECTION ─────────────────────────────────────── */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-@media(max-width:900px){.about-grid{grid-template-columns:1fr;gap:48px;}}
-.about-photo-wrap{position:relative;}
-.about-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;filter:saturate(0.72) contrast(1.14) brightness(0.94);}
-.about-photo-frame{position:absolute;top:24px;left:24px;right:-24px;bottom:-24px;border:1px solid var(--gold-dim);z-index:-1;}
-.about-text p{font-size:.9rem;color:var(--white2);line-height:1.8;margin-bottom:16px;}
-.about-sig{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--gold);margin-top:28px;}
-
-/* ─── ADVISORY PAGE ─────────────────────────────────────────── */
-.adv-focus-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;}
-.adv-focus-card{padding:32px 28px;border:1px solid var(--white5);border-radius:4px;background:var(--navy2);transition:border-color .3s,background .3s;}
-.adv-focus-card:hover{border-color:var(--gold-dim);background:var(--navy3);}
-.adv-focus-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:600;color:rgba(245,168,0,.18);line-height:1;margin-bottom:12px;}
-.adv-focus-card h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;margin-bottom:8px;}
-.adv-focus-card p{font-size:.82rem;color:var(--white2);line-height:1.65;}
-
-/* ─── ARCH PAGE ──────────────────────────────────────────────── */
-.arch-portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:3px;}
-.arch-port-item{position:relative;overflow:hidden;aspect-ratio:4/3;cursor:default;}
-.arch-port-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .5s ease;}
-.arch-port-item:hover .arch-port-bg{transform:scale(1.06);}
-.arch-port-ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(3,5,14,.85) 0%,rgba(3,5,14,.2) 60%);transition:background .3s;}
-.arch-port-item:hover .arch-port-ov{background:linear-gradient(0deg,rgba(3,5,14,.9) 0%,rgba(3,5,14,.35) 60%);}
-.arch-port-label{position:absolute;bottom:0;left:0;right:0;padding:24px 20px;}
-.arch-port-label h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;margin-bottom:4px;}
-.arch-port-label p{font-size:.72rem;color:var(--white2);}
-
-/* ─── TEAM PAGE ──────────────────────────────────────────────── */
-.team-page-hero{background:var(--navy2);padding:80px 5% 64px;text-align:center;border-bottom:1px solid var(--white5);}
-.team-page-hero p{font-size:.95rem;color:var(--white2);max-width:560px;margin:0 auto;line-height:1.75;}
+/* ── TEAM PAGE HERO ─────────────────── */
+.team-page-hero{background:var(--navy2);padding:80px 5% 64px;text-align:center;border-bottom:1px solid var(--w5);}
+.team-page-hero p{font-size:.95rem;color:var(--w2);max-width:560px;margin:0 auto;line-height:1.75;}
 </style>
 </head>
 <body>
 
-<!-- CURSOR -->
-<div id="cursor-dot"></div>
-<div id="cursor-ring"></div>
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
 
-<!-- PRELOADER -->
 <div id="preloader">
-  <svg class="pre-logo" viewBox="0 0 56 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg class="pre-logo" viewBox="0 0 56 64" fill="none">
     <polygon points="28,2 16,14 16,48 7,48 7,57 16,57 24,48 24,14" fill="#F5A800"/>
     <polygon points="28,2 40,14 40,44 46,37 50,44 50,57 40,57 32,48 32,14" fill="#1B5AA8"/>
-    <polygon points="24,14 28,2 32,14 28,18" fill="#ffffff" opacity=".18"/>
+    <polygon points="24,14 28,2 32,14 28,18" fill="#fff" opacity=".18"/>
   </svg>
   <div class="pre-bar"><div class="pre-fill"></div></div>
 </div>
 
-<!-- DIVISION SWITCHER -->
-<div id="ds">
-  <div class="ds-tab active" id="dst-est" onclick="switchPage('est')">
-    <span class="ds-num">01</span>
-    <span class="ds-lbl">Construction Estimating</span>
+<!-- ══ MAIN NAV ══════════════════════════════════════════════════ -->
+<nav id="main-nav">
+  <div class="mn-logo">
+    <svg viewBox="0 0 56 64" fill="none"><polygon points="28,2 16,14 16,48 7,48 7,57 16,57 24,48 24,14" fill="#F5A800"/><polygon points="28,2 40,14 40,44 46,37 50,44 50,57 40,57 32,48 32,14" fill="#1B5AA8"/><polygon points="24,14 28,2 32,14 28,18" fill="#fff" opacity=".18"/></svg>
+    <div class="mn-wordmark"><span>JW</span></div>
   </div>
-  <div class="ds-tab" id="dst-adv" onclick="switchPage('adv')">
-    <span class="ds-num">02</span>
-    <span class="ds-lbl">Capital Advisory</span>
+  <div class="mn-tabs">
+    <div class="mn-tab active" id="mnt-est" onclick="switchPage('est')">
+      <span class="mn-num">01</span><span class="mn-lbl">Construction Estimating</span>
+    </div>
+    <div class="mn-tab" id="mnt-adv" onclick="switchPage('adv')">
+      <span class="mn-num">02</span><span class="mn-lbl">Capital Advisory</span>
+    </div>
+    <div class="mn-tab" id="mnt-des" onclick="switchPage('des')">
+      <span class="mn-num">03</span><span class="mn-lbl">Architecture &amp; Design</span>
+    </div>
+    <div class="mn-tab" id="mnt-team" onclick="switchPage('team')">
+      <span class="mn-num">04</span><span class="mn-lbl">Meet the Team</span>
+    </div>
   </div>
-  <div class="ds-tab" id="dst-des" onclick="switchPage('des')">
-    <span class="ds-num">03</span>
-    <span class="ds-lbl">Architecture &amp; Design</span>
-  </div>
-  <div class="ds-tab" id="dst-team" onclick="switchPage('team')">
-    <span class="ds-num">04</span>
-    <span class="ds-lbl">Meet the Team</span>
-  </div>
+  <a id="mn-cta" class="mn-cta" href="#est-contact">Get a Quote</a>
+</nav>
+
+<!-- ══ SUB-NAV ════════════════════════════════════════════════════ -->
+<div id="sub-nav">
+  <!-- populated by JS -->
 </div>
 
-<!-- ══════════════════════════════════
+<!-- ══════════════════════════════════════════════════════════════
      PAGE 01 — CONSTRUCTION ESTIMATING
-═══════════════════════════════════ -->
+═══════════════════════════════════════════════════════════════ -->
 <div class="page active" id="page-est">
-  <nav class="p-nav">
-    <div class="p-nav-logo">
-      <svg viewBox="0 0 56 64" fill="none"><polygon points="28,2 16,14 16,48 7,48 7,57 16,57 24,48 24,14" fill="#F5A800"/><polygon points="28,2 40,14 40,44 46,37 50,44 50,57 40,57 32,48 32,14" fill="#1B5AA8"/><polygon points="24,14 28,2 32,14 28,18" fill="#ffffff" opacity=".18"/></svg>
-      <div class="p-nav-wordmark"><span>JW</span> Estimating</div>
-    </div>
-    <div class="p-nav-links">
-      <a href="#est-services">Services</a>
-      <a href="#est-process">Process</a>
-      <a href="#est-about">About</a>
-      <a href="#est-contact">Contact</a>
-    </div>
-    <a href="#est-contact" class="p-nav-cta">Get a Quote</a>
-  </nav>
 
   <section class="p-hero">
     <div class="p-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1541976590-713941681591?w=1800&q=80&auto=format&fit=crop');"></div>
@@ -489,7 +330,7 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
     <div class="p-hero-content">
       <div class="p-hero-label">Construction Estimating</div>
       <h1>Precision Estimates.<br/>Built to <em>Win Bids.</em></h1>
-      <p class="p-hero-sub">Professional cost estimating and material takeoffs for commercial and residential construction — delivered fast, accurate, and backed by 7 years of industry expertise.</p>
+      <p class="p-hero-sub">Professional cost estimating and material takeoffs for commercial and residential construction — fast, accurate, and backed by 7 years of industry expertise.</p>
       <div class="p-hero-btns">
         <a href="#est-contact" class="btn-gold">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 10.82 19.79 19.79 0 01.22 2.15 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -509,6 +350,7 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
     </div>
   </section>
 
+  <!-- SERVICES -->
   <section class="section" id="est-services">
     <div class="reveal">
       <div class="section-label">What We Do</div>
@@ -557,6 +399,7 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
 
   <div class="divider"></div>
 
+  <!-- PROCESS -->
   <section class="section" id="est-process">
     <div class="reveal">
       <div class="section-label">How It Works</div>
@@ -571,6 +414,7 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
     </div>
   </section>
 
+  <!-- STATS -->
   <div class="stats-bar">
     <div class="stat-item reveal"><div class="stat-item-val" data-target="3500" data-suffix="+">0</div><div class="stat-item-lbl">Projects Completed</div></div>
     <div class="stat-item reveal reveal-delay-1"><div class="stat-item-val">$125M+</div><div class="stat-item-lbl">Total Project Value</div></div>
@@ -579,10 +423,63 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
     <div class="stat-item reveal reveal-delay-4"><div class="stat-item-val" data-target="48" data-suffix="h">0</div><div class="stat-item-lbl">Avg Turnaround</div></div>
   </div>
 
+  <!-- FEATURED PROJECTS SHOWCASE -->
+  <section class="section" id="est-showcase">
+    <div class="reveal">
+      <div class="section-label">Featured Work</div>
+      <h2 class="section-h">Projects We're <em>Proud Of</em></h2>
+      <p class="section-sub">A selection of high-value, complex, and award-winning projects our estimates helped bring to life.</p>
+    </div>
+    <div class="showcase-grid">
+      <div class="showcase-card reveal reveal-delay-1">
+        <div class="showcase-bg" style="background-image:url('https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=800&q=80&auto=format&fit=crop');"></div>
+        <div class="showcase-ov"></div>
+        <div class="showcase-body">
+          <div class="showcase-tag">Healthcare · Federal</div>
+          <h4>Veterans Affairs Medical Center</h4>
+          <p>Full MEP &amp; structural cost estimate for a 320,000 SF federal medical facility expansion.</p>
+          <div class="showcase-value">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            $48M Estimate Value
+          </div>
+        </div>
+      </div>
+      <div class="showcase-card reveal reveal-delay-2">
+        <div class="showcase-bg" style="background-image:url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80&auto=format&fit=crop');"></div>
+        <div class="showcase-ov"></div>
+        <div class="showcase-body">
+          <div class="showcase-tag">Luxury Residential · Multi-Phase</div>
+          <h4>Bull Path Estate Development</h4>
+          <p>Complete cost management and material takeoff for a 14-lot luxury residential community.</p>
+          <div class="showcase-value">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            $22M Estimate Value
+          </div>
+        </div>
+      </div>
+      <div class="showcase-card reveal reveal-delay-3">
+        <div class="showcase-bg" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80&auto=format&fit=crop');"></div>
+        <div class="showcase-ov"></div>
+        <div class="showcase-body">
+          <div class="showcase-tag">Commercial · High-Rise</div>
+          <h4>Eppley Commercial Tower</h4>
+          <p>Bid-ready estimate for a 24-story mixed-use tower — ground floor retail, 18 office floors, 6 residential.</p>
+          <div class="showcase-value">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            $74M Estimate Value
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT ALI -->
   <section class="section" id="est-about">
     <div class="about-grid">
       <div class="about-photo-wrap reveal">
-        <img src="ali.jpg" alt="Ali Husnain — CEO, JW Construction Estimating" class="about-photo"/>
+        <img src="ali.jpg" alt="Ali Husnain — CEO" class="about-photo"/>
         <div class="about-photo-frame"></div>
       </div>
       <div class="reveal reveal-delay-2">
@@ -591,28 +488,19 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
         <p style="font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;">Founder &amp; CEO — JW Construction Estimating LLC</p>
         <div class="about-text">
           <p>Ali Husnain founded JW Construction Estimating with a single conviction: contractors deserve estimating services that are as rigorous as the buildings they construct. With over 7 years of hands-on experience, Ali has led the team to complete more than 3,500 projects across residential, commercial, and industrial sectors.</p>
-          <p>His technical precision, deep knowledge of material markets, and commitment to rapid turnaround have made JW a trusted partner for general contractors, developers, and subcontractors across North America.</p>
+          <p>His technical precision, deep knowledge of material markets, and commitment to rapid turnaround have made JW a trusted partner for GCs, developers, and subcontractors across North America.</p>
         </div>
         <div class="about-sig">Ali Husnain</div>
-        <div class="team-card-links">
-          <a href="mailto:ali@jwestimating.com" class="team-card-link">
-            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            ali@jwestimating.com
-          </a>
-          <a href="mailto:Jack@jwestimating.com" class="team-card-link">
-            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            Jack@jwestimating.com
-          </a>
-          <a href="https://www.linkedin.com/in/ali-husnain-7a05b5233" target="_blank" class="team-card-link">
-            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            LinkedIn
-          </a>
+        <div class="tcl">
+          <a href="mailto:ali@jwestimating.com"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>ali@jwestimating.com</a>
+          <a href="mailto:Jack@jwestimating.com"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Jack@jwestimating.com</a>
+          <a href="https://www.linkedin.com/in/ali-husnain-7a05b5233" target="_blank"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
         </div>
       </div>
     </div>
   </section>
 
-  <div style="background:var(--navy3);border-top:1px solid var(--white5);border-bottom:1px solid var(--white5);">
+  <div style="background:var(--navy3);border-top:1px solid var(--w5);border-bottom:1px solid var(--w5);">
     <div class="testimonial-wrap reveal">
       <div class="testimonial-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
       <p class="testimonial-quote">"JW Estimating turned around a complete commercial bid package in under 36 hours — and we won the job. Their numbers were spot-on and the detail gave us complete confidence."</p>
@@ -620,6 +508,7 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
     </div>
   </div>
 
+  <!-- CONTACT -->
   <section class="section" id="est-contact">
     <div class="reveal">
       <div class="section-label">Get Started</div>
@@ -630,47 +519,34 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
       <div class="contact-info reveal">
         <h3>Let's Talk About Your Project</h3>
         <p>Whether you need a quick ballpark or a full bid-ready estimate, our team is ready. We work across all 50 states and serve clients in Canada and Australia.</p>
-        <div class="contact-detail">
-          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <div class="contact-detail-text"><strong>Email</strong>Jack@jwestimating.com<br/>ali@jwestimating.com</div>
-        </div>
-        <div class="contact-detail">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <div class="contact-detail-text"><strong>Turnaround</strong>Most estimates delivered within 24–48 hours</div>
-        </div>
-        <div class="contact-detail">
-          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <div class="contact-detail-text"><strong>Serving</strong>All 50 States · Canada · Australia</div>
-        </div>
+        <div class="cd"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><div class="cd-text"><strong>Email</strong>Jack@jwestimating.com<br/>ali@jwestimating.com</div></div>
+        <div class="cd"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><div class="cd-text"><strong>Turnaround</strong>Most estimates delivered within 24–48 hours</div></div>
+        <div class="cd"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="cd-text"><strong>Serving</strong>All 50 States · Canada · Australia</div></div>
       </div>
       <div class="reveal reveal-delay-2">
         <form id="est-form" action="https://formspree.io/f/xpwzlnqb" method="POST" onsubmit="handleFormSubmit(event,'est-success')">
           <div class="form-row">
-            <div class="form-group"><label>First Name *</label><input type="text" name="first_name" required placeholder="John"/></div>
-            <div class="form-group"><label>Last Name *</label><input type="text" name="last_name" required placeholder="Smith"/></div>
+            <div class="fg"><label>First Name *</label><input type="text" name="first_name" required placeholder="John"/></div>
+            <div class="fg"><label>Last Name *</label><input type="text" name="last_name" required placeholder="Smith"/></div>
           </div>
-          <div class="form-group"><label>Email Address *</label><input type="email" name="email" required placeholder="john@company.com"/></div>
-          <div class="form-group"><label>Phone Number</label><input type="tel" name="phone" placeholder="(555) 000-0000"/></div>
-          <div class="form-group">
+          <div class="fg"><label>Email Address *</label><input type="email" name="email" required placeholder="john@company.com"/></div>
+          <div class="fg"><label>Phone Number</label><input type="tel" name="phone" placeholder="(555) 000-0000"/></div>
+          <div class="fg">
             <label>Project Type *</label>
             <select name="project_type" required>
               <option value="">Select project type...</option>
-              <option>Residential — Custom Home</option>
-              <option>Residential — Renovation / Addition</option>
-              <option>Multi-Family</option>
-              <option>Commercial — Office / Retail</option>
-              <option>Commercial — Mixed-Use</option>
-              <option>Industrial / Warehouse</option>
-              <option>Hospitality</option>
-              <option>Other</option>
+              <option>Residential — Custom Home</option><option>Residential — Renovation / Addition</option>
+              <option>Multi-Family</option><option>Commercial — Office / Retail</option>
+              <option>Commercial — Mixed-Use</option><option>Industrial / Warehouse</option>
+              <option>Healthcare / Institutional</option><option>Hospitality</option><option>Other</option>
             </select>
           </div>
-          <div class="form-group"><label>Project Description</label><textarea name="message" placeholder="Brief description of the project scope, size, and timeline..."></textarea></div>
+          <div class="fg"><label>Project Description</label><textarea name="message" placeholder="Brief description of the project scope, size, and timeline..."></textarea></div>
           <button type="submit" class="form-submit">Submit Request →</button>
         </form>
         <div class="form-success" id="est-success">
           <p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold);margin-bottom:8px;">Request Received</p>
-          <p style="font-size:.85rem;color:var(--white2);">Thank you — we'll be in touch within 2 business hours.</p>
+          <p style="font-size:.85rem;color:var(--w2);">Thank you — we'll be in touch within 2 business hours.</p>
         </div>
       </div>
     </div>
@@ -679,62 +555,25 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
   <footer class="p-footer">
     <div class="p-footer-grid">
       <div>
-        <div class="footer-brand">
-          <svg viewBox="0 0 56 64" fill="none"><polygon points="28,2 16,14 16,48 7,48 7,57 16,57 24,48 24,14" fill="#F5A800"/><polygon points="28,2 40,14 40,44 46,37 50,44 50,57 40,57 32,48 32,14" fill="#1B5AA8"/><polygon points="24,14 28,2 32,14 28,18" fill="#ffffff" opacity=".18"/></svg>
-          <div class="footer-brand-name"><span>JW</span> Construction Estimating</div>
-        </div>
+        <div class="footer-brand"><svg viewBox="0 0 56 64" fill="none"><polygon points="28,2 16,14 16,48 7,48 7,57 16,57 24,48 24,14" fill="#F5A800"/><polygon points="28,2 40,14 40,44 46,37 50,44 50,57 40,57 32,48 32,14" fill="#1B5AA8"/><polygon points="24,14 28,2 32,14 28,18" fill="#fff" opacity=".18"/></svg><div class="footer-brand-name"><span>JW</span> Construction Estimating</div></div>
         <p class="footer-desc">Professional cost estimating trusted by contractors and developers across North America for 7+ years.</p>
         <div class="footer-socials">
           <a href="https://www.linkedin.com/in/ali-husnain-7a05b5233" target="_blank" class="footer-social"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-          <a href="https://www.instagram.com/jwestimating/" target="_blank" class="footer-social"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="https://www.instagram.com/jwestimating/" target="_blank" class="footer-social"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
         </div>
       </div>
-      <div class="footer-col">
-        <h5>Services</h5>
-        <ul>
-          <li><a href="#est-services">Residential Estimating</a></li>
-          <li><a href="#est-services">Commercial Estimating</a></li>
-          <li><a href="#est-services">Material Takeoffs</a></li>
-          <li><a href="#est-services">Bid Management</a></li>
-          <li><a href="#est-services">Value Engineering</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Company</h5>
-        <ul>
-          <li><a href="#est-about">About Ali</a></li>
-          <li><a href="#" onclick="switchPage('adv');return false;">Capital Advisory</a></li>
-          <li><a href="#" onclick="switchPage('des');return false;">Architecture &amp; Design</a></li>
-          <li><a href="#" onclick="switchPage('team');return false;">Meet the Team</a></li>
-          <li><a href="#est-contact">Contact</a></li>
-        </ul>
-      </div>
+      <div class="footer-col"><h5>Services</h5><ul><li><a href="#est-services">Residential Estimating</a></li><li><a href="#est-services">Commercial Estimating</a></li><li><a href="#est-services">Material Takeoffs</a></li><li><a href="#est-services">Bid Management</a></li><li><a href="#est-services">Value Engineering</a></li></ul></div>
+      <div class="footer-col"><h5>Company</h5><ul><li><a href="#est-showcase">Featured Projects</a></li><li><a href="#est-about">About Ali</a></li><li><a href="#" onclick="switchPage('adv');return false;">Capital Advisory</a></li><li><a href="#" onclick="switchPage('des');return false;">Architecture &amp; Design</a></li><li><a href="#est-contact">Contact</a></li></ul></div>
     </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">&copy; 2025 <span>JW Construction Estimating LLC</span>. All rights reserved.</p>
-      <p class="footer-copy">Built with precision.</p>
-    </div>
+    <div class="footer-bottom"><p class="footer-copy">&copy; 2025 <span>JW Construction Estimating LLC</span>. All rights reserved.</p><p class="footer-copy">Built with precision.</p></div>
   </footer>
 </div><!-- /page-est -->
 
 
-<!-- ══════════════════════════════════
+<!-- ══════════════════════════════════════════════════════════════
      PAGE 02 — CAPITAL ADVISORY
-═══════════════════════════════════ -->
+═══════════════════════════════════════════════════════════════ -->
 <div class="page" id="page-adv">
-  <nav class="p-nav">
-    <div class="p-nav-logo">
-      <svg viewBox="0 0 56 64" fill="none"><polygon points="28,2 16,14 16,48 7,48 7,57 16,57 24,48 24,14" fill="#F5A800"/><polygon points="28,2 40,14 40,44 46,37 50,44 50,57 40,57 32,48 32,14" fill="#1B5AA8"/><polygon points="24,14 28,2 32,14 28,18" fill="#ffffff" opacity=".18"/></svg>
-      <div class="p-nav-wordmark"><span>JW</span> Capital Advisory</div>
-    </div>
-    <div class="p-nav-links">
-      <a href="#adv-services">Services</a>
-      <a href="#adv-focus">Focus Areas</a>
-      <a href="#adv-david">Leadership</a>
-      <a href="#adv-contact">Contact</a>
-    </div>
-    <a href="#adv-contact" class="p-nav-cta">Start a Conversation</a>
-  </nav>
 
   <section class="p-hero">
     <div class="p-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1800&q=80&auto=format&fit=crop');"></div>
@@ -750,7 +589,7 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
         </a>
         <a href="#adv-focus" class="btn-outline">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          Our Focus Areas
+          Focus Areas
         </a>
       </div>
       <div class="p-hero-kpis">
@@ -768,42 +607,12 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
       <p class="section-sub">Institutional-grade advisory for developers and investors at every stage of the capital stack.</p>
     </div>
     <div class="srv-grid">
-      <div class="srv-card reveal reveal-delay-1">
-        <div class="srv-card-icon"><svg viewBox="0 0 24 24"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="M13 13l6 6"/></svg></div>
-        <h3>Development Advisory</h3>
-        <p>End-to-end guidance for real estate development — from site selection and feasibility through entitlement, financing, and exit strategy.</p>
-        <div class="srv-card-line"></div>
-      </div>
-      <div class="srv-card reveal reveal-delay-2">
-        <div class="srv-card-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-        <h3>Capital Structuring</h3>
-        <p>Optimal capital stack design — equity, mezzanine, preferred equity, senior debt — tailored to project risk profile and return objectives.</p>
-        <div class="srv-card-line"></div>
-      </div>
-      <div class="srv-card reveal reveal-delay-3">
-        <div class="srv-card-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <h3>Investment Analysis</h3>
-        <p>Rigorous underwriting, sensitivity analysis, and return modeling for acquisitions, developments, and portfolio decisions.</p>
-        <div class="srv-card-line"></div>
-      </div>
-      <div class="srv-card reveal reveal-delay-1">
-        <div class="srv-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></div>
-        <h3>Market Research</h3>
-        <p>Proprietary market analysis identifying supply/demand dynamics, submarket trends, and strategic positioning opportunities.</p>
-        <div class="srv-card-line"></div>
-      </div>
-      <div class="srv-card reveal reveal-delay-2">
-        <div class="srv-card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
-        <h3>Investor Relations</h3>
-        <p>Pitch preparation, investor communications, LP reporting, and co-GP structuring for emerging and established sponsors.</p>
-        <div class="srv-card-line"></div>
-      </div>
-      <div class="srv-card reveal reveal-delay-3">
-        <div class="srv-card-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h3>Risk Assessment</h3>
-        <p>Comprehensive risk identification and mitigation strategy — construction, market, regulatory, and capital risk analysis.</p>
-        <div class="srv-card-line"></div>
-      </div>
+      <div class="srv-card reveal reveal-delay-1"><div class="srv-card-icon"><svg viewBox="0 0 24 24"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="M13 13l6 6"/></svg></div><h3>Development Advisory</h3><p>End-to-end guidance from site selection and feasibility through entitlement, financing, and exit strategy.</p><div class="srv-card-line"></div></div>
+      <div class="srv-card reveal reveal-delay-2"><div class="srv-card-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h3>Capital Structuring</h3><p>Optimal capital stack design — equity, mezzanine, preferred equity, senior debt — tailored to project risk and return objectives.</p><div class="srv-card-line"></div></div>
+      <div class="srv-card reveal reveal-delay-3"><div class="srv-card-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><h3>Investment Analysis</h3><p>Rigorous underwriting, sensitivity analysis, and return modeling for acquisitions, developments, and portfolio decisions.</p><div class="srv-card-line"></div></div>
+      <div class="srv-card reveal reveal-delay-1"><div class="srv-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></div><h3>Market Research</h3><p>Proprietary analysis identifying supply/demand dynamics, submarket trends, and strategic positioning opportunities.</p><div class="srv-card-line"></div></div>
+      <div class="srv-card reveal reveal-delay-2"><div class="srv-card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div><h3>Investor Relations</h3><p>Pitch preparation, LP reporting, and co-GP structuring for emerging and established sponsors.</p><div class="srv-card-line"></div></div>
+      <div class="srv-card reveal reveal-delay-3"><div class="srv-card-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Risk Assessment</h3><p>Comprehensive risk identification and mitigation — construction, market, regulatory, and capital risk analysis.</p><div class="srv-card-line"></div></div>
     </div>
   </section>
 
@@ -818,37 +627,82 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
     <div class="adv-focus-grid">
       <div class="adv-focus-card reveal reveal-delay-1"><div class="adv-focus-num">01</div><h4>Ground-Up Development</h4><p>Advisory from raw land acquisition through stabilization — multi-family, mixed-use, office, and industrial.</p></div>
       <div class="adv-focus-card reveal reveal-delay-2"><div class="adv-focus-num">02</div><h4>Value-Add Acquisitions</h4><p>Identification, underwriting, and repositioning strategy for assets with unrealized value creation potential.</p></div>
-      <div class="adv-focus-card reveal reveal-delay-3"><div class="adv-focus-num">03</div><h4>Opportunistic Investments</h4><p>Distressed assets, land banking, and special situation transactions requiring rapid decisioning and execution.</p></div>
+      <div class="adv-focus-card reveal reveal-delay-3"><div class="adv-focus-num">03</div><h4>Opportunistic Investments</h4><p>Distressed assets, land banking, and special situation transactions requiring rapid decisioning.</p></div>
       <div class="adv-focus-card reveal reveal-delay-1"><div class="adv-focus-num">04</div><h4>Multi-Family &amp; BTR</h4><p>Apartment development and build-to-rent strategies across urban infill, suburban workforce, and luxury segments.</p></div>
       <div class="adv-focus-card reveal reveal-delay-2"><div class="adv-focus-num">05</div><h4>Industrial &amp; Logistics</h4><p>Last-mile, flex, and bulk distribution development and acquisition advisory in high-demand submarkets.</p></div>
-      <div class="adv-focus-card reveal reveal-delay-3"><div class="adv-focus-num">06</div><h4>Family Office Advisory</h4><p>Confidential, white-glove advisory for family offices seeking direct real estate exposure and co-investment.</p></div>
+      <div class="adv-focus-card reveal reveal-delay-3"><div class="adv-focus-num">06</div><h4>Family Office Advisory</h4><p>Confidential, white-glove advisory for family offices seeking direct real estate exposure.</p></div>
     </div>
   </section>
 
-  <div style="background:var(--navy2);border-top:1px solid var(--white5);padding:80px 5%;" id="adv-david">
+  <!-- DEAL HIGHLIGHTS -->
+  <section class="section" id="adv-showcase" style="background:var(--navy2);">
+    <div class="reveal">
+      <div class="section-label">Track Record</div>
+      <h2 class="section-h">Deal <em>Highlights</em></h2>
+      <p class="section-sub">Representative transactions where our advisory created measurable value for our clients.</p>
+    </div>
+    <div class="showcase-grid">
+      <div class="showcase-card reveal reveal-delay-1">
+        <div class="showcase-bg" style="background-image:url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80&auto=format&fit=crop');"></div>
+        <div class="showcase-ov"></div>
+        <div class="showcase-body">
+          <div class="showcase-tag">Ground-Up Development · Multi-Family</div>
+          <h4>Urban Infill Apartment Community</h4>
+          <p>Full development advisory for a 128-unit workforce housing community — site selection through CO.</p>
+          <div class="showcase-value">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            $34M Transaction
+          </div>
+        </div>
+      </div>
+      <div class="showcase-card reveal reveal-delay-2">
+        <div class="showcase-bg" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&auto=format&fit=crop');"></div>
+        <div class="showcase-ov"></div>
+        <div class="showcase-body">
+          <div class="showcase-tag">Value-Add · Office Portfolio</div>
+          <h4>Class B Office Repositioning</h4>
+          <p>Capital structuring and repositioning strategy for a 6-building suburban office portfolio acquisition.</p>
+          <div class="showcase-value">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            $51M Portfolio Value
+          </div>
+        </div>
+      </div>
+      <div class="showcase-card reveal reveal-delay-3">
+        <div class="showcase-bg" style="background-image:url('https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=800&q=80&auto=format&fit=crop');"></div>
+        <div class="showcase-ov"></div>
+        <div class="showcase-body">
+          <div class="showcase-tag">Mixed-Use · Capital Structure</div>
+          <h4>Downtown Mixed-Use Tower</h4>
+          <p>Complex JV equity and senior debt structuring for a 22-story mixed-use development in a gateway city.</p>
+          <div class="showcase-value">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            $40M Advised Value
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAVID BIO -->
+  <div style="padding:80px 5%;" id="adv-david">
     <div class="about-grid">
       <div class="reveal reveal-delay-1">
         <div class="section-label">Division Leadership</div>
         <h2 class="section-h">David <em>Nicolosi</em></h2>
         <p style="font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;">Co-Founder — JW Capital Advisory</p>
         <div class="about-text">
-          <p>David Nicolosi leads JW's Capital Advisory division, bringing a decade and a half of real estate development and investment expertise. His career spans ground-up development, institutional acquisitions, and complex capital structuring across gateway and secondary markets.</p>
-          <p>David's analytical rigor and market instincts have informed over $125 million in total project value — helping clients deploy capital with confidence and maximize risk-adjusted returns.</p>
+          <p>David Nicolosi leads JW's Capital Advisory division with 15+ years of real estate development and investment expertise. His career spans ground-up development, institutional acquisitions, and complex capital structuring across gateway and secondary markets throughout North America.</p>
+          <p>David has informed over $125 million in total project value — helping clients deploy capital with confidence and maximize risk-adjusted returns.</p>
         </div>
         <div class="about-sig">David Nicolosi</div>
-        <div class="team-card-links">
-          <a href="mailto:david@jwestimating.com" class="team-card-link">
-            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            david@jwestimating.com
-          </a>
-          <a href="https://www.linkedin.com/in/david-nicolosi" target="_blank" class="team-card-link">
-            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            LinkedIn
-          </a>
+        <div class="tcl">
+          <a href="mailto:david@jwestimating.com"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>david@jwestimating.com</a>
+          <a href="https://www.linkedin.com/in/david-nicolosi" target="_blank"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
         </div>
       </div>
       <div class="about-photo-wrap reveal reveal-delay-2">
-        <img src="david.jpg" alt="David Nicolosi — Co-Founder, JW Capital Advisory" class="about-photo"/>
+        <img src="david.jpg" alt="David Nicolosi — Co-Founder" class="about-photo"/>
         <div class="about-photo-frame"></div>
       </div>
     </div>
@@ -864,41 +718,21 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
       <div class="contact-info reveal">
         <h3>Confidential Advisory</h3>
         <p>Whether you have a deal under LOI or an early-stage idea — reach out to begin a confidential conversation with David.</p>
-        <div class="contact-detail">
-          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <div class="contact-detail-text"><strong>Email David</strong>david@jwestimating.com</div>
-        </div>
-        <div class="contact-detail">
-          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <div class="contact-detail-text"><strong>Coverage</strong>U.S. Gateway Markets · Secondary Markets · International</div>
-        </div>
+        <div class="cd"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><div class="cd-text"><strong>Email David</strong>david@jwestimating.com</div></div>
+        <div class="cd"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="cd-text"><strong>Coverage</strong>U.S. Gateway Markets · Secondary Markets · International</div></div>
       </div>
       <div class="reveal reveal-delay-2">
         <form id="adv-form" action="https://formspree.io/f/xpwzlnqb" method="POST" onsubmit="handleFormSubmit(event,'adv-success')">
           <div class="form-row">
-            <div class="form-group"><label>First Name *</label><input type="text" name="first_name" required placeholder="Your name"/></div>
-            <div class="form-group"><label>Last Name *</label><input type="text" name="last_name" required placeholder="Last name"/></div>
+            <div class="fg"><label>First Name *</label><input type="text" name="first_name" required placeholder="Your name"/></div>
+            <div class="fg"><label>Last Name *</label><input type="text" name="last_name" required placeholder="Last name"/></div>
           </div>
-          <div class="form-group"><label>Email Address *</label><input type="email" name="email" required placeholder="your@email.com"/></div>
-          <div class="form-group">
-            <label>Advisory Type</label>
-            <select name="advisory_type">
-              <option value="">Select type...</option>
-              <option>Development Advisory</option>
-              <option>Capital Structuring</option>
-              <option>Investment Analysis</option>
-              <option>Market Research</option>
-              <option>Family Office Advisory</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group"><label>Project Overview</label><textarea name="message" placeholder="Brief description of your project or advisory need..."></textarea></div>
+          <div class="fg"><label>Email Address *</label><input type="email" name="email" required placeholder="your@email.com"/></div>
+          <div class="fg"><label>Advisory Type</label><select name="advisory_type"><option value="">Select type...</option><option>Development Advisory</option><option>Capital Structuring</option><option>Investment Analysis</option><option>Market Research</option><option>Family Office Advisory</option><option>Other</option></select></div>
+          <div class="fg"><label>Project Overview</label><textarea name="message" placeholder="Brief description of your project or advisory need..."></textarea></div>
           <button type="submit" class="form-submit">Request Consultation →</button>
         </form>
-        <div class="form-success" id="adv-success">
-          <p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold);margin-bottom:8px;">Thank You</p>
-          <p style="font-size:.85rem;color:var(--white2);">David will personally respond within 24 hours.</p>
-        </div>
+        <div class="form-success" id="adv-success"><p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold);margin-bottom:8px;">Thank You</p><p style="font-size:.85rem;color:var(--w2);">David will personally respond within 24 hours.</p></div>
       </div>
     </div>
   </section>
@@ -906,60 +740,22 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
   <footer class="p-footer">
     <div class="p-footer-grid">
       <div>
-        <div class="footer-brand">
-          <svg viewBox="0 0 56 64" fill="none"><polygon points="28,2 16,14 16,48 7,48 7,57 16,57 24,48 24,14" fill="#F5A800"/><polygon points="28,2 40,14 40,44 46,37 50,44 50,57 40,57 32,48 32,14" fill="#1B5AA8"/><polygon points="24,14 28,2 32,14 28,18" fill="#ffffff" opacity=".18"/></svg>
-          <div class="footer-brand-name"><span>JW</span> Capital Advisory</div>
-        </div>
+        <div class="footer-brand"><svg viewBox="0 0 56 64" fill="none"><polygon points="28,2 16,14 16,48 7,48 7,57 16,57 24,48 24,14" fill="#F5A800"/><polygon points="28,2 40,14 40,44 46,37 50,44 50,57 40,57 32,48 32,14" fill="#1B5AA8"/><polygon points="24,14 28,2 32,14 28,18" fill="#fff" opacity=".18"/></svg><div class="footer-brand-name"><span>JW</span> Capital Advisory</div></div>
         <p class="footer-desc">Independent real estate capital advisory for developers, investors, and family offices.</p>
-        <div class="footer-socials">
-          <a href="https://www.linkedin.com/in/david-nicolosi" target="_blank" class="footer-social"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-        </div>
+        <div class="footer-socials"><a href="https://www.linkedin.com/in/david-nicolosi" target="_blank" class="footer-social"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a></div>
       </div>
-      <div class="footer-col">
-        <h5>Services</h5>
-        <ul>
-          <li><a href="#adv-services">Development Advisory</a></li>
-          <li><a href="#adv-services">Capital Structuring</a></li>
-          <li><a href="#adv-services">Investment Analysis</a></li>
-          <li><a href="#adv-services">Market Research</a></li>
-          <li><a href="#adv-services">Risk Assessment</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>JW Group</h5>
-        <ul>
-          <li><a href="#" onclick="switchPage('est');return false;">Construction Estimating</a></li>
-          <li><a href="#" onclick="switchPage('des');return false;">Architecture &amp; Design</a></li>
-          <li><a href="#" onclick="switchPage('team');return false;">Meet the Team</a></li>
-          <li><a href="#adv-contact">Contact David</a></li>
-        </ul>
-      </div>
+      <div class="footer-col"><h5>Services</h5><ul><li><a href="#adv-services">Development Advisory</a></li><li><a href="#adv-services">Capital Structuring</a></li><li><a href="#adv-services">Investment Analysis</a></li><li><a href="#adv-showcase">Deal Highlights</a></li><li><a href="#adv-contact">Contact David</a></li></ul></div>
+      <div class="footer-col"><h5>JW Group</h5><ul><li><a href="#" onclick="switchPage('est');return false;">Construction Estimating</a></li><li><a href="#" onclick="switchPage('des');return false;">Architecture &amp; Design</a></li><li><a href="#" onclick="switchPage('team');return false;">Meet the Team</a></li></ul></div>
     </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">&copy; 2025 <span>JW Capital Advisory</span>. All rights reserved.</p>
-      <p class="footer-copy">Confidential &amp; Relationship-Driven.</p>
-    </div>
+    <div class="footer-bottom"><p class="footer-copy">&copy; 2025 <span>JW Capital Advisory</span>. All rights reserved.</p><p class="footer-copy">Confidential &amp; Relationship-Driven.</p></div>
   </footer>
 </div><!-- /page-adv -->
 
 
-<!-- ══════════════════════════════════
+<!-- ══════════════════════════════════════════════════════════════
      PAGE 03 — ARCHITECTURE & DESIGN
-═══════════════════════════════════ -->
+═══════════════════════════════════════════════════════════════ -->
 <div class="page" id="page-des">
-  <nav class="p-nav">
-    <div class="p-nav-logo">
-      <svg viewBox="0 0 56 64" fill="none"><polygon points="28,2 16,14 16,48 7,48 7,57 16,57 24,48 24,14" fill="#F5A800"/><polygon points="28,2 40,14 40,44 46,37 50,44 50,57 40,57 32,48 32,14" fill="#1B5AA8"/><polygon points="24,14 28,2 32,14 28,18" fill="#ffffff" opacity=".18"/></svg>
-      <div class="p-nav-wordmark"><span>JW</span> Architecture</div>
-    </div>
-    <div class="p-nav-links">
-      <a href="#des-services">Services</a>
-      <a href="#des-portfolio">Portfolio</a>
-      <a href="#des-process">Process</a>
-      <a href="#des-contact">Contact</a>
-    </div>
-    <a href="#des-contact" class="p-nav-cta">Start a Project</a>
-  </nav>
 
   <section class="p-hero">
     <div class="p-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1800&q=80&auto=format&fit=crop');"></div>
@@ -969,14 +765,8 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
       <h1>Where Vision Becomes<br/><em>Built Reality.</em></h1>
       <p class="p-hero-sub">Thoughtful architectural and interior design services that merge aesthetic excellence with construction-ready precision — from concept to permit-ready drawings.</p>
       <div class="p-hero-btns">
-        <a href="#des-contact" class="btn-gold">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-          Start a Project
-        </a>
-        <a href="#des-portfolio" class="btn-outline">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          View Portfolio
-        </a>
+        <a href="#des-contact" class="btn-gold"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Start a Project</a>
+        <a href="#des-portfolio" class="btn-outline"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>View Portfolio</a>
       </div>
       <div class="p-hero-kpis">
         <div class="p-kpi"><div class="p-kpi-val" data-target="120" data-suffix="+">0</div><div class="p-kpi-lbl">Design Projects</div></div>
@@ -993,42 +783,12 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
       <p class="section-sub">From initial concept to construction documents — our studio delivers at every phase of the design process.</p>
     </div>
     <div class="srv-grid">
-      <div class="srv-card reveal reveal-delay-1">
-        <div class="srv-card-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <h3>Architectural Design</h3>
-        <p>Full architectural services from schematic design through construction documents — residential, commercial, and mixed-use.</p>
-        <div class="srv-card-line"></div>
-      </div>
-      <div class="srv-card reveal reveal-delay-2">
-        <div class="srv-card-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-        <h3>3D Visualization</h3>
-        <p>Photorealistic 3D renderings, walkthroughs, and virtual tours that bring your project to life before breaking ground.</p>
-        <div class="srv-card-line"></div>
-      </div>
-      <div class="srv-card reveal reveal-delay-3">
-        <div class="srv-card-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
-        <h3>Interior Design</h3>
-        <p>Comprehensive interior design — space planning, material selection, lighting design, and FF&amp;E specification.</p>
-        <div class="srv-card-line"></div>
-      </div>
-      <div class="srv-card reveal reveal-delay-1">
-        <div class="srv-card-icon"><svg viewBox="0 0 24 24"><path d="M2 20h.01M7 20v-4M12 20V10M17 20V4M22 20v-8"/></svg></div>
-        <h3>Space Planning</h3>
-        <p>Functional layout optimization for commercial offices, retail environments, multi-family units, and hospitality venues.</p>
-        <div class="srv-card-line"></div>
-      </div>
-      <div class="srv-card reveal reveal-delay-2">
-        <div class="srv-card-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
-        <h3>Construction Documents</h3>
-        <p>Permit-ready drawing sets, details, and specifications coordinated across all disciplines for seamless construction.</p>
-        <div class="srv-card-line"></div>
-      </div>
-      <div class="srv-card reveal reveal-delay-3">
-        <div class="srv-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg></div>
-        <h3>Design Consulting</h3>
-        <p>Peer review, constructability analysis, and design optimization consulting for projects already in progress.</p>
-        <div class="srv-card-line"></div>
-      </div>
+      <div class="srv-card reveal reveal-delay-1"><div class="srv-card-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h3>Architectural Design</h3><p>Full architectural services from schematic design through construction documents — residential, commercial, and mixed-use.</p><div class="srv-card-line"></div></div>
+      <div class="srv-card reveal reveal-delay-2"><div class="srv-card-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>3D Visualization</h3><p>Photorealistic renderings, walkthroughs, and virtual tours that bring your project to life before breaking ground.</p><div class="srv-card-line"></div></div>
+      <div class="srv-card reveal reveal-delay-3"><div class="srv-card-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><h3>Interior Design</h3><p>Space planning, material selection, lighting design, and FF&amp;E specification for every project type.</p><div class="srv-card-line"></div></div>
+      <div class="srv-card reveal reveal-delay-1"><div class="srv-card-icon"><svg viewBox="0 0 24 24"><path d="M2 20h.01M7 20v-4M12 20V10M17 20V4M22 20v-8"/></svg></div><h3>Space Planning</h3><p>Functional layout optimization for commercial offices, retail environments, multi-family units, and hospitality.</p><div class="srv-card-line"></div></div>
+      <div class="srv-card reveal reveal-delay-2"><div class="srv-card-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><h3>Construction Documents</h3><p>Permit-ready drawing sets and specifications coordinated across all disciplines for seamless construction.</p><div class="srv-card-line"></div></div>
+      <div class="srv-card reveal reveal-delay-3"><div class="srv-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg></div><h3>Design Consulting</h3><p>Peer review, constructability analysis, and design optimization consulting for projects already in progress.</p><div class="srv-card-line"></div></div>
     </div>
   </section>
 
@@ -1039,13 +799,13 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
       <div class="section-label">Portfolio</div>
       <h2 class="section-h">Recent <em>Work</em></h2>
     </div>
-    <div class="arch-portfolio-grid">
-      <div class="arch-port-item reveal"><div class="arch-port-bg" style="background-image:url('https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&q=80&auto=format&fit=crop');"></div><div class="arch-port-ov"></div><div class="arch-port-label"><h4>Luxury Residential</h4><p>Custom Home — 6,200 SF</p></div></div>
-      <div class="arch-port-item reveal reveal-delay-1"><div class="arch-port-bg" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&auto=format&fit=crop');"></div><div class="arch-port-ov"></div><div class="arch-port-label"><h4>Commercial Office</h4><p>Tenant Improvement — 18,000 SF</p></div></div>
-      <div class="arch-port-item reveal reveal-delay-2"><div class="arch-port-bg" style="background-image:url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80&auto=format&fit=crop');"></div><div class="arch-port-ov"></div><div class="arch-port-label"><h4>Mixed-Use Development</h4><p>Retail + Residential — 42 Units</p></div></div>
-      <div class="arch-port-item reveal"><div class="arch-port-bg" style="background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80&auto=format&fit=crop');"></div><div class="arch-port-ov"></div><div class="arch-port-label"><h4>Interior Renovation</h4><p>High-End Residence — Full FF&amp;E</p></div></div>
-      <div class="arch-port-item reveal reveal-delay-1"><div class="arch-port-bg" style="background-image:url('https://images.unsplash.com/photo-1571624436279-b272aff752b5?w=800&q=80&auto=format&fit=crop');"></div><div class="arch-port-ov"></div><div class="arch-port-label"><h4>Boutique Hotel</h4><p>Hospitality Design — 64 Keys</p></div></div>
-      <div class="arch-port-item reveal reveal-delay-2"><div class="arch-port-bg" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80&auto=format&fit=crop');"></div><div class="arch-port-ov"></div><div class="arch-port-label"><h4>Urban Tower Concept</h4><p>Schematic Design — 24 Stories</p></div></div>
+    <div class="arch-grid">
+      <div class="arch-item reveal"><div class="arch-bg" style="background-image:url('https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&q=80&auto=format&fit=crop');"></div><div class="arch-ov"></div><div class="arch-label"><h4>Luxury Residential</h4><p>Custom Home — 6,200 SF</p></div></div>
+      <div class="arch-item reveal reveal-delay-1"><div class="arch-bg" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&auto=format&fit=crop');"></div><div class="arch-ov"></div><div class="arch-label"><h4>Commercial Office</h4><p>Tenant Improvement — 18,000 SF</p></div></div>
+      <div class="arch-item reveal reveal-delay-2"><div class="arch-bg" style="background-image:url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80&auto=format&fit=crop');"></div><div class="arch-ov"></div><div class="arch-label"><h4>Mixed-Use Development</h4><p>Retail + Residential — 42 Units</p></div></div>
+      <div class="arch-item reveal"><div class="arch-bg" style="background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80&auto=format&fit=crop');"></div><div class="arch-ov"></div><div class="arch-label"><h4>Interior Renovation</h4><p>High-End Residence — Full FF&amp;E</p></div></div>
+      <div class="arch-item reveal reveal-delay-1"><div class="arch-bg" style="background-image:url('https://images.unsplash.com/photo-1571624436279-b272aff752b5?w=800&q=80&auto=format&fit=crop');"></div><div class="arch-ov"></div><div class="arch-label"><h4>Boutique Hotel</h4><p>Hospitality Design — 64 Keys</p></div></div>
+      <div class="arch-item reveal reveal-delay-2"><div class="arch-bg" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80&auto=format&fit=crop');"></div><div class="arch-ov"></div><div class="arch-label"><h4>Urban Tower Concept</h4><p>Schematic Design — 24 Stories</p></div></div>
     </div>
   </section>
 
@@ -1057,9 +817,9 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
     </div>
     <div class="process-grid">
       <div class="proc-item reveal reveal-delay-1"><h4>Discovery</h4><p>We learn your vision, constraints, program, and aspirations through a focused design brief and site analysis.</p></div>
-      <div class="proc-item reveal reveal-delay-2"><h4>Schematic Design</h4><p>Conceptual floor plans, massing studies, and initial renderings — aligning design intent before developing detail.</p></div>
+      <div class="proc-item reveal reveal-delay-2"><h4>Schematic Design</h4><p>Conceptual floor plans, massing studies, and initial renderings — aligning intent before developing detail.</p></div>
       <div class="proc-item reveal reveal-delay-3"><h4>Design Development</h4><p>Full 3D modeling, material selection, MEP coordination, and detailed interior design specification.</p></div>
-      <div class="proc-item reveal reveal-delay-4"><h4>Construction Documents</h4><p>Permit-ready drawings, specifications, and coordination with structural and MEP engineers for seamless execution.</p></div>
+      <div class="proc-item reveal reveal-delay-4"><h4>Construction Documents</h4><p>Permit-ready drawings, specifications, and coordination with structural and MEP engineers.</p></div>
     </div>
   </section>
 
@@ -1073,43 +833,21 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
       <div class="contact-info reveal">
         <h3>Design Inquiry</h3>
         <p>Whether you have detailed plans or just an idea — we love working with clients at every stage of the design journey.</p>
-        <div class="contact-detail">
-          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <div class="contact-detail-text"><strong>Email</strong>design@jwestimating.com</div>
-        </div>
-        <div class="contact-detail">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <div class="contact-detail-text"><strong>Response Time</strong>Initial response within 24 hours</div>
-        </div>
+        <div class="cd"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><div class="cd-text"><strong>Email</strong>design@jwestimating.com</div></div>
+        <div class="cd"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><div class="cd-text"><strong>Response Time</strong>Initial response within 24 hours</div></div>
       </div>
       <div class="reveal reveal-delay-2">
         <form id="des-form" action="https://formspree.io/f/xpwzlnqb" method="POST" onsubmit="handleFormSubmit(event,'des-success')">
           <div class="form-row">
-            <div class="form-group"><label>First Name *</label><input type="text" name="first_name" required placeholder="Your name"/></div>
-            <div class="form-group"><label>Last Name *</label><input type="text" name="last_name" required placeholder="Last name"/></div>
+            <div class="fg"><label>First Name *</label><input type="text" name="first_name" required placeholder="Your name"/></div>
+            <div class="fg"><label>Last Name *</label><input type="text" name="last_name" required placeholder="Last name"/></div>
           </div>
-          <div class="form-group"><label>Email Address *</label><input type="email" name="email" required placeholder="your@email.com"/></div>
-          <div class="form-group">
-            <label>Project Type</label>
-            <select name="project_type">
-              <option value="">Select project type...</option>
-              <option>Custom Residence</option>
-              <option>Residential Renovation</option>
-              <option>Commercial / Office</option>
-              <option>Mixed-Use Development</option>
-              <option>Hospitality</option>
-              <option>Interior Design Only</option>
-              <option>3D Visualization</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group"><label>Project Description</label><textarea name="message" placeholder="Tell us about your design vision, project size, and timeline..."></textarea></div>
+          <div class="fg"><label>Email Address *</label><input type="email" name="email" required placeholder="your@email.com"/></div>
+          <div class="fg"><label>Project Type</label><select name="project_type"><option value="">Select project type...</option><option>Custom Residence</option><option>Residential Renovation</option><option>Commercial / Office</option><option>Mixed-Use Development</option><option>Hospitality</option><option>Interior Design Only</option><option>3D Visualization</option><option>Other</option></select></div>
+          <div class="fg"><label>Project Description</label><textarea name="message" placeholder="Tell us about your design vision, project size, and timeline..."></textarea></div>
           <button type="submit" class="form-submit">Send Inquiry →</button>
         </form>
-        <div class="form-success" id="des-success">
-          <p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold);margin-bottom:8px;">Inquiry Received</p>
-          <p style="font-size:.85rem;color:var(--white2);">We'll be in touch within 24 hours to discuss your project.</p>
-        </div>
+        <div class="form-success" id="des-success"><p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold);margin-bottom:8px;">Inquiry Received</p><p style="font-size:.85rem;color:var(--w2);">We'll be in touch within 24 hours to discuss your project.</p></div>
       </div>
     </div>
   </section>
@@ -1117,59 +855,22 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
   <footer class="p-footer">
     <div class="p-footer-grid">
       <div>
-        <div class="footer-brand">
-          <svg viewBox="0 0 56 64" fill="none"><polygon points="28,2 16,14 16,48 7,48 7,57 16,57 24,48 24,14" fill="#F5A800"/><polygon points="28,2 40,14 40,44 46,37 50,44 50,57 40,57 32,48 32,14" fill="#1B5AA8"/><polygon points="24,14 28,2 32,14 28,18" fill="#ffffff" opacity=".18"/></svg>
-          <div class="footer-brand-name"><span>JW</span> Architecture &amp; Design</div>
-        </div>
-        <p class="footer-desc">Full-service architectural and interior design studio delivering spaces where vision meets precision.</p>
-        <div class="footer-socials">
-          <a href="https://www.instagram.com/jwestimating/" target="_blank" class="footer-social"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-        </div>
+        <div class="footer-brand"><svg viewBox="0 0 56 64" fill="none"><polygon points="28,2 16,14 16,48 7,48 7,57 16,57 24,48 24,14" fill="#F5A800"/><polygon points="28,2 40,14 40,44 46,37 50,44 50,57 40,57 32,48 32,14" fill="#1B5AA8"/><polygon points="24,14 28,2 32,14 28,18" fill="#fff" opacity=".18"/></svg><div class="footer-brand-name"><span>JW</span> Architecture &amp; Design</div></div>
+        <p class="footer-desc">Full-service architectural and interior design studio where vision meets precision.</p>
+        <div class="footer-socials"><a href="https://www.instagram.com/jwestimating/" target="_blank" class="footer-social"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></div>
       </div>
-      <div class="footer-col">
-        <h5>Services</h5>
-        <ul>
-          <li><a href="#des-services">Architectural Design</a></li>
-          <li><a href="#des-services">Interior Design</a></li>
-          <li><a href="#des-services">3D Visualization</a></li>
-          <li><a href="#des-services">Space Planning</a></li>
-          <li><a href="#des-services">Construction Documents</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>JW Group</h5>
-        <ul>
-          <li><a href="#" onclick="switchPage('est');return false;">Construction Estimating</a></li>
-          <li><a href="#" onclick="switchPage('adv');return false;">Capital Advisory</a></li>
-          <li><a href="#" onclick="switchPage('team');return false;">Meet the Team</a></li>
-          <li><a href="#des-contact">Start a Project</a></li>
-        </ul>
-      </div>
+      <div class="footer-col"><h5>Services</h5><ul><li><a href="#des-services">Architectural Design</a></li><li><a href="#des-services">Interior Design</a></li><li><a href="#des-services">3D Visualization</a></li><li><a href="#des-portfolio">Portfolio</a></li><li><a href="#des-contact">Start a Project</a></li></ul></div>
+      <div class="footer-col"><h5>JW Group</h5><ul><li><a href="#" onclick="switchPage('est');return false;">Construction Estimating</a></li><li><a href="#" onclick="switchPage('adv');return false;">Capital Advisory</a></li><li><a href="#" onclick="switchPage('team');return false;">Meet the Team</a></li></ul></div>
     </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">&copy; 2025 <span>JW Architecture &amp; Design</span>. All rights reserved.</p>
-      <p class="footer-copy">Design with Intention.</p>
-    </div>
+    <div class="footer-bottom"><p class="footer-copy">&copy; 2025 <span>JW Architecture &amp; Design</span>. All rights reserved.</p><p class="footer-copy">Design with Intention.</p></div>
   </footer>
 </div><!-- /page-des -->
 
 
-<!-- ══════════════════════════════════
+<!-- ══════════════════════════════════════════════════════════════
      PAGE 04 — MEET THE TEAM
-═══════════════════════════════════ -->
+═══════════════════════════════════════════════════════════════ -->
 <div class="page" id="page-team">
-  <nav class="p-nav">
-    <div class="p-nav-logo">
-      <svg viewBox="0 0 56 64" fill="none"><polygon points="28,2 16,14 16,48 7,48 7,57 16,57 24,48 24,14" fill="#F5A800"/><polygon points="28,2 40,14 40,44 46,37 50,44 50,57 40,57 32,48 32,14" fill="#1B5AA8"/><polygon points="24,14 28,2 32,14 28,18" fill="#ffffff" opacity=".18"/></svg>
-      <div class="p-nav-wordmark"><span>JW</span> Group</div>
-    </div>
-    <div class="p-nav-links">
-      <a href="#" onclick="switchPage('est');return false;">Estimating</a>
-      <a href="#" onclick="switchPage('adv');return false;">Advisory</a>
-      <a href="#" onclick="switchPage('des');return false;">Architecture</a>
-    </div>
-    <a href="#" onclick="switchPage('est');document.getElementById('page-est').querySelector('#est-contact').scrollIntoView();return false;" class="p-nav-cta">Work With Us</a>
-  </nav>
 
   <div class="team-page-hero">
     <div class="reveal">
@@ -1188,9 +889,9 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
           <h3 class="team-card-name">Ali Husnain</h3>
           <p class="team-card-bio">Ali founded JW Construction Estimating with a commitment to delivering the most accurate, fastest, and most reliable cost estimates in the industry. With 7+ years of hands-on construction cost management across residential, commercial, and industrial sectors, Ali has led a team that has completed over 3,500 projects totaling $125M+ in value.</p>
           <p class="team-card-bio">His vision: estimating services that match the caliber of the buildings they help build.</p>
-          <div class="team-card-links">
-            <a href="mailto:ali@jwestimating.com" class="team-card-link"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>ali@jwestimating.com</a>
-            <a href="https://www.linkedin.com/in/ali-husnain-7a05b5233" target="_blank" class="team-card-link"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+          <div class="tcl">
+            <a href="mailto:ali@jwestimating.com"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>ali@jwestimating.com</a>
+            <a href="https://www.linkedin.com/in/ali-husnain-7a05b5233" target="_blank"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
           </div>
         </div>
       </div>
@@ -1201,9 +902,9 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
           <h3 class="team-card-name">David Nicolosi</h3>
           <p class="team-card-bio">David leads JW's Capital Advisory division, bringing 15+ years of real estate development and investment expertise. His career spans ground-up development, institutional acquisitions, and complex capital structuring across gateway and secondary markets throughout North America.</p>
           <p class="team-card-bio">David has informed over $125 million in total project value, helping clients deploy capital with precision and confidence.</p>
-          <div class="team-card-links">
-            <a href="mailto:david@jwestimating.com" class="team-card-link"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>david@jwestimating.com</a>
-            <a href="https://www.linkedin.com/in/david-nicolosi" target="_blank" class="team-card-link"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+          <div class="tcl">
+            <a href="mailto:david@jwestimating.com"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>david@jwestimating.com</a>
+            <a href="https://www.linkedin.com/in/david-nicolosi" target="_blank"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
           </div>
         </div>
       </div>
@@ -1216,7 +917,7 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
     <div style="text-align:center;max-width:720px;margin:0 auto;" class="reveal">
       <div class="section-label" style="justify-content:center;">Our Philosophy</div>
       <h2 class="section-h" style="text-align:center;">One Platform.<br/><em>Three Disciplines.</em></h2>
-      <p style="font-size:.95rem;color:var(--white2);line-height:1.8;margin-top:8px;">JW was built on a simple belief: construction, capital, and design should speak the same language. By uniting precision estimating, sophisticated advisory, and thoughtful architectural design under one roof, we serve clients at every stage of the built environment.</p>
+      <p style="font-size:.95rem;color:var(--w2);line-height:1.8;margin-top:8px;">JW was built on a simple belief: construction, capital, and design should speak the same language. By uniting precision estimating, sophisticated advisory, and thoughtful architectural design under one roof, we serve clients at every stage of the built environment.</p>
     </div>
     <div class="process-grid" style="margin-top:64px;max-width:960px;margin-left:auto;margin-right:auto;">
       <div class="proc-item reveal reveal-delay-1" style="padding-left:0;"><h4>Construction Estimating</h4><p>3,500+ projects. Nationwide. The most accurate numbers in the industry with the fastest turnaround.</p></div>
@@ -1229,7 +930,7 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
     <div class="reveal">
       <div class="section-label" style="justify-content:center;">Ready to Build?</div>
       <h2 class="section-h" style="text-align:center;">Let's Work <em>Together</em></h2>
-      <p style="font-size:.95rem;color:var(--white2);max-width:480px;margin:0 auto 40px;line-height:1.75;">Whichever division fits your needs — we're ready to deliver exceptional results.</p>
+      <p style="font-size:.95rem;color:var(--w2);max-width:480px;margin:0 auto 40px;line-height:1.75;">Whichever division fits your needs — we're ready to deliver exceptional results.</p>
       <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;">
         <a href="#" onclick="switchPage('est');return false;" class="btn-gold">Get an Estimate</a>
         <a href="#" onclick="switchPage('adv');return false;" class="btn-outline">Advisory Inquiry</a>
@@ -1241,63 +942,116 @@ button{border:none;background:none;cursor:none;font-family:inherit;}
   <footer class="p-footer">
     <div class="p-footer-grid">
       <div>
-        <div class="footer-brand">
-          <svg viewBox="0 0 56 64" fill="none"><polygon points="28,2 16,14 16,48 7,48 7,57 16,57 24,48 24,14" fill="#F5A800"/><polygon points="28,2 40,14 40,44 46,37 50,44 50,57 40,57 32,48 32,14" fill="#1B5AA8"/><polygon points="24,14 28,2 32,14 28,18" fill="#ffffff" opacity=".18"/></svg>
-          <div class="footer-brand-name"><span>JW</span> Group</div>
-        </div>
+        <div class="footer-brand"><svg viewBox="0 0 56 64" fill="none"><polygon points="28,2 16,14 16,48 7,48 7,57 16,57 24,48 24,14" fill="#F5A800"/><polygon points="28,2 40,14 40,44 46,37 50,44 50,57 40,57 32,48 32,14" fill="#1B5AA8"/><polygon points="24,14 28,2 32,14 28,18" fill="#fff" opacity=".18"/></svg><div class="footer-brand-name"><span>JW</span> Group</div></div>
         <p class="footer-desc">Construction Estimating · Capital Advisory · Architecture &amp; Design</p>
       </div>
-      <div class="footer-col">
-        <h5>Divisions</h5>
-        <ul>
-          <li><a href="#" onclick="switchPage('est');return false;">Construction Estimating</a></li>
-          <li><a href="#" onclick="switchPage('adv');return false;">Capital Advisory</a></li>
-          <li><a href="#" onclick="switchPage('des');return false;">Architecture &amp; Design</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Contact</h5>
-        <ul>
-          <li><a href="mailto:ali@jwestimating.com">ali@jwestimating.com</a></li>
-          <li><a href="mailto:Jack@jwestimating.com">Jack@jwestimating.com</a></li>
-          <li><a href="mailto:david@jwestimating.com">david@jwestimating.com</a></li>
-        </ul>
-      </div>
+      <div class="footer-col"><h5>Divisions</h5><ul><li><a href="#" onclick="switchPage('est');return false;">Construction Estimating</a></li><li><a href="#" onclick="switchPage('adv');return false;">Capital Advisory</a></li><li><a href="#" onclick="switchPage('des');return false;">Architecture &amp; Design</a></li></ul></div>
+      <div class="footer-col"><h5>Contact</h5><ul><li><a href="mailto:ali@jwestimating.com">ali@jwestimating.com</a></li><li><a href="mailto:Jack@jwestimating.com">Jack@jwestimating.com</a></li><li><a href="mailto:david@jwestimating.com">david@jwestimating.com</a></li></ul></div>
     </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">&copy; 2025 <span>JW Group</span>. All rights reserved.</p>
-      <p class="footer-copy">Construction · Capital · Design</p>
-    </div>
+    <div class="footer-bottom"><p class="footer-copy">&copy; 2025 <span>JW Group</span>. All rights reserved.</p><p class="footer-copy">Construction · Capital · Design</p></div>
   </footer>
 </div><!-- /page-team -->
 
 
 <script>
-// ── CUSTOM CURSOR
-const dot=document.getElementById('cursor-dot'),ring=document.getElementById('cursor-ring');
+// ── SUB-NAV CONFIG ──────────────────────────────────────────
+const SUB_NAVS = {
+  est: [
+    {label:'Services',    target:'est-services'},
+    {label:'Process',     target:'est-process'},
+    {label:'Featured Projects', target:'est-showcase', highlight:true},
+    {label:'About',       target:'est-about'},
+    {label:'Contact',     target:'est-contact'},
+  ],
+  adv: [
+    {label:'Services',    target:'adv-services'},
+    {label:'Focus Areas', target:'adv-focus'},
+    {label:'Deal Highlights', target:'adv-showcase', highlight:true},
+    {label:'Leadership',  target:'adv-david'},
+    {label:'Contact',     target:'adv-contact'},
+  ],
+  des: [
+    {label:'Services',    target:'des-services'},
+    {label:'Portfolio',   target:'des-portfolio', highlight:true},
+    {label:'Process',     target:'des-process'},
+    {label:'Contact',     target:'des-contact'},
+  ],
+  team: null
+};
+
+const CTA_CONFIG = {
+  est:  {label:'Get a Quote',          href:'#est-contact'},
+  adv:  {label:'Consultation',         href:'#adv-contact'},
+  des:  {label:'Start a Project',      href:'#des-contact'},
+  team: {label:'Work With Us',         href:'#est-contact', page:'est'},
+};
+
+// ── CURSOR ──────────────────────────────────────────────────
+const dot=document.getElementById('cur-dot'),ring=document.getElementById('cur-ring');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
 (function animRing(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);})();
 document.querySelectorAll('a,button,[onclick]').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{ring.style.width='56px';ring.style.height='56px';ring.style.borderColor='rgba(245,168,0,.8)';});
+  el.addEventListener('mouseenter',()=>{ring.style.width='54px';ring.style.height='54px';ring.style.borderColor='rgba(245,168,0,.8)';});
   el.addEventListener('mouseleave',()=>{ring.style.width='38px';ring.style.height='38px';ring.style.borderColor='rgba(245,168,0,.5)';});
 });
 
-// ── PRELOADER
+// ── PRELOADER ────────────────────────────────────────────────
 window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('preloader').classList.add('out'),900);});
 
-// ── PAGE SWITCHER
+// ── SCROLL TO SECTION (within fixed page container) ─────────
+function scrollToSection(id){
+  const el=document.getElementById(id);
+  if(!el)return;
+  // find which page is active, scroll inside it
+  const page=el.closest('.page');
+  if(page){
+    const top=el.getBoundingClientRect().top - page.getBoundingClientRect().top + page.scrollTop;
+    page.scrollTo({top:top-10,behavior:'smooth'});
+  }
+}
+
+// ── BUILD SUB-NAV ────────────────────────────────────────────
+function buildSubNav(name){
+  const sn=document.getElementById('sub-nav');
+  const links=SUB_NAVS[name];
+  if(!links){
+    sn.classList.add('hidden');
+    document.body.classList.add('team-active');
+    return;
+  }
+  sn.classList.remove('hidden');
+  document.body.classList.remove('team-active');
+  sn.innerHTML=links.map(l=>
+    `<a class="sn-link${l.highlight?' highlight':''}" onclick="scrollToSection('${l.target}')">${l.label}</a>`
+  ).join('');
+}
+
+// ── PAGE SWITCHER ─────────────────────────────────────────────
 function switchPage(name){
   ['est','adv','des','team'].forEach(p=>{
     document.getElementById('page-'+p).classList.toggle('active',p===name);
-    document.getElementById('dst-'+p).classList.toggle('active',p===name);
+    document.getElementById('mnt-'+p).classList.toggle('active',p===name);
   });
   const pg=document.getElementById('page-'+name);
-  if(pg){pg.scrollTop=0;setupReveal(pg);}
+  if(pg) pg.scrollTop=0;
+  buildSubNav(name);
+  // update CTA
+  const cfg=CTA_CONFIG[name];
+  const cta=document.getElementById('mn-cta');
+  cta.textContent=cfg.label;
+  cta.href=cfg.href;
+  if(cfg.page){
+    cta.onclick=()=>{switchPage(cfg.page);return false;};
+  } else {
+    cta.onclick=null;
+  }
+  setTimeout(()=>setupReveal(pg),60);
 }
 
-// ── SCROLL REVEAL
+// ── SCROLL REVEAL ─────────────────────────────────────────────
 function setupReveal(container){
+  if(!container)return;
   const obs=new IntersectionObserver((entries)=>{
     entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
   },{threshold:.08,rootMargin:'0px 0px -30px 0px',root:container});
@@ -1305,7 +1059,7 @@ function setupReveal(container){
 }
 document.querySelectorAll('.page').forEach(pg=>setupReveal(pg));
 
-// ── COUNTERS
+// ── COUNTERS ──────────────────────────────────────────────────
 function animCounter(el){
   if(el.dataset.animated)return;
   el.dataset.animated='1';
@@ -1324,7 +1078,7 @@ document.querySelectorAll('.page').forEach(pg=>{
   pg.querySelectorAll('[data-target]').forEach(el=>obs.observe(el));
 });
 
-// ── FORM HANDLER
+// ── FORM HANDLER ──────────────────────────────────────────────
 function handleFormSubmit(e,successId){
   e.preventDefault();
   const form=e.target;
@@ -1334,6 +1088,9 @@ function handleFormSubmit(e,successId){
       else alert('Something went wrong. Please email us directly.');
     }).catch(()=>alert('Network error. Please email us directly.'));
 }
+
+// ── INIT ──────────────────────────────────────────────────────
+buildSubNav('est');
 </script>
 </body>
 </html>
