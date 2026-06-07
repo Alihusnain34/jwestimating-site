@@ -99,7 +99,7 @@ a{color:inherit;text-decoration:none;}img{display:block;max-width:100%;}button{b
 }
 .sn-link:first-child{border-left:1px solid rgba(255,255,255,.05);}
 .sn-link:hover{color:var(--gold);background:rgba(245,168,0,.04);}
-.sn-link.highlight{color:var(--gold2);}
+.sn-link.active{color:var(--gold2);background:rgba(245,168,0,.06);}
 
 /* ══════════════════════════════════════
    PAGE SYSTEM
@@ -1215,20 +1215,20 @@ const SUB_NAVS = {
   est: [
     {label:'Services',    target:'est-services'},
     {label:'Process',     target:'est-process'},
-    {label:'Featured Projects', target:'est-showcase', highlight:true},
+    {label:'Featured Projects', target:'est-showcase'},
     {label:'Reviews',     target:'est-contact'},
     {label:'Contact',     target:'est-contact'},
   ],
   adv: [
     {label:'Services',    target:'adv-services'},
     {label:'Focus Areas', target:'adv-focus'},
-    {label:'Deal Highlights', target:'adv-showcase', highlight:true},
+    {label:'Deal Highlights', target:'adv-showcase'},
     {label:'Leadership',  target:'adv-david'},
     {label:'Contact',     target:'adv-contact'},
   ],
   des: [
     {label:'Services',    target:'des-services'},
-    {label:'Portfolio',   target:'des-portfolio', highlight:true},
+    {label:'Portfolio',   target:'des-portfolio'},
     {label:'Process',     target:'des-process'},
     {label:'Contact',     target:'des-contact'},
   ],
@@ -1268,9 +1268,12 @@ function scrollToSection(id){
 }
 
 // ── BUILD SUB-NAV ────────────────────────────────────────────
+let _snObserver=null;
 function buildSubNav(name){
   const sn=document.getElementById('sub-nav');
   const links=SUB_NAVS[name];
+  // disconnect previous observer
+  if(_snObserver){_snObserver.disconnect();_snObserver=null;}
   if(!links){
     sn.classList.add('hidden');
     document.body.classList.add('team-active');
@@ -1278,9 +1281,30 @@ function buildSubNav(name){
   }
   sn.classList.remove('hidden');
   document.body.classList.remove('team-active');
+  // build links (no permanent highlight)
   sn.innerHTML=links.map(l=>
-    `<a class="sn-link${l.highlight?' highlight':''}" onclick="scrollToSection('${l.target}')">${l.label}</a>`
+    `<a class="sn-link" data-target="${l.target}" onclick="scrollToSection('${l.target}')">${l.label}</a>`
   ).join('');
+  // activate first link by default
+  const firstLink=sn.querySelector('.sn-link');
+  if(firstLink) firstLink.classList.add('active');
+  // scroll-spy: observe each section within the active page
+  const page=document.getElementById('page-'+name);
+  if(!page) return;
+  const targets=[...new Set(links.map(l=>l.target))];
+  const sections=targets.map(id=>document.getElementById(id)).filter(Boolean);
+  if(!sections.length) return;
+  _snObserver=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const id=entry.target.id;
+        sn.querySelectorAll('.sn-link').forEach(a=>{
+          a.classList.toggle('active', a.dataset.target===id);
+        });
+      }
+    });
+  },{root:page, rootMargin:'-20% 0px -60% 0px', threshold:0});
+  sections.forEach(s=>_snObserver.observe(s));
 }
 
 // ── PAGE SWITCHER ─────────────────────────────────────────────
